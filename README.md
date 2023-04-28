@@ -6,14 +6,11 @@
 
 <p align="center">
   Relived CV template powered by Typst
-  
 </p>
-
-
 
 ## What is this for?
 
-**AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume** , **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). 
+**AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). 
 
 ## Current Issues
 
@@ -30,8 +27,20 @@
 - **Multilingual support**: manage your CV **content** in different language versions (three languages, in my case) in a single project, while without touching on the format. 
 - **Cover Letter**: write your cover letter using the same aesthetic design.
 
+## Usage
+
+**Web app**
+
+Upload the `src` folder to the [Typst web app](https://typst.app/), `#import` it in your main typst file and compile it to PDF.
+
+**Local Development**
+
+Clone the repository to your local environment. For compilation, seee further instructions from [**Typst**](https://github.com/typst/typst) page for installing CLI tool. 
+
+> **Notice**: You might need to find a workaround to deal with the font issues, until Typst provide an official support for importing custom fonts.
+
 
 ## Credit
 
-- [**Typst**](https://github.com/typst/typst) is a new-born, open source and simple typesetting engine that offers a better scripting experience than [**LaTeX**](https://www.latex-project.org/).
+- [**Typst**](https://github.com/typst/typst) is a newborn, open source and simple typesetting engine that offers a better scripting experience than [**LaTeX**](https://www.latex-project.org/).
 - [**Awesome-CV**](https://github.com/posquit0/Awesome-CV) is the original LaTeX CV template from which this project is heavily inspired. Thanks [posquit0](https://github.com/posquit0) for your excellent work!
