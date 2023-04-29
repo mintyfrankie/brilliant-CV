@@ -80,7 +80,7 @@
   str
 )}
 
-// FIXME: temporary fix on align
+
 #let entryA2Style(str) = {align(right, text(
   font: bodyFont,
   size: 9pt,
@@ -98,7 +98,6 @@
   smallcaps(str)
 )}
 
-// FIXME: temporary fix on align
 #let entryB2Style(str) = {align(right, text(
   font: bodyFont,
   size: 8pt,
@@ -116,8 +115,6 @@
   str
 )}
 
-
-// FIXME: temporary fix on align
 #let skillTypeStyle(str) = {align(right, text(
   font: bodyFont,
   size: 10pt,
@@ -271,7 +268,7 @@
   )
 }
 
-// Utilities
+/* Utilities */
 
 #let hBar() = [
   #h(5pt) | #h(5pt)

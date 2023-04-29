@@ -1,14 +1,12 @@
 // NOTICE: modify this file to configure the metadata of your resume
 
-#let awesomeColor = "skyblue" // skyblue, red, nephritis, concrete, darknight
-
+// Optional: skyblue, red, nephritis, concrete, darknight
+#let awesomeColor = "skyblue" 
 #let profilePhoto = "../src/avatar.png"
 
 #let firstName = "John"
 #let lastName = "Doe"
 
-// If you don't want certain elements, keep the value string empty, but don't delete the string.
-// The order of keys decides the order of information on PDF.
 #let personalInfo = (
   github: "mintyfrankie",
   phone: "+33 6 12 34 56 78",
