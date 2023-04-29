@@ -29,6 +29,12 @@
   concrete: rgb("#95A5A6"),
   darknight: rgb("#131A28"),
 )
+
+#let regularColors = (
+  lightgray: rgb("#333333"),
+  darkgray: rgb("#5D5D5D"),
+)
+
 #let accentColor = awesomeColors.at(awesomeColor)
 
 #let headerFont = "Roboto"
@@ -38,17 +44,17 @@
 #let beforeEntrySkip = 6pt
 
 #let headerFirstNameStyle(str) = {text(
-  font: headerFont,
+  font: bodyFont,
   size: 32pt,
   weight: "light",
-  fill: gray,
+  fill: regularColors.darkgray,
   str
 )}
 
 #let headerLastNameStyle(str) = {text(
-  font: headerFont,
+  font: bodyFont,
   size: 32pt,
-  weight: "semibold",
+  weight: "bold",
   str
 )}
 
@@ -87,6 +93,7 @@
 #let entryB1Style(str) = {text(
   font: bodyFont,
   size: 8pt,
+  fill: regularColors.darkgray,
   weight: "regular",
   smallcaps(str)
 )}
@@ -103,8 +110,9 @@
 
 #let entryDescriptionStyle(str) = {text(
   font: bodyFont,
-  size: 8pt,
-  weight: "regular",
+  size: 9pt,
+  weight: "light",
+  fill: regularColors.lightgray,
   str
 )}
 
@@ -128,7 +136,7 @@
   font: bodyFont,
   size: 8pt,
   weight: "regular",
-  fill: gray,
+  fill: rgb("#999999"),
   smallcaps(str)
 )}
 
