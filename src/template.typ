@@ -1,3 +1,6 @@
+// awesomeCV-Typst 2023-04-29 mintyfrankie
+// Github Repo: https://github.com/mintyfrankie/awesomeCV-Typst
+
 #import "metadata.typ": *
 
 /* Layout */
@@ -19,7 +22,15 @@
 
 /* Styles */
 
-#let accentColor = rgb("#0395DE")
+#let awesomeColors = (
+  skyblue: rgb("#0395DE"),
+  red: rgb("#DC3522"),
+  nephritis: rgb("#27AE60"),
+  concrete: rgb("#95A5A6"),
+  darknight: rgb("#131A28"),
+)
+#let accentColor = awesomeColors.at(awesomeColor)
+
 #let headerFont = "Roboto"
 #let bodyFont = "Source Sans Pro"
 

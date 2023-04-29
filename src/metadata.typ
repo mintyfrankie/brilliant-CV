@@ -1,4 +1,6 @@
-// Modify this file to configure the metadata of your resume
+// NOTICE: modify this file to configure the metadata of your resume
+
+#let awesomeColor = "skyblue" // skyblue, red, nephritis, concrete, darknight
 
 #let profilePhoto = "../src/avatar.png"
 
