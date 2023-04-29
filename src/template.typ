@@ -1,4 +1,4 @@
-#import "variables.typ": *
+#import "metadata.typ": *
 
 /* Layout */
 

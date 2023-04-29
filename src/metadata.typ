@@ -1,3 +1,5 @@
+// Modify this file to configure the metadata of your resume
+
 #let profilePhoto = "../src/avatar.png"
 
 #let firstName = "John"
@@ -7,5 +9,3 @@
 #let email = "john.doe@me.org"
 #let linkedin = "johndoe"
 #let extraInfo = ""
-
-

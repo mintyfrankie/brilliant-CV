@@ -24,10 +24,25 @@
 > I will gradually develop the template and bring all features that I made possible on the LaTeX platform. These features include:
 
 - **Better Header**: the header should be smarter, with possibilities to customize contact info section, as well as adjust profile image position and shape, etc.
+- **More customizations**: your favorite accent color, extra niche subsections and more.
 - **Multilingual support**: manage your CV **content** in different language versions (three languages, in my case) in a single project, while without touching on the format. 
 - **Cover Letter**: write your cover letter using the same aesthetic design.
 
 ## Usage
+
+**Project Structure**
+
+```
+|
+|-- modules/          --> sections of your CV, include these at main.typ
+|   |- *.typ
+|
+|-- src/
+|   |- template.typ   --> the template file, import at main.typ
+|   |- metadata.typ   --> your Personal Info variables
+|
+|-- main.typ          --> main typst file
+```
 
 **Web app**
 
