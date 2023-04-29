@@ -124,30 +124,21 @@
 /* Functions */
 
 #let makeHeaderInfo() = {
-  let phoneIcon =[\u{f2c1}]
-  let emailIcon = [\u{f0e0}]
-  let linkedinIcon = [\u{f08c}]
-  let component(icon, str, isStart: false) = {
-    if isStart != true {
-      h(5pt) + "|" + h(5pt)
+  let personalInfoIcons = (
+    phone: [\u{f2c1}],
+    email: [\u{f0e0}],
+    linkedin: [\u{f08c}],
+    extraInfo: "",
+  )
+  let n = 1
+  for (k, v) in personalInfo {
+    if v != "" {
+      if n != 1 {
+        h(5pt) + "|" + h(5pt)
+      }
+      personalInfoIcons.at(k) + h(5pt) + v 
     }
-    icon; h(5pt); str
-  }
-
-  if phone != "" {
-    component(phoneIcon, phone, isStart: true)
-  }
-
-  if email != "" {
-    component(emailIcon, email)
-  }
-
-  if linkedin != "" {
-    component(linkedinIcon, linkedin)
-  }
-
-  if extraInfo != "" {
-    component("", extraInfo)
+    n = n + 1
   }
 }
 

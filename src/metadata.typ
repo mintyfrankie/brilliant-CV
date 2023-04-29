@@ -5,7 +5,9 @@
 #let firstName = "John"
 #let lastName = "Doe"
 
-#let phone = "+33 6 12 34 56 78"
-#let email = "john.doe@me.org"
-#let linkedin = "johndoe"
-#let extraInfo = ""
+#let personalInfo = (
+  phone: "+33 6 12 34 56 78",
+  email: "john.doe@me.org",
+  linkedin: "johndoe",
+  extraInfo: "",
+)
