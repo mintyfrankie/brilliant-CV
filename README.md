@@ -16,8 +16,8 @@
 
 > As Typst is still a very young (although very promising and robust to my belief) project, some features are only partially supported on certain platforms. It is hence difficult to predict any anomalies, but you are definitely welcomed to bring a PR, an issue or a discussion!
 
-- **Font variants**: on local dev environment, some font variants used in this project (notably *Roboto* in my case) cannot be captured and processed by Typst.
 - **Image cropping**: Typst does not have direct support to crop images using native primitives. Bring your own cropped image for profile photo if needed.
+- **Font variants**: There are currently no other ways to handle font families than having them loaded locally. I have included all used fonts in the `src/fonts/` folder.
 
 ## Roadmap
 
