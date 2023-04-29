@@ -44,7 +44,7 @@
 #let beforeEntrySkip = 6pt
 
 #let headerFirstNameStyle(str) = {text(
-  font: bodyFont,
+  font: headerFont,
   size: 32pt,
   weight: "light",
   fill: regularColors.darkgray,
@@ -52,7 +52,7 @@
 )}
 
 #let headerLastNameStyle(str) = {text(
-  font: bodyFont,
+  font: headerFont,
   size: 32pt,
   weight: "bold",
   str
