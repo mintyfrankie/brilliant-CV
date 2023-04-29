@@ -128,6 +128,8 @@
     phone: [\u{f2c1}],
     email: [\u{f0e0}],
     linkedin: [\u{f08c}],
+    homepage: [\u{1f5d6}],
+    github: [\u{f092}],
     extraInfo: "",
   )
   let n = 1
