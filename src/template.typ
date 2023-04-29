@@ -135,10 +135,26 @@
   let n = 1
   for (k, v) in personalInfo {
     if v != "" {
+      // Adds hBar
       if n != 1 {
         h(5pt) + "|" + h(5pt)
       }
-      personalInfoIcons.at(k) + h(5pt) + v 
+      
+      // Adds icons
+      personalInfoIcons.at(k) + h(5pt)
+
+      // Adds hyperlinks
+      if k == "email" {
+        link("mailto:" + v)[#v]
+      } else if k == "linkedin" {
+        link("https://www.linkedin.com/in/" + v)[#v]
+      } else if k == "github" {
+        link("https://github.com/" + v)[#v]
+      } else if k == "homepage" {
+        link("https://" + v)[#v]
+      } else {
+        v
+      }
     }
     n = n + 1
   }
