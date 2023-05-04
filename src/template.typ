@@ -205,12 +205,10 @@
     if v != "" {
       // Adds hBar
       if n != 1 {
-        h(5pt) + "|" + h(5pt)
+        hBar()
       }
-      
       // Adds icons
       personalInfoIcons.at(k) + h(5pt)
-
       // Adds hyperlinks
       if k == "email" {
         link("mailto:" + v)[#v]
@@ -228,27 +226,27 @@
   }
 }
 
+#let makeHeaderNameSection() = table(
+  columns: 1fr,
+  inset: 0pt,
+  stroke: none,
+  row-gutter: 6mm,
+  [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
+  [#headerInfoStyle(makeHeaderInfo())]
+)
+
+#let makeHeaderPhotoSection() = {
+  if profilePhoto != "" {
+    image(profilePhoto, height: 3.6cm)
+  } else {
+    v(3.6cm)
+  }
+} 
+
 #let cvHeader(
   align: left,
   hasPhoto: true
 ) = {
-  let infoSection() = table(
-    columns: 1fr,
-    inset: 0pt,
-    stroke: none,
-    row-gutter: 6mm,
-    [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
-    [#headerInfoStyle(makeHeaderInfo())]
-  )
-
-  let photoSection() = {
-    if profilePhoto != "" {
-      image(profilePhoto, height: 3.6cm)
-    } else {
-      v(3.6cm)
-    }
-  } 
-
   let makeHeader(leftComp, rightComp, columns, align) = table(
     columns: columns,
     inset: 0pt,
@@ -258,13 +256,11 @@
     {leftComp},
     {rightComp}
   )
-
   if hasPhoto {
-    makeHeader(infoSection(), photoSection(), (auto, 20%), align)
+    makeHeader(makeHeaderNameSection(), makeHeaderPhotoSection(), (auto, 20%), align)
   } else {
-    makeHeader(infoSection(), photoSection(), (auto, 0%), align)
+    makeHeader(makeHeaderNameSection(), makeHeaderPhotoSection(), (auto, 0%), align)
   }
-
 }
 
 #let cvSection(title) = {
@@ -285,7 +281,6 @@
   location: "Location",
   description: "Description",
 ) = {
-
   v(beforeEntrySkip)
   table(
     columns: (1fr, auto),
