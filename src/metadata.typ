@@ -12,6 +12,6 @@
   phone: "+33 6 12 34 56 78",
   email: "john.doe@me.org",
   linkedin: "johndoe",
-  homepage: "jd.me.org",
-  extraInfo: "",
+  //homepage: "jd.me.org",
+  //extraInfo: "",
 )
