@@ -18,3 +18,15 @@
   //homepage: "jd.me.org",
   //extraInfo: "",
 )
+
+#let cvFooterInternational = (
+  "": "Cirriculum Vitae",
+  "en": "Cirriculum Vitae",
+  "fr": "Résumé"
+)
+
+#let letterFooterInternational = (
+  "": "Cover Letter",
+  "en": "Cover Letter",
+  "fr": "Lettre de motivation",
+)

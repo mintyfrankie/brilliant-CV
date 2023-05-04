@@ -20,6 +20,32 @@
   doc
 }
 
+/* Utility Functions */
+
+#let hBar() = [
+  #h(5pt) | #h(5pt)
+]
+
+#let autoImport(file) = {
+  if varLanguage == "" {
+    include {"../modules/" + file + ".typ"}
+  }
+  else {
+    include {"../modules_" + varLanguage + "/" + file + ".typ"}
+  }
+}
+
+#let languageSwitch(dict) = {
+  for (k, v) in dict {
+    if k == varLanguage {
+      return v
+      break
+    }
+  }
+  panic("i18n: language value not matching any key in the dictionary")
+}
+
+
 /* Styles */
 
 #let awesomeColors = (
@@ -289,7 +315,7 @@
       inset: 0pt,
       stroke: none,
       footerStyle([#firstName #lastName]),
-      footerStyle([Résumé]),
+      footerStyle(languageSwitch(cvFooterInternational)),
     )
   )
 }
@@ -328,22 +354,7 @@
       inset: 0pt,
       stroke: none,
       footerStyle([#firstName #lastName]),
-      footerStyle([Cover Letter]),
+      footerStyle(languageSwitch(letterFooterInternational)),
     )
   )
-}
-
-/* Utilities */
-
-#let hBar() = [
-  #h(5pt) | #h(5pt)
-]
-
-#let autoImport(file) = {
-  if varLanguage == "" {
-    include {"../modules/" + file + ".typ"}
-  }
-  else {
-    include {"../modules_" + varLanguage + "/" + file + ".typ"}
-  }
 }
