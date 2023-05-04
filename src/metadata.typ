@@ -4,6 +4,9 @@
 #let awesomeColor = "skyblue" 
 #let profilePhoto = "../src/avatar.png"
 
+// INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
+#let varLanguage = ""
+
 #let firstName = "John"
 #let lastName = "Doe"
 

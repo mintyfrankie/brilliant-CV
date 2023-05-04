@@ -2,8 +2,8 @@
 #show: layout
 
 #cvHeader()
-  #include "modules/education.typ"
-  #include "modules/professional.typ"
-  #include "modules/projects.typ"
-  #include "modules/skills.typ"
+  #autoImport("education")
+  #autoImport("professional")
+  #autoImport("projects")
+  #autoImport("skills")
 #cvFooter()

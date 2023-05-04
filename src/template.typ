@@ -339,3 +339,11 @@
   #h(5pt) | #h(5pt)
 ]
 
+#let autoImport(file) = {
+  if varLanguage == "" {
+    include {"../modules/" + file + ".typ"}
+  }
+  else {
+    include {"../modules_" + varLanguage + "/" + file + ".typ"}
+  }
+}
