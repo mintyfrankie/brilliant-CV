@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src='https://user-images.githubusercontent.com/77310871/235266297-01351ef2-8388-476f-b554-76a749240603.png'>
+  <img src='https://user-images.githubusercontent.com/77310871/236178717-7ce72cfb-085a-4609-863b-cfceb3d6c9f2.png'>
   <br><br>
   AwesomeCV-Typst
 </h1>
@@ -11,6 +11,13 @@
 ## What is this for?
 
 **AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). 
+
+## Preview
+
+| CV | Cover Letter |
+|:---:|:---:|
+| ![CV](https://user-images.githubusercontent.com/77310871/236178693-bb2d1110-ce2b-40d2-8dbb-8f50d54ecdc1.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236178700-4502e637-a58f-4b17-a527-0691a1b29218.png) |
+
 
 ## Current Issues
 
