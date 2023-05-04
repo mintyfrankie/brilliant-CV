@@ -18,9 +18,9 @@
 |:---:|:---:|
 | ![CV](https://user-images.githubusercontent.com/77310871/236178693-bb2d1110-ce2b-40d2-8dbb-8f50d54ecdc1.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236178700-4502e637-a58f-4b17-a527-0691a1b29218.png) |
 
-| CV (French, red) | Cover Letter (French, red) |
+| CV (*French, red, no photo*) | Cover Letter (*French, red*) |
 |:---:|:---:|
-| ![CV](https://user-images.githubusercontent.com/77310871/236235352-000082cc-f618-4c32-88f0-01ff34a38e69.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236235363-1cdf286b-0fd5-49ef-9dce-69c9a4f51abc.png) |
+| ![CV](https://user-images.githubusercontent.com/77310871/236298962-ce11e768-a30f-44b8-be64-81525f2b71fb.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236298505-e2a40791-d797-435d-846a-94555bc8f199.png) |
 
 
 ## Current Issues
