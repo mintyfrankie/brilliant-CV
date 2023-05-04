@@ -229,7 +229,8 @@
 }
 
 #let cvHeader(
-  align: "left",
+  align: left,
+  hasPhoto: true
 ) = {
   let infoSection() = table(
     columns: 1fr,
@@ -248,14 +249,22 @@
     }
   } 
 
-  table(
-    columns: (auto, 20%),
+  let makeHeader(leftComp, rightComp, columns, align) = table(
+    columns: columns,
     inset: 0pt,
     stroke: none,
-    align: horizon,
-    {infoSection()},
-    {photoSection()}
+    column-gutter: 15pt,
+    align: align + horizon,
+    {leftComp},
+    {rightComp}
   )
+
+  if hasPhoto {
+    makeHeader(infoSection(), photoSection(), (auto, 20%), align)
+  } else {
+    makeHeader(infoSection(), photoSection(), (auto, 0%), align)
+  }
+
 }
 
 #let cvSection(title) = {
