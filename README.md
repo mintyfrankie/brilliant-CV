@@ -41,11 +41,12 @@
 
 ```
 |
-|-- modules/          --> sections of your CV, include these at main.typ
+|-- modules/          --> sections of your CV, include these at cv.typ
 |   |- *.typ
 |
 |-- src/
-|   |- template.typ   --> the template file, import at main.typ
+|   |- fonts/         --> local font files 
+|   |- template.typ   --> the template file, import at main files
 |   |- metadata.typ   --> your Personal Info variables
 |
 |-- cv.typ          --> CV file
