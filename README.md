@@ -48,7 +48,8 @@
 |   |- template.typ   --> the template file, import at main.typ
 |   |- metadata.typ   --> your Personal Info variables
 |
-|-- main.typ          --> main typst file
+|-- cv.typ          --> CV file
+|-- letter.typ      --> Cover Letter file
 ```
 
 **Web app**
@@ -59,8 +60,7 @@ Upload the `src` folder to the [Typst web app](https://typst.app/), `#import` it
 
 Clone the repository to your local environment. For compilation, seee further instructions from [**Typst**](https://github.com/typst/typst) page for installing CLI tool. 
 
-> **Notice**: You might need to find a workaround to deal with the font issues, until Typst provide an official support for importing custom fonts.
-
+For import local font, use the command `typst --font-path ./src/fonts watch *.typ`
 
 ## Credit
 
