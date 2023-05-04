@@ -2,7 +2,8 @@
 
 // Optional: skyblue, red, nephritis, concrete, darknight
 #let awesomeColor = "skyblue" 
-#let profilePhoto = "../src/avatar.png"
+// Leave blank if profil photo is not needed
+#let profilePhoto = "avatar.png"
 
 // INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
 #let varLanguage = ""
