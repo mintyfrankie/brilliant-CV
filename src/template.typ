@@ -228,33 +228,33 @@
   }
 }
 
-#let cvHeader(imagePath: "") = {
+#let cvHeader(
+  align: "left",
+) = {
+  let infoSection() = table(
+    columns: 1fr,
+    inset: 0pt,
+    stroke: none,
+    row-gutter: 6mm,
+    [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
+    [#headerInfoStyle(makeHeaderInfo())]
+  )
+
+  let photoSection() = {
+    if profilePhoto != "" {
+      image(profilePhoto, height: 3.6cm)
+    } else {
+      v(3.6cm)
+    }
+  } 
+
   table(
     columns: (auto, 20%),
     inset: 0pt,
     stroke: none,
     align: horizon,
-    {
-      table(
-        columns: 1fr,
-        inset: 0pt,
-        stroke: none,
-        row-gutter: 6mm,
-        [
-          #headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)
-        ],
-        [
-          #headerInfoStyle(makeHeaderInfo())
-        ]
-      )
-    },
-    {
-      if profilePhoto != "" {
-        image(profilePhoto, height: 3.6cm)
-      } else {
-        rect(height: 3.6cm, stroke: none)
-      }
-    }
+    {infoSection()},
+    {photoSection()}
   )
 }
 
