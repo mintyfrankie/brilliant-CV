@@ -10,13 +10,17 @@
 
 ## What is this for?
 
-**AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). 
+**AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). It provides customizations and **multilingual support** beyond the original LaTeX project.
 
 ## Preview
 
 | CV | Cover Letter |
 |:---:|:---:|
 | ![CV](https://user-images.githubusercontent.com/77310871/236178693-bb2d1110-ce2b-40d2-8dbb-8f50d54ecdc1.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236178700-4502e637-a58f-4b17-a527-0691a1b29218.png) |
+
+| CV (French, red) | Cover Letter (French, red) |
+|:---:|:---:|
+| ![CV](https://user-images.githubusercontent.com/77310871/236235352-000082cc-f618-4c32-88f0-01ff34a38e69.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236235363-1cdf286b-0fd5-49ef-9dce-69c9a4f51abc.png) |
 
 
 ## Current Issues
@@ -32,8 +36,7 @@
 
 - **Better Header**: the header should be smarter, with possibilities to adjust profile image position and shape, etc.
 - **More customizations**: extra niche subsections and more.
-- **Multilingual support**: manage your CV **content** in different language versions (three languages, in my case) in a single project, while without touching on the format. 
-- **Cover Letter**: write your cover letter using the same aesthetic design.
+- **Multilingual support**: add non-latin language support (dedicated font families & variants for Chinese or Japanese, for example)
 
 ## Usage
 
@@ -44,6 +47,8 @@
 |-- modules/          --> sections of your CV, include these at cv.typ
 |   |- *.typ
 |
+|-- modules_*         --> multilingual sections of your CV
+|
 |-- src/
 |   |- fonts/         --> local font files 
 |   |- template.typ   --> the template file, import at main files
@@ -52,6 +57,11 @@
 |-- cv.typ          --> CV file
 |-- letter.typ      --> Cover Letter file
 ```
+
+**Tips**
+
+- Host your submodules in different languages in respective subfoler (`./modules_fr` for instance), and quickly switch your output language by changing the value of `varLanguage` in `metadata.typ`
+
 
 **Web app**
 
