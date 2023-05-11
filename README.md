@@ -51,7 +51,7 @@
 |
 |-- awesomeCV/
 |   |- template.typ   --> the template file, imported in the documents
-|   |- metadata.typ   --> your Personal Info variables & language settings
+| 
 |
 |-- src/
 |   |- fonts/         --> local font files 
@@ -59,6 +59,7 @@
 |
 |-- cv.typ          --> CV file
 |-- letter.typ      --> Cover Letter file
+|-- metadata.typ    --> your Personal Info variables & language settings
 ```
 
 **Tips**
