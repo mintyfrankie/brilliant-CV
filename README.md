@@ -49,10 +49,13 @@
 |
 |-- modules_*         --> multilingual sections of your CV
 |
+|-- awesomeCV/
+|   |- template.typ   --> the template file, imported in the documents
+|   |- metadata.typ   --> your Personal Info variables & language settings
+|
 |-- src/
 |   |- fonts/         --> local font files 
-|   |- template.typ   --> the template file, import at main files
-|   |- metadata.typ   --> your Personal Info variables
+|   |- *.png          --> images used in the documents
 |
 |-- cv.typ          --> CV file
 |-- letter.typ      --> Cover Letter file
@@ -61,11 +64,6 @@
 **Tips**
 
 - Host your submodules in different languages in respective subfoler (`./modules_fr` for instance), and quickly switch your output language by changing the value of `varLanguage` in `metadata.typ`
-
-
-**Web app**
-
-Upload the `src` folder to the [Typst web app](https://typst.app/), `#import` it in your main typst file and compile it to PDF.
 
 **Local Development**
 

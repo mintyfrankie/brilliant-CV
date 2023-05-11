@@ -1,4 +1,4 @@
-#import "src/template.typ": *
+#import "awesomeCV/template.typ": *
 #show: layout
 #set text(size: 12pt) //set global font size
 

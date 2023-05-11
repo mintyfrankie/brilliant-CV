@@ -1,4 +1,4 @@
-#import "src/template.typ": *
+#import "awesomeCV/template.typ": *
 #show: layout
 
 #cvHeader(hasPhoto: true, align: left)

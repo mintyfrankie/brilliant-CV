@@ -1,4 +1,4 @@
-#import "../src/template.typ": *
+#import "../awesomeCV/template.typ": *
 
 #cvSection("Formation")
 
