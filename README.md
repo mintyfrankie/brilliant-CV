@@ -65,12 +65,29 @@
 
 - Host your submodules in different languages in respective subfoler (`./modules_fr` for instance), and quickly switch your output language by changing the value of `varLanguage` in `metadata.typ`
 
-**Local Development**
+You can either clone the example repository and modify it locally to have a hands-on experience, or you might want to add this submodule repository and build up your own Typst project.
 
-Clone the repository to your local environment. For compilation, seee further instructions from [**Typst**](https://github.com/typst/typst) page for installing CLI tool. 
+### Method 1: Clone the [example repository](https://github.com/mintyfrankie/awesomeCV-Typst)
 
-For import local font, use the command `typst --font-path ./src/fonts watch *.typ`
+```bash
+git clone https://github.com/mintyfrankie/awesomeCV-Typst
+cd awesomeCV-Typst
+typst --font-path ./src/fonts compile cv.typ
+``` 
 
+### Method 2: Add the submodule repository to your git project
+
+```bash
+cd your/CV/project
+git submodule add https://github.com/mintyfrankie/awesomeCV-Typst-Submodule awesomeCV
+typst compile cv.typ
+```
+
+When the template file is updated:
+
+```bash
+git submodule update --remote
+```
 ## Credit
 
 - [**Typst**](https://github.com/typst/typst) is a newborn, open source and simple typesetting engine that offers a better scripting experience than [**LaTeX**](https://www.latex-project.org/).
