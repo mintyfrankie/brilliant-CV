@@ -13,6 +13,10 @@
 **AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). It provides customizations and **multilingual support** beyond the original LaTeX project.
 
 ## Preview
+     
+> 
+> 💻 [Access to the online Demo](https://typst.app/project/rU2AU43JyRIuhbTN-Rdq66)
+>   
 
 | CV | Cover Letter |
 |:---:|:---:|
