@@ -3,19 +3,6 @@
 #cvSection("Projects & Associations")
 
 #cvEntry(
-  title: [Data Analyst Intern],
-  society: [XYZ Corporation],
-  date: [Summer 2020],
-  location: [San Francisco, CA],
-  description: list(
-    [Assisted with data cleaning, processing, and analysis using Python and Excel],
-    [Developed data visualizations and reports to communicate insights to stakeholders],
-    [Collaborated with other interns and team members to complete projects on time and with high quality],
-    [Participated in company-wide data governance and quality improvement initiatives]
-  )
-)
-
-#cvEntry(
   title: [Volunteer Data Analyst],
   society: [ABC Nonprofit Organization],
   date: [2019 - Present],
