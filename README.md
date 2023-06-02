@@ -33,6 +33,8 @@
 
 - **Image cropping**: Typst does not have direct support to crop images using native primitives. Bring your own cropped image for profile photo if needed.
 - **Font variants**: There are currently no other ways to handle font families than having them loaded locally. I have included all used fonts in the `src/fonts/` folder.
+- **Header icons**: Some icons cannot be properly rendered by Typst-cli in some environments, so not all FontAwesome icons are supported for the moment. See [this Pull Request](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule/pull/1).
+- **Publication**: Current version of Typst does not allow full customization on the `#bibliography` function, so the display of publication section might not be optimal. See [this disucssion](https://github.com/mintyfrankie/awesomeCV-Typst/discussions/3).
 
 ## Roadmap
 
