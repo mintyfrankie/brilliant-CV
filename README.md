@@ -62,6 +62,7 @@
 |-- src/
 |   |- fonts/         --> local font files 
 |   |- *.png          --> images used in the documents
+|   |- *.bib          --> BibTeX file for Publications section
 |
 |-- cv.typ          --> CV file
 |-- letter.typ      --> Cover Letter file
@@ -77,7 +78,7 @@ You can either clone the example repository and modify it locally to have a hand
 ### Method 1: Clone the [example repository](https://github.com/mintyfrankie/awesomeCV-Typst)
 
 ```bash
-git clone https://github.com/mintyfrankie/awesomeCV-Typst
+git clone --recurse-submodules https://github.com/mintyfrankie/awesomeCV-Typst
 cd awesomeCV-Typst
 typst --font-path ./src/fonts compile cv.typ
 ``` 
