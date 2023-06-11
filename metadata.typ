@@ -30,10 +30,12 @@
   "": "Curriculum vitae",
   "en": "Curriculum vitae",
   "fr": "Résumé"
+  "de": "Lebenslauf",
 )
 
 #let letterFooterInternational = (
   "": "Cover Letter",
   "en": "Cover Letter",
   "fr": "Lettre de motivation",
+  "de": "Anschreiben",
 )
