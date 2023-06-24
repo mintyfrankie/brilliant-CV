@@ -20,11 +20,12 @@
 
 | CV | Cover Letter |
 |:---:|:---:|
-| ![CV](https://github.com/mintyfrankie/mintyfrankie/assets/77310871/94f5fb5c-03d0-4912-b6d6-11ee7d27a9a3)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236178700-4502e637-a58f-4b17-a527-0691a1b29218.png) |
+| ![CV](https://github.com/mintyfrankie/mintyfrankie/assets/77310871/94f5fb5c-03d0-4912-b6d6-11ee7d27a9a3)  | ![Cover Letter](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/b4e74cdd-6b8d-4414-b52f-13cd6ba94315) |
 
 | CV (*French, red, no photo*) | Cover Letter (*French, red*) |
 |:---:|:---:|
-| ![CV](https://user-images.githubusercontent.com/77310871/236298962-ce11e768-a30f-44b8-be64-81525f2b71fb.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236298505-e2a40791-d797-435d-846a-94555bc8f199.png) |
+| ![CV](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/fed7b66c-728e-4213-aa58-aa26db3b1362)  | ![Cover Letter](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/65ca65b0-c0e1-4fe8-b797-8a5e0bea4b1c) |
+
 
 
 ## Current Issues
