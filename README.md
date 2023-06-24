@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src='https://user-images.githubusercontent.com/77310871/236178717-7ce72cfb-085a-4609-863b-cfceb3d6c9f2.png'>
+  <img src='https://github.com/mintyfrankie/mintyfrankie/assets/77310871/64861d2d-971c-47cd-a5e8-5ad8659f2c2b'>
   <br><br>
   AwesomeCV-Typst
 </h1>
@@ -20,7 +20,7 @@
 
 | CV | Cover Letter |
 |:---:|:---:|
-| ![CV](https://user-images.githubusercontent.com/77310871/236178693-bb2d1110-ce2b-40d2-8dbb-8f50d54ecdc1.png)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236178700-4502e637-a58f-4b17-a527-0691a1b29218.png) |
+| ![CV](https://github.com/mintyfrankie/mintyfrankie/assets/77310871/94f5fb5c-03d0-4912-b6d6-11ee7d27a9a3)  | ![Cover Letter](https://user-images.githubusercontent.com/77310871/236178700-4502e637-a58f-4b17-a527-0691a1b29218.png) |
 
 | CV (*French, red, no photo*) | Cover Letter (*French, red*) |
 |:---:|:---:|

@@ -5,6 +5,7 @@
 #cvEntry(
     title: [Director of Data Science],
     society: [XYZ Corporation],
+    logo: "../src/logos/xyz_corp.png",
     date: [2020 - Present],
     location: [San Francisco, CA],
     description: list(
@@ -16,6 +17,7 @@
 #cvEntry(
     title: [Data Analyst],
     society: [ABC Company],
+    logo: "../src/logos/abc_company.png",
     date: [2017 - 2020],
     location: [New York, NY],
     description: list(
@@ -27,6 +29,7 @@
 #cvEntry(
     title: [Data Analysis Intern],
     society: [PQR Corporation],
+    logo: "../src/logos/pqr_corp.png",
     date: [Summer 2017],
     location: [Chicago, IL],
     description: list(
