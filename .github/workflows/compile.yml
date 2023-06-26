@@ -1,0 +1,30 @@
+name: Check PDF Compilation
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+
+    - name: Setup Typst
+      uses: yusancky/setup-typst@v1
+      id: setup-typst
+      with:
+        version: 'v0.5.0'
+
+    - run: typst --font-path ./src/fonts compile cv.typ 
+    - run: typst --font-path ./src/fonts compile letter.typ
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: output
+        path: ./*.pdf
+        if-no-files-found: error
