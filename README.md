@@ -8,15 +8,13 @@
   Relived CV template powered by Typst
 </p>
 
-## What is this for?
+<br><br>
+
+<img alt="Github workflow badge" src="https://github.com/mintyfrankie/awesomeCV-Typst/actions/workflows/compile.yml/badge.svg">  <a href="https://typst.app/project/rU2AU43JyRIuhbTN-Rdq66"><img alt="Static Badge" src="https://img.shields.io/badge/Typst_Web_App-Demo_Here-blue"><a/>
 
 **AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). It provides customizations and **multilingual support** beyond the original LaTeX project.
 
 ## Preview
-     
-> 
-> 💻 [Access to the online Demo](https://typst.app/project/rU2AU43JyRIuhbTN-Rdq66)
->   
 
 | CV | Cover Letter |
 |:---:|:---:|
@@ -26,28 +24,9 @@
 |:---:|:---:|
 | ![CV](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/fed7b66c-728e-4213-aa58-aa26db3b1362)  | ![Cover Letter](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/65ca65b0-c0e1-4fe8-b797-8a5e0bea4b1c) |
 
-
-
-## Current Issues
-
-> As Typst is still a very young (although very promising and robust to my belief) project, some features are only partially supported on certain platforms. It is hence difficult to predict any anomalies, but you are definitely welcomed to bring a PR, an issue or a discussion!
-
-- **Image cropping**: Typst does not have direct support to crop images using native primitives. Bring your own cropped image for profile photo if needed.
-- **Font variants**: There are currently no other ways to handle font families than having them loaded locally. I have included all used fonts in the `src/fonts/` folder.
-- **Header icons**: Some icons cannot be properly rendered by Typst-cli in some environments, so not all FontAwesome icons are supported for the moment. See [this Pull Request](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule/pull/1).
-- **Publication**: Current version of Typst does not allow full customization on the `#bibliography` function, so the display of publication section might not be optimal. See [this disucssion](https://github.com/mintyfrankie/awesomeCV-Typst/discussions/3).
-
-## Roadmap
-
-> I will gradually develop the template and bring all features that I made possible on the LaTeX platform. These features include:
-
-- **Better Header**: the header should be smarter, with possibilities to adjust profile image position and shape, etc.
-- **More customizations**: extra niche subsections and more.
-- **Multilingual support**: add non-latin language support (dedicated font families & variants for Chinese or Japanese, for example)
-
 ## Usage
 
-**Project Structure**
+### Project Structure
 
 ```
 |
@@ -58,10 +37,12 @@
 |
 |-- awesomeCV/
 |   |- template.typ   --> the template file, imported in the documents
+|   |- metadata-demo.typ -> the example metadata file that contains all variables used in the template
 | 
 |
 |-- src/
-|   |- fonts/         --> local font files 
+|   |- fonts/         --> local font files
+|   |- logos/         --> logos for your cvEntry
 |   |- *.png          --> images used in the documents
 |   |- *.bib          --> BibTeX file for Publications section
 |
@@ -70,13 +51,17 @@
 |-- metadata.typ    --> your Personal Info variables & language settings
 ```
 
-**Tips**
+### Tips
 
-- Host your submodules in different languages in respective subfoler (`./modules_fr` for instance), and quickly switch your output language by changing the value of `varLanguage` in `metadata.typ`
+- Build your own personal `metadata.typ` file on the root folder, by copying the `awesomeCV/metadata-demo.typ` file
+- Host your submodules in different languages in respective subfoler (`./modules_fr` for instance)
+
+### Installation
 
 You can either clone the example repository and modify it locally to have a hands-on experience, or you might want to add this submodule repository and build up your own Typst project.
 
-### Method 1: Clone the [example repository](https://github.com/mintyfrankie/awesomeCV-Typst)
+
+**Method 1: Clone the [example repository](https://github.com/mintyfrankie/awesomeCV-Typst)**
 
 ```bash
 git clone --recurse-submodules https://github.com/mintyfrankie/awesomeCV-Typst
@@ -84,7 +69,7 @@ cd awesomeCV-Typst
 typst --font-path ./src/fonts compile cv.typ
 ``` 
 
-### Method 2: Add the submodule repository to your git project
+**Method 2: Add the submodule repository to your git project**
 
 ```bash
 cd your/CV/project
@@ -97,6 +82,15 @@ When the template file is updated:
 ```bash
 git submodule update --remote
 ```
+
+## Current Issues
+
+> As Typst is still a very young (although very promising and robust to my belief) project, some features are only partially supported on certain platforms. It is hence difficult to predict any anomalies, but you are definitely welcomed to bring a PR, an issue or a discussion!
+
+- **Image cropping**: Typst does not have direct support to crop images using native primitives. Bring your own cropped image for profile photo if needed.
+- **Header icons**: Some icons cannot be properly rendered by Typst-cli in some environments, so not all FontAwesome icons are supported for the moment. See [this Pull Request](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule/pull/1).
+- **Publications Section**: Current version of Typst does not allow full customization on the `#bibliography` function, so the display of publication section might not be optimal. See [this disucssion](https://github.com/mintyfrankie/awesomeCV-Typst/discussions/3).
+
 ## Credit
 
 - [**Typst**](https://github.com/typst/typst) is a newborn, open source and simple typesetting engine that offers a better scripting experience than [**LaTeX**](https://www.latex-project.org/).
