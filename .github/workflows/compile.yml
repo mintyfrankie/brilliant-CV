@@ -6,7 +6,8 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -14,10 +15,10 @@ jobs:
         submodules: 'recursive'
 
     - name: Setup Typst
-      uses: yusancky/setup-typst@v1
+      uses: yusancky/setup-typst@v2.0.1
       id: setup-typst
       with:
-        version: 'v0.5.0'
+        version: 'latest'
 
     - run: typst --font-path ./src/fonts compile cv.typ 
     - run: typst --font-path ./src/fonts compile letter.typ
