@@ -5,12 +5,13 @@
 </h1>
 
 <p align="center">
-  Relived CV template powered by Typst
+  <img alt="Check Status Badge" src="https://github.com/mintyfrankie/awesomeCV-Typst/actions/workflows/compile.yml/badge.svg"/>
+  <a href="https://typst.app/project/rU2AU43JyRIuhbTN-Rdq66/">
+    <img alt="Typst Demo" src="https://img.shields.io/badge/typst.app-demo-blue"/>
+  </a>
 </p>
 
-<br><br>
-
-<img alt="Github workflow badge" src="https://github.com/mintyfrankie/awesomeCV-Typst/actions/workflows/compile.yml/badge.svg">  <a href="https://typst.app/project/rU2AU43JyRIuhbTN-Rdq66"><img alt="Static Badge" src="https://img.shields.io/badge/Typst_Web_App-Demo_Here-blue"><a/>
+<br>
 
 **AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). It provides customizations and **multilingual support** beyond the original LaTeX project.
 
