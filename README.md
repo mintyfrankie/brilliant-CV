@@ -89,7 +89,6 @@ git submodule update --remote
 > As Typst is still a very young (although very promising and robust to my belief) project, some features are only partially supported on certain platforms. It is hence difficult to predict any anomalies, but you are definitely welcomed to bring a PR, an issue or a discussion!
 
 - **Image cropping**: Typst does not have direct support to crop images using native primitives. Bring your own cropped image for profile photo if needed.
-- **Header icons**: Some icons cannot be properly rendered by Typst-cli in some environments, so not all FontAwesome icons are supported for the moment. See [this Pull Request](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule/pull/1).
 - **Publications Section**: Current version of Typst does not allow full customization on the `#bibliography` function, so the display of publication section might not be optimal. See [this disucssion](https://github.com/mintyfrankie/awesomeCV-Typst/discussions/3).
 
 ## Credit
