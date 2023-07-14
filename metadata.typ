@@ -1,5 +1,3 @@
-// NOTICE: Copy this file to your root folder.
-
 /* Personal Information */
 
 #let firstName = "John"
@@ -10,6 +8,8 @@
   email: "john.doe@me.org",
   linkedin: "johndoe",
   //homepage: "jd.me.org",
+  //orcid: "0000-0000-0000-0000",
+  //researchgate: "John-Doe",
   //extraInfo: "",
 )
 #let headerQuote = [
