@@ -59,18 +59,12 @@
 
 ### Installation
 
-You can either clone the example repository and modify it locally to have a hands-on experience, or you might want to add this submodule repository and build up your own Typst project.
+You can either directly create a new repository by using this template, or you might want to add the submodule repository and build up your own Typst project.
 
 
-**Method 1: Clone the [example repository](https://github.com/mintyfrankie/awesomeCV-Typst)**
+**Method 1: Jumpstart by clicking `Use this template`** 
 
-```bash
-git clone --recurse-submodules https://github.com/mintyfrankie/awesomeCV-Typst
-cd awesomeCV-Typst
-typst --font-path ./src/fonts compile cv.typ
-``` 
-
-**Method 2: Add the submodule repository to your git project**
+**Method 2: Add the ![submodule repository](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule awesomeCV) to your existing project**
 
 ```bash
 cd your/CV/project
@@ -78,7 +72,7 @@ git submodule add https://github.com/mintyfrankie/awesomeCV-Typst-Submodule awes
 typst compile cv.typ
 ```
 
-When the template file is updated:
+When you want to get new features from the updated template module:
 
 ```bash
 git submodule update --remote
