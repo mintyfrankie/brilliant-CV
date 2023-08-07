@@ -1,11 +1,11 @@
 watch-cv:
-  typst --font-path ./src/fonts/ watch ./cv.typ ./output/CV.pdf
+  typst watch ./cv.typ ./output/CV.pdf --font-path ./src/fonts/ 
 
 watch-letter:
-  typst --font-path ./src/fonts/ watch ./letter.typ ./output/Letter.pdf
+  typst watch ./letter.typ ./output/Letter.pdf --font-path ./src/fonts/
 
 compile-cv:
-  typst --font-path ./src/fonts/ compile ./cv.typ ./output/CV.pdf
+  typst compile ./cv.typ ./output/CV.pdf --font-path ./src/fonts/
 
 compile-letter: 
-  typst --font-path ./src/fonts/ compile ./letter.typ ./output/Letter.pdf
+  typst compile ./letter.typ ./output/Letter.pdf  --font-path ./src/fonts/ 
