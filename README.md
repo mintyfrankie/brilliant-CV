@@ -62,9 +62,12 @@
 You can either directly create a new repository by using this template, or you might want to add the submodule repository and build up your own Typst project.
 
 
-**Method 1: Jumpstart by clicking `Use this template`** 
+**Method 1: Jumpstart by clicking `Use this template` and create your own CV repository**
 
-**Method 2: Add the ![submodule repository](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule awesomeCV) to your existing project**
+When compiling, use: `typst compile ./cv.typ ./output/CV.pdf --font-path ./src/fonts/`
+
+
+**Method 2: Add the [submodule repository](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule) to your existing project**
 
 ```bash
 cd your/CV/project
