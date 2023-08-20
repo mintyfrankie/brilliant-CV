@@ -7,15 +7,17 @@
   phone: "+33 6 12 34 56 78",
   email: "john.doe@me.org",
   linkedin: "johndoe",
+  //gitlab: "mintyfrankie",
   //homepage: "jd.me.org",
   //orcid: "0000-0000-0000-0000",
   //researchgate: "John-Doe",
   //extraInfo: "",
 )
-#let headerQuote = [
-  Experienced Data Analyst looking for a full time job starting from now
-]
-
+#let headerQuoteInternational = (
+  "": [Experienced Data Analyst looking for a full time job starting from now],
+  "en": [Experienced Data Analyst looking for a full time job starting from now],
+  "fr": [Analyste de données expérimenté à la recherche d’un emploi à temps plein disponible dès maintenant]
+)
 
 /* Layout Setting */
 
@@ -25,6 +27,7 @@
 // Leave blank if profil photo is not needed
 #let profilePhoto = "../src/avatar.png" 
 
+// Change this variable to control output language & cited module
 // INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
 #let varLanguage = "" 
 
