@@ -1,4 +1,4 @@
-#import "awesomeCV/template.typ": *
+#import "brilliant-CV/template.typ": *
 #show: layout
 #set text(size: 12pt) //set global font size
 
