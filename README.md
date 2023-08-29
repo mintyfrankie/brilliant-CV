@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  <img alt="Check Status Badge" src="https://github.com/mintyfrankie/awesomeCV-Typst/actions/workflows/compile.yml/badge.svg"/>
+  <img alt="Check Status Badge" src="https://github.com/mintyfrankie/brilliant-CV/actions/workflows/compile.yml/badge.svg"/>
   <a href="https://typst.app/project/rU2AU43JyRIuhbTN-Rdq66/">
     <img alt="Typst Demo" src="https://img.shields.io/badge/typst.app-demo-blue"/>
   </a>
@@ -53,7 +53,7 @@ typst compile ./cv.typ ./output/CV.pdf --font-path ./src/fonts/
 
 ```bash
 cd your/CV/project
-git submodule add https://github.com/mintyfrankie/brilliant-CV-submodule template
+git submodule add https://github.com/mintyfrankie/brilliant-CV-Submodule template
 typst compile cv.typ
 ```
 
@@ -77,8 +77,8 @@ git submodule update --remote
 |
 |-- modules_*         --> multilingual sections of your CV
 |
-|-- template/
-|   |- brilliantCV.typ   --> the template file
+|-- brilliant-CV/
+|   |- template.typ   --> the template file
 |   |- metadata-demo.typ -> the example metadata file
 |
 |-- src/
