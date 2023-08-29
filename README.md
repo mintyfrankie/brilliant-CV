@@ -53,7 +53,7 @@ typst compile ./cv.typ ./output/CV.pdf --font-path ./src/fonts/
 
 ```bash
 cd your/CV/project
-git submodule add https://github.com/mintyfrankie/brilliant-CV-Submodule template
+git submodule add https://github.com/mintyfrankie/brilliant-CV-Submodule brilliant-CV
 typst compile cv.typ
 ```
 
