@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src='https://github.com/mintyfrankie/mintyfrankie/assets/77310871/64861d2d-971c-47cd-a5e8-5ad8659f2c2b'>
   <br><br>
-  AwesomeCV-Typst
+  Brilliant CV
 </h1>
 
 <p align="center">
@@ -11,35 +11,75 @@
   </a>
 </p>
 
+> The Brilliant CV project is still under preview, just like Typst is, so use with caution as future updates might break your current production.
+>
+> Read commits and changelog should you find new patches are not working, and feel free to lock to a working release & submit issues or PRs, I am happy to help!
+
 <br>
 
-**AwesomeCV-Typst** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV). It provides customizations and **multilingual support** beyond the original LaTeX project.
+**Brilliant CV** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV).
+
+## Features
+
+- **Separation of style and content**: version control your CV entries in the `modules` folder, without touching the styling and typesetting of your CV / Cover Letter _(hey, I am not talking about **Macrohard Word**, you know)_
+- **Quick twitches on the visual**: add company logos, put your shiny company name or your coolest title at the first line globally or per-document needs
+- **Multilingual support**: centrally store your multilingual CVs (English + French + German + Chinese + Japanese if you are superb) and change output language in a blink
 
 ## Preview
 
-| CV | Cover Letter |
-|:---:|:---:|
-| ![CV](https://github.com/mintyfrankie/mintyfrankie/assets/77310871/94f5fb5c-03d0-4912-b6d6-11ee7d27a9a3)  | ![Cover Letter](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/b4e74cdd-6b8d-4414-b52f-13cd6ba94315) |
+|                                                    CV                                                    |                                                     Cover Letter                                                      |
+| :------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: |
+| ![CV](https://github.com/mintyfrankie/mintyfrankie/assets/77310871/94f5fb5c-03d0-4912-b6d6-11ee7d27a9a3) | ![Cover Letter](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/b4e74cdd-6b8d-4414-b52f-13cd6ba94315) |
 
-| CV (*French, red, no photo*) | Cover Letter (*French, red*) |
-|:---:|:---:|
-| ![CV](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/fed7b66c-728e-4213-aa58-aa26db3b1362)  | ![Cover Letter](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/65ca65b0-c0e1-4fe8-b797-8a5e0bea4b1c) |
+|                                        CV (_French, red, no photo_)                                         |                                             Cover Letter (_French, red_)                                              |
+| :---------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: |
+| ![CV](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/fed7b66c-728e-4213-aa58-aa26db3b1362) | ![Cover Letter](https://github.com/mintyfrankie/awesomeCV-Typst/assets/77310871/65ca65b0-c0e1-4fe8-b797-8a5e0bea4b1c) |
 
 ## Usage
+
+### Installation
+
+You can either directly create a new repository by using this template, or you might want to add the submodule repository and build up your own Typst project.
+
+**Method 1: Jumpstart by clicking `Use this template` and create your own CV repository**
+
+When compiling, use:
+
+```
+typst compile ./cv.typ ./output/CV.pdf --font-path ./src/fonts/
+```
+
+**Method 2: Add the [submodule repository](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule) to your existing project**
+
+```bash
+cd your/CV/project
+git submodule add https://github.com/mintyfrankie/brilliant-CV-submodule template
+typst compile cv.typ
+```
+
+When you want to get new features from the updated template module:
+
+```bash
+git submodule update --remote
+```
+
+### Tips
+
+- `metadata.typ` should live in the project root folder, and by changing the variables in it, you can quickly adjust language or display settings of the documents.
+- Make sure when you build a multilingual module (`./modules_fr` for example) you are quoting the right language variable in the `metadata.typ` (`fr` in this case).
 
 ### Project Structure
 
 ```
 |
-|-- modules/          --> sections of your CV, include these at cv.typ
+|-- modules/          --> sections of your CV
 |   |- *.typ
 |
 |-- modules_*         --> multilingual sections of your CV
 |
-|-- awesomeCV/
-|   |- template.typ   --> the template file, imported in the documents
-|   |- metadata-demo.typ -> the example metadata file that contains all variables used in the template
-| 
+|-- template/
+|   |- brilliantCV.typ   --> the template file
+|   |- metadata-demo.typ -> the example metadata file
 |
 |-- src/
 |   |- fonts/         --> local font files
@@ -49,36 +89,7 @@
 |
 |-- cv.typ          --> CV file
 |-- letter.typ      --> Cover Letter file
-|-- metadata.typ    --> your Personal Info variables & language settings
-```
-
-### Tips
-
-- Build your own personal `metadata.typ` file on the root folder, by copying the `awesomeCV/metadata-demo.typ` file
-- Host your submodules in different languages in respective subfoler (`./modules_fr` for instance)
-
-### Installation
-
-You can either directly create a new repository by using this template, or you might want to add the submodule repository and build up your own Typst project.
-
-
-**Method 1: Jumpstart by clicking `Use this template` and create your own CV repository**
-
-When compiling, use: `typst compile ./cv.typ ./output/CV.pdf --font-path ./src/fonts/`
-
-
-**Method 2: Add the [submodule repository](https://github.com/mintyfrankie/awesomeCV-Typst-Submodule) to your existing project**
-
-```bash
-cd your/CV/project
-git submodule add https://github.com/mintyfrankie/awesomeCV-Typst-Submodule awesomeCV
-typst compile cv.typ
-```
-
-When you want to get new features from the updated template module:
-
-```bash
-git submodule update --remote
+|-- metadata.typ    --> Personal Infos & Settings
 ```
 
 ## Current Issues
