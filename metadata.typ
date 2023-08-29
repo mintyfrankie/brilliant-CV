@@ -16,7 +16,7 @@
 #let headerQuoteInternational = (
   "": [Experienced Data Analyst looking for a full time job starting from now],
   "en": [Experienced Data Analyst looking for a full time job starting from now],
-  "fr": [Analyste de données expérimenté à la recherche d’un emploi à temps plein disponible dès maintenant]
+  "fr": [Analyste de données expérimenté à la recherche d'un emploi à temps plein disponible dès maintenant]
 )
 
 /* Layout Setting */
