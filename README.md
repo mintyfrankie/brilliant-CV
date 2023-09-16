@@ -6,9 +6,7 @@
 
 <p align="center">
   <img alt="Check Status Badge" src="https://github.com/mintyfrankie/brilliant-CV/actions/workflows/compile.yml/badge.svg"/>
-  <a href="https://typst.app/project/rU2AU43JyRIuhbTN-Rdq66/">
-    <img alt="Typst Demo" src="https://img.shields.io/badge/typst.app-demo-blue"/>
-  </a>
+  <img alt="Typst Version" src="https://img.shields.io/badge/Compatible Typst Version-0.8.0-blue"/>
 </p>
 
 > The Brilliant CV project is still under preview, just like Typst is, so use with caution as future updates might break your current production.
@@ -37,8 +35,7 @@
 
 |                                       CV (_Chinese, green_)                                       |                                            Cover Letter (_Chinese, green_)                                            |
 | :------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: |
-| ![CV](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/cb9c16f5-8ad7-4256-92fe-089c108d07f5) | ![Letter](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/a5a97be2-87e2-43fe-b605-f862a0d600d7)
- |
+| ![CV](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/cb9c16f5-8ad7-4256-92fe-089c108d07f5) | ![Letter](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/a5a97be2-87e2-43fe-b605-f862a0d600d7)|
 
 
 ## Usage
