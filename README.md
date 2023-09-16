@@ -35,6 +35,12 @@
 | :------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: |
 | ![CV](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/fed7b66c-728e-4213-aa58-aa26db3b1362) | ![Cover Letter](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/65ca65b0-c0e1-4fe8-b797-8a5e0bea4b1c) |
 
+|                                       CV (_Chinese, green_)                                       |                                            Cover Letter (_Chinese, green_)                                            |
+| :------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: |
+| ![CV](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/cb9c16f5-8ad7-4256-92fe-089c108d07f5) | ![Letter](https://github.com/mintyfrankie/brilliant-CV/assets/77310871/a5a97be2-87e2-43fe-b605-f862a0d600d7)
+ |
+
+
 ## Usage
 
 ### Installation
@@ -91,6 +97,7 @@ git submodule update --remote
 |-- letter.typ      --> Cover Letter file
 |-- metadata.typ    --> Personal Infos & Settings
 ```
+
 
 ## Current Issues
 
