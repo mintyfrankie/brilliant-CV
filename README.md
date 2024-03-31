@@ -6,7 +6,7 @@
 
 <p align="center">
   <img alt="Check Status Badge" src="https://github.com/mintyfrankie/brilliant-CV/actions/workflows/compile.yml/badge.svg"/>
-  <img alt="Typst Version" src="https://img.shields.io/badge/Compatible Typst Version-0.8.0-blue"/>
+  <img alt="Typst Version" src="https://img.shields.io/badge/Compatible Typst Version-0.11.0-blue"/>
 </p>
 
 > The Brilliant CV project is still under preview, just like Typst is, so use with caution as future updates might break your current production.
