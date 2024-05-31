@@ -22,6 +22,7 @@
 - **Separation of style and content**: version control your CV entries in the `modules` folder, without touching the styling and typesetting of your CV / Cover Letter _(hey, I am not talking about **Macrohard Word**, you know)_
 - **Quick twitches on the visual**: add company logos, put your shiny company name or your coolest title at the first line globally or per-document needs
 - **Multilingual support**: centrally store your multilingual CVs (English + French + German + Chinese + Japanese if you are superb) and change output language in a blink
+- *(NEW)* **AI Prompt and Keywords Injection**: Fight against the abuse of ATS system or GenAI screening by injecting invisible AI prompt or keyword list automatically.
 
 ## Preview
 
