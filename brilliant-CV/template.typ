@@ -30,7 +30,9 @@
 /* Styles */
 #let fontList = (
   "Source Sans Pro",
+  "Source Sans 3",
   nonLatinFont,
+  "Linux Libertine",
   "Font Awesome 6 Brands",
   "Font Awesome 6 Free",
 )
