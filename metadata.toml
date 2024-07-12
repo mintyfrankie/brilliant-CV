@@ -9,7 +9,7 @@ before_entry_description_skip = "1pt"
 [layout.header]
 header_align = "left"
 display_profile_photo = true
-profile_photo_path = "../../src/avatar.png"
+profile_photo_path = "../src/avatar.png"
 
 [layout.entry]
 display_entry_society_first = true

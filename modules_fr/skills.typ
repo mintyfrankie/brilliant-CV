@@ -1,4 +1,6 @@
 #import "../brilliant-CV/template.typ": *
+#let metadata = toml("../metadata.toml")
+#let cvSection = cvSection.with(metadata: metadata)
 
 #cvSection("Compétences")
 

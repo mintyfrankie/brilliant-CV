@@ -1,4 +1,7 @@
 #import "../brilliant-CV/template.typ": *
+#let metadata = toml("../metadata.toml")
+#let cvSection = cvSection.with(metadata: metadata)
+#let cvEntry = cvEntry.with(metadata: metadata)
 
 #cvSection("Formation")
 
