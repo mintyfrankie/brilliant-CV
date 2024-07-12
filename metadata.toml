@@ -9,7 +9,7 @@ before_entry_description_skip = "1pt"
 [layout.header]
 header_align = "left"
 display_profile_photo = true
-profile_photo_path = "../src/avatar.png"
+profile_photo_path = "../../src/avatar.png"
 
 [layout.entry]
 display_entry_society_first = true
@@ -50,7 +50,3 @@ letter_footer = "Lettre de motivation"
 header_quote = "具有丰富经验的数据分析师，随时可入职"
 cv_footer = "简历"
 letter_footer = "申请信"
-
-[lang.non_latin]
-custom_font = "Heiti SC"
-name = "王道尔"
