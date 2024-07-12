@@ -1,7 +1,6 @@
 /* Packages */
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
-#import "./utils/lang.typ": languageSwitch, autoImport
 
 /* Import metadata */
 #let metadata = toml("../metadata.toml")
@@ -21,6 +20,12 @@
 
 /* Utility Functions */
 #let hBar() = [#h(5pt) | #h(5pt)]
+
+#let autoImport(file, lang) = {
+  include {
+    "../modules_" + lang + "/" + file + ".typ"
+  }
+}
 
 /* Styles */
 #let fontList = (
@@ -172,7 +177,7 @@
       #headerFirstNameStyle(nonLatinName)
     ] else [#headerFirstNameStyle(metadata.personal.first_name) #h(5pt) #headerLastNameStyle(metadata.personal.last_name)],
     [#headerInfoStyle(makeHeaderInfo())],
-    [#headerQuoteStyle(languageSwitch("header_quote"))],
+    [#headerQuoteStyle(metadata.lang.at(metadata.language).header_quote)],
   )
 
   let makeHeaderPhotoSection() = {
@@ -465,7 +470,7 @@
       inset: 0pt,
       stroke: none,
       footerStyle([#metadata.personal.first_name #metadata.personal.last_name]),
-      footerStyle(languageSwitch("cv_footer")),
+      footerStyle(metadata.lang.at(metadata.language).cv_footer),
     ),
   )
 }
@@ -518,7 +523,7 @@
       inset: 0pt,
       stroke: none,
       footerStyle([#firstName #lastName]),
-      footerStyle(languageSwitch("letter_footer")),
+      footerStyle(metadata.lang.at(metadata.language).letter_footer),
     ),
   )
 }
