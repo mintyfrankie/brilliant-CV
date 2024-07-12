@@ -7,7 +7,7 @@
   recipientName: [ABC Company],
   recipientAddress: [15 Boulevard Roi \ 75011 Paris, France],
   date: [05/05/2023],
-  subject: "Subject: Job Application for Senior Data Analyst"
+  subject: "Subject: Job Application for Senior Data Analyst",
 )
 
 Dear Hiring Manager,

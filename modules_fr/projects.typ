@@ -10,7 +10,7 @@
   description: list(
     [Aider à la préparation, au traitement et à l'analyse de données à l'aide de Python et Excel],
     [Développer des visualisations et des rapports de données pour communiquer des insights aux parties prenantes],
-  )
+  ),
 )
 
 #cvEntry(
@@ -21,5 +21,5 @@
   description: list(
     [Analyser les données de donateurs et de collecte de fonds pour identifier les tendances et les opportunités de croissance],
     [Créer des visualisations de données et des tableaux de bord pour communiquer des insights au conseil d'administration],
-  )
+  ),
 )

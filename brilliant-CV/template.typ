@@ -1,6 +1,7 @@
 /* Packages */
-#import "./utils/injection.typ": inject
 #import "@preview/fontawesome:0.2.1": *
+#import "./utils/injection.typ": inject
+#import "./utils/lang.typ": languageSwitch
 
 /* Import metadata */
 #let metadata = toml("../metadata.toml")
@@ -19,28 +20,7 @@
 }
 
 /* Utility Functions */
-#let hBar() = [
-  #h(5pt) | #h(5pt)
-]
-
-#let autoImport(file) = {
-  if metadata.language == "" {
-    include {
-      "../modules/" + file + ".typ"
-    }
-  } else {
-    include {
-      "../modules_" + metadata.language + "/" + file + ".typ"
-    }
-  }
-}
-
-#let languageSwitch(
-  key,
-  lang: metadata.language,
-) = {
-  return metadata.lang.at(lang).at(key)
-}
+#let hBar() = [#h(5pt) | #h(5pt)]
 
 /* Styles */
 #let fontList = (
@@ -78,130 +58,8 @@
 #let beforeEntrySkip = 1pt
 #let beforeEntryDescriptionSkip = 1pt
 
-#let headerFirstNameStyle(str) = {
-  text(
-    font: headerFont,
-    size: 32pt,
-    weight: "light",
-    fill: regularColors.darkgray,
-    str,
-  )
-}
-
-#let headerLastNameStyle(str) = {
-  text(font: headerFont, size: 32pt, weight: "bold", str)
-}
-
-#let headerInfoStyle(str) = {
-  text(size: 10pt, fill: accentColor, str)
-}
-
-#let headerQuoteStyle(str) = {
-  text(size: 10pt, weight: "medium", style: "italic", fill: accentColor, str)
-}
-
-#let sectionTitleStyle(str, color: black) = {
-  text(size: 16pt, weight: "bold", fill: color, str)
-}
-
-#let entryA1Style(str) = {
-  text(size: 10pt, weight: "bold", str)
-}
-
-#let entryA2Style(str) = {
-  align(
-    right,
-    text(weight: "medium", fill: accentColor, style: "oblique", str),
-  )
-}
-
-#let entryB1Style(str) = {
-  text(size: 8pt, fill: accentColor, weight: "medium", smallcaps(str))
-}
-
-#let entryB2Style(str) = {
-  align(
-    right,
-    text(size: 8pt, weight: "medium", fill: gray, style: "oblique", str),
-  )
-}
-
-#let entryDescriptionStyle(str) = {
-  text(
-    fill: regularColors.lightgray,
-    {
-      v(beforeEntryDescriptionSkip)
-      str
-    },
-  )
-}
-
-#let entryTagStyle(str) = {
-  align(center, text(size: 8pt, weight: "regular", str))
-}
-
-#let entryTagListStyle(tags) = {
-  for tag in tags {
-    box(
-      inset: (x: 0.25em),
-      outset: (y: 0.25em),
-      fill: regularColors.subtlegray,
-      radius: 3pt,
-      entryTagStyle(tag),
-    )
-    h(5pt)
-  }
-}
-
-#let skillTypeStyle(str) = {
-  align(right, text(size: 10pt, weight: "bold", str))
-}
-
-#let skillInfoStyle(str) = {
-  text(str)
-}
-
-#let honorDateStyle(str) = {
-  align(right, text(str))
-}
-
-#let honorTitleStyle(str) = {
-  text(weight: "bold", str)
-}
-
-#let honorIssuerStyle(str) = {
-  text(str)
-}
-
-#let honorLocationStyle(str) = {
-  align(
-    right,
-    text(weight: "medium", fill: accentColor, style: "oblique", str),
-  )
-}
-
-#let publicationStyle(str) = {
-  text(str)
-}
-
 #let footerStyle(str) = {
   text(size: 8pt, fill: rgb("#999999"), smallcaps(str))
-}
-
-#let letterHeaderNameStyle(str) = {
-  text(fill: accentColor, weight: "bold", str)
-}
-
-#let letterHeaderAddressStyle(str) = {
-  text(fill: gray, size: 0.9em, smallcaps(str))
-}
-
-#let letterDateStyle(str) = {
-  text(size: 0.9em, style: "italic", str)
-}
-
-#let letterSubjectStyle(str) = {
-  text(fill: accentColor, weight: "bold", underline(str))
 }
 
 /* Functions */
@@ -212,6 +70,25 @@
     if_inject_keywords: metadata.inject.inject_keywords,
     keywords_list: metadata.inject.injected_keywords_list,
   )
+
+  let headerFirstNameStyle(str) = {
+    text(
+      font: headerFont,
+      size: 32pt,
+      weight: "light",
+      fill: regularColors.darkgray,
+      str,
+    )
+  }
+  let headerLastNameStyle(str) = {
+    text(font: headerFont, size: 32pt, weight: "bold", str)
+  }
+  let headerInfoStyle(str) = {
+    text(size: 10pt, fill: accentColor, str)
+  }
+  let headerQuoteStyle(str) = {
+    text(size: 10pt, weight: "medium", style: "italic", fill: accentColor, str)
+  }
 
   let makeHeaderInfo() = {
     let personalInfoIcons = (
@@ -334,6 +211,9 @@
 #let cvSection(title, highlighted: true, letters: 3) = {
   let highlightText = title.slice(0, letters)
   let normalText = title.slice(letters)
+  let sectionTitleStyle(str, color: black) = {
+    text(size: 16pt, weight: "bold", fill: color, str)
+  }
 
   v(beforeSectionSkip)
   if nonLatinOverwrite {
@@ -359,6 +239,49 @@
   logo: "",
   tags: (),
 ) = {
+  let entryA1Style(str) = {
+    text(size: 10pt, weight: "bold", str)
+  }
+  let entryA2Style(str) = {
+    align(
+      right,
+      text(weight: "medium", fill: accentColor, style: "oblique", str),
+    )
+  }
+  let entryB1Style(str) = {
+    text(size: 8pt, fill: accentColor, weight: "medium", smallcaps(str))
+  }
+  let entryB2Style(str) = {
+    align(
+      right,
+      text(size: 8pt, weight: "medium", fill: gray, style: "oblique", str),
+    )
+  }
+  let entryDescriptionStyle(str) = {
+    text(
+      fill: regularColors.lightgray,
+      {
+        v(beforeEntryDescriptionSkip)
+        str
+      },
+    )
+  }
+  let entryTagStyle(str) = {
+    align(center, text(size: 8pt, weight: "regular", str))
+  }
+  let entryTagListStyle(tags) = {
+    for tag in tags {
+      box(
+        inset: (x: 0.25em),
+        outset: (y: 0.25em),
+        fill: regularColors.subtlegray,
+        radius: 3pt,
+        entryTagStyle(tag),
+      )
+      h(5pt)
+    }
+  }
+
   let ifSocietyFirst(condition, field1, field2) = {
     return if condition {
       field1
@@ -389,6 +312,7 @@
       image(path, width: 100%)
     }
   }
+
   v(beforeEntrySkip)
   table(
     columns: (ifLogo(logo, 4%, 0%), 1fr),
@@ -447,6 +371,13 @@
 }
 
 #let cvSkill(type: "Type", info: "Info") = {
+  let skillTypeStyle(str) = {
+    align(right, text(size: 10pt, weight: "bold", str))
+  }
+  let skillInfoStyle(str) = {
+    text(str)
+  }
+
   table(
     columns: (16%, 1fr),
     inset: 0pt,
@@ -464,6 +395,22 @@
   url: "",
   location: "",
 ) = {
+  let honorDateStyle(str) = {
+    align(right, text(str))
+  }
+  let honorTitleStyle(str) = {
+    text(weight: "bold", str)
+  }
+  let honorIssuerStyle(str) = {
+    text(str)
+  }
+  let honorLocationStyle(str) = {
+    align(
+      right,
+      text(weight: "medium", fill: accentColor, style: "oblique", str),
+    )
+  }
+
   table(
     columns: (16%, 1fr, 15%),
     inset: 0pt,
@@ -493,6 +440,9 @@
   refStyle: "apa",
   refFull: true,
 ) = {
+  let publicationStyle(str) = {
+    text(str)
+  }
   show bibliography: it => publicationStyle(it)
   bibliography(bibPath, title: none, style: refStyle, full: refFull)
 }
@@ -517,6 +467,19 @@
   date: "Today's Date",
   subject: "Subject: Hey!",
 ) = {
+  let letterHeaderNameStyle(str) = {
+    text(fill: accentColor, weight: "bold", str)
+  }
+  let letterHeaderAddressStyle(str) = {
+    text(fill: gray, size: 0.9em, smallcaps(str))
+  }
+  let letterDateStyle(str) = {
+    text(size: 0.9em, style: "italic", str)
+  }
+  let letterSubjectStyle(str) = {
+    text(fill: accentColor, weight: "bold", underline(str))
+  }
+
   letterHeaderNameStyle(metadata.personal.first_name + " " + metadata.personal.last_name)
   v(1pt)
   letterHeaderAddressStyle(myAddress)

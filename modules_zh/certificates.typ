@@ -11,11 +11,11 @@
 #cvHonor(
   date: [2017],
   title: [应用数据科学与 Python],
-  issuer: [Coursera]
+  issuer: [Coursera],
 )
 
 #cvHonor(
   date: [],
   title: [SQL 基础课程],
-  issuer: [Datacamp]
+  issuer: [Datacamp],
 )
