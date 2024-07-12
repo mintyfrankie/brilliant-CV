@@ -54,9 +54,15 @@
   }
 }
 
-#let beforeSectionSkip = 1pt
-#let beforeEntrySkip = 1pt
-#let beforeEntryDescriptionSkip = 1pt
+#let beforeSectionSkip = eval(
+  metadata.layout.at("before_section_skip", default: 1pt),
+)
+#let beforeEntrySkip = eval(
+  metadata.layout.at("before_entry_skip", default: 1pt),
+)
+#let beforeEntryDescriptionSkip = eval(
+  metadata.layout.at("before_entry_description_skip", default: 1pt),
+)
 
 #let footerStyle(str) = {
   text(size: 8pt, fill: rgb("#999999"), smallcaps(str))

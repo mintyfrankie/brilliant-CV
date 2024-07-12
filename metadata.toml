@@ -6,6 +6,9 @@ display_profile_photo = true
 profile_photo_path = "../src/avatar.png"
 display_entry_society_first = true
 display_logo = true
+before_section_skip = "1pt"
+before_entry_skip = "1pt"
+before_entry_description_skip = "1pt"
 
 [inject]
 inject_ai_prompt = false
