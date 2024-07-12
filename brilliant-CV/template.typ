@@ -1,7 +1,7 @@
 /* Packages */
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
-#import "./utils/lang.typ": languageSwitch
+#import "./utils/lang.typ": languageSwitch, autoImport
 
 /* Import metadata */
 #let metadata = toml("../metadata.toml")
@@ -69,7 +69,11 @@
 }
 
 /* Functions */
-#let cvHeader(align: left, hasPhoto: true) = {
+#let cvHeader(metadata) = {
+  // Parameters
+  let hasPhoto = metadata.layout.header.display_profile_photo
+  let align = eval(metadata.layout.header.header_align)
+
   // Injection
   inject(
     if_inject_ai_prompt: metadata.inject.inject_ai_prompt,
@@ -172,9 +176,9 @@
   )
 
   let makeHeaderPhotoSection() = {
-    if metadata.layout.display_profile_photo {
+    if metadata.layout.header.display_profile_photo {
       box(
-        image(metadata.layout.profile_photo_path, height: 3.6cm),
+        image(metadata.layout.header.profile_photo_path, height: 3.6cm),
         radius: 50%,
         clip: true,
       )
@@ -296,7 +300,7 @@
     }
   }
   let ifLogo(path, ifTrue, ifFalse) = {
-    return if metadata.layout.display_logo {
+    return if metadata.layout.entry.display_logo {
       if path == "" {
         ifFalse
       } else {
@@ -336,7 +340,7 @@
       {
         entryA1Style(
           ifSocietyFirst(
-            metadata.layout.display_entry_society_first,
+            metadata.layout.entry.display_entry_society_first,
             society,
             title,
           ),
@@ -345,7 +349,7 @@
       {
         entryA2Style(
           ifSocietyFirst(
-            metadata.layout.display_entry_society_first,
+            metadata.layout.entry.display_entry_society_first,
             location,
             date,
           ),
@@ -355,7 +359,7 @@
       {
         entryB1Style(
           ifSocietyFirst(
-            metadata.layout.display_entry_society_first,
+            metadata.layout.entry.display_entry_society_first,
             title,
             society,
           ),
@@ -364,7 +368,7 @@
       {
         entryB2Style(
           ifSocietyFirst(
-            metadata.layout.display_entry_society_first,
+            metadata.layout.entry.display_entry_society_first,
             date,
             location,
           ),
@@ -453,7 +457,7 @@
   bibliography(bibPath, title: none, style: refStyle, full: refFull)
 }
 
-#let cvFooter() = {
+#let cvFooter(metadata) = {
   place(
     bottom,
     table(
@@ -522,6 +526,7 @@
 /* Layout */
 #let cv(
   metadata_path: "../metadata.toml",
+  include_modules: list(),
   doc,
 ) = {
   // Load metadata
@@ -534,5 +539,11 @@
     paper: "a4",
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
   )
+
+  cvHeader(metadata)
+  for i in include_modules {
+    autoImport(i, metadata.language)
+  }
   doc
+  cvFooter(metadata)
 }

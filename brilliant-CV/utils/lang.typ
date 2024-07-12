@@ -6,9 +6,9 @@ A module containing the language logic for the CV template.
 /* Import metadata */
 #let metadata = toml("../../metadata.toml")
 
-#let autoImport(file) = {
+#let autoImport(file, lang) = {
   include {
-    "../../modules_" + metadata.language + "/" + file + ".typ"
+    "../../modules_" + lang + "/" + file + ".typ"
   }
 }
 
