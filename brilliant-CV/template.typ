@@ -208,7 +208,11 @@
 /* Functions */
 #let cvHeader(align: left, hasPhoto: true) = {
   // Injection
-  inject()
+  inject(
+    if_inject_ai_prompt: metadata.inject.inject_ai_prompt,
+    if_inject_keywords: metadata.inject.inject_keywords,
+    keywords_list: metadata.inject.injected_keywords_list,
+  )
 
   let makeHeaderInfo() = {
     let personalInfoIcons = (
