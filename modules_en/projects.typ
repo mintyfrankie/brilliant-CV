@@ -10,6 +10,6 @@
   description: list(
     [Analyze donor and fundraising data to identify trends and opportunities for growth],
     [Create data visualizations and dashboards to communicate insights to the board of directors],
-    [Collaborate with other volunteers to develop and implement data-driven strategies]
-  )
+    [Collaborate with other volunteers to develop and implement data-driven strategies],
+  ),
 )

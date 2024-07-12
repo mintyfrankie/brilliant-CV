@@ -4,15 +4,15 @@
 
 #cvSkill(
   type: [Languages],
-  info: [English #hBar() French #hBar() Chinese]
+  info: [English #hBar() French #hBar() Chinese],
 )
 
 #cvSkill(
   type: [Tech Stack],
-  info: [Tableau #hBar() Python (Pandas/Numpy) #hBar() PostgreSQL]
+  info: [Tableau #hBar() Python (Pandas/Numpy) #hBar() PostgreSQL],
 )
 
 #cvSkill(
   type: [Personal Interests],
-  info: [Swimming #hBar() Cooking #hBar() Reading]
+  info: [Swimming #hBar() Cooking #hBar() Reading],
 )
