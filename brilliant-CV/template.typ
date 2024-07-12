@@ -1,9 +1,6 @@
 /* Packages */
 #import "./utils/cvHeader.typ": cvHeader, cvFooter
-#import "./utils/misc.typ": hBar
-
-/* Import metadata */
-#let metadata = toml("../metadata.toml")
+#import "./utils/misc.typ": hBar, setAccentColor
 
 /* Fonts and Colors */
 #let fontList = (
@@ -30,20 +27,19 @@
   darkgray: rgb("#212529"),
 )
 
-// FIXME: functionize this
-#let accentColor = {
-  if type(metadata.layout.awesome_color) == color {
-    metadata.layout.awesome_color
-  } else {
-    awesomeColors.at(metadata.layout.awesome_color)
-  }
-}
 
 /* Functions */
-#let cvSection(title, metadata: metadata, highlighted: true, letters: 3) = {
+#let cvSection(
+  title,
+  highlighted: true,
+  letters: 3,
+  metadata: metadata,
+  awesomeColors: awesomeColors,
+) = {
   let beforeSectionSkip = eval(
     metadata.layout.at("before_section_skip", default: 1pt),
   )
+  let accentColor = setAccentColor(awesomeColors, metadata)
   let highlightText = title.slice(0, letters)
   let normalText = title.slice(letters)
   let sectionTitleStyle(str, color: black) = {
@@ -72,7 +68,9 @@
   logo: "",
   tags: (),
   metadata: metadata,
+  awesomeColors: awesomeColors,
 ) = {
+  let accentColor = setAccentColor(awesomeColors, metadata)
   let beforeEntrySkip = eval(
     metadata.layout.at("before_entry_skip", default: 1pt),
   )
@@ -235,7 +233,11 @@
   issuer: "",
   url: "",
   location: "",
+  awesomeColors: awesomeColors,
+  metadata: metadata,
 ) = {
+  let accentColor = setAccentColor(awesomeColors, metadata)
+
   let honorDateStyle(str) = {
     align(right, text(str))
   }
@@ -296,7 +298,11 @@
   recipientAddress: "Company Address Here",
   date: "Today's Date",
   subject: "Subject: Hey!",
+  metadata: metadata,
+  awesomeColors: awesomeColors,
 ) = {
+  let accentColor = setAccentColor(awesomeColors, metadata)
+
   let letterHeaderNameStyle(str) = {
     text(fill: accentColor, weight: "bold", str)
   }
@@ -366,7 +372,7 @@
     }
   }
 
-  cvHeader(metadata, headerFont, regularColors, accentColor)
+  cvHeader(metadata, headerFont, regularColors, awesomeColors)
   for i in include_modules {
     importModule(i, metadata.language)
   }
