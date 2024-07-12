@@ -45,7 +45,17 @@
   place(right, dx: -5%, dy: 0%, image(path, width: 25%))
 }
 
-#let letterFooter() = {
+#let letterFooter(metadata) = {
+  // Parameters
+  let firstName = metadata.personal.first_name
+  let lastName = metadata.personal.last_name
+  let footerText = metadata.lang.at(metadata.language).letter_footer
+
+  // Styles
+  let footerStyle(str) = {
+    text(size: 8pt, fill: rgb("#999999"), smallcaps(str))
+  }
+
   place(
     bottom,
     table(
