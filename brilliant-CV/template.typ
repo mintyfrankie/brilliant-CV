@@ -520,7 +520,14 @@
 }
 
 /* Layout */
-#let layout(doc) = {
+#let cv(
+  metadata_path: "../metadata.toml",
+  doc,
+) = {
+  // Load metadata
+  let metadata = toml(metadata_path)
+
+  // Page layout
   set text(font: fontList, weight: "regular", size: 9pt)
   set align(left)
   set page(

@@ -1,6 +1,6 @@
 #import "brilliant-CV/template.typ": *
 #import "brilliant-CV/utils/lang.typ": autoImport
-#show: layout
+#show: cv.with(metadata_path: "../metadata.toml")
 
 #cvHeader(hasPhoto: true, align: left)
 #autoImport("education")
