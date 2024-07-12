@@ -50,3 +50,7 @@ letter_footer = "Lettre de motivation"
 header_quote = "具有丰富经验的数据分析师，随时可入职"
 cv_footer = "简历"
 letter_footer = "申请信"
+
+[lang.non_latin]
+name = "王道尔"
+font = "Heiti SC"

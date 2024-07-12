@@ -1,6 +1,6 @@
 #let hBar() = [#h(5pt) | #h(5pt)]
 
-#let fontList = (
+#let latinFontList = (
   "Source Sans Pro",
   "Source Sans 3",
   "Linux Libertine",
@@ -8,7 +8,7 @@
   "Font Awesome 6 Free",
 )
 
-#let headerFont = ("Roboto")
+#let latinHeaderFont = ("Roboto")
 
 #let awesomeColors = (
   skyblue: rgb("#0395DE"),

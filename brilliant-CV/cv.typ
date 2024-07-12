@@ -1,6 +1,7 @@
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
 #import "./utils/styles.typ": *
+#import "./utils/lang.typ": *
 
 #let cvHeader(metadata, headerFont, regularColors, awesomeColors) = {
   // Parameters
@@ -16,6 +17,11 @@
   let displayProfilePhoto = metadata.layout.header.display_profile_photo
   let profilePhotoPath = metadata.layout.header.profile_photo_path
   let accentColor = setAccentColor(awesomeColors, metadata)
+  let nonLatinName = ""
+  let nonLatin = isNonLatin(metadata.language)
+  if nonLatin {
+    nonLatinName = metadata.lang.non_latin.name
+  }
 
   // Injection
   inject(
@@ -113,7 +119,9 @@
     inset: 0pt,
     stroke: none,
     row-gutter: 6mm,
-    [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
+    if nonLatin [
+      #headerFirstNameStyle(nonLatinName),
+    ] else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
     [#headerInfoStyle(makeHeaderInfo())],
     [#headerQuoteStyle(headerQuote)],
   )
@@ -190,6 +198,8 @@
   metadata: metadata,
   awesomeColors: awesomeColors,
 ) = {
+  let lang = metadata.language
+  let nonLatin = isNonLatin(lang)
   let beforeSectionSkip = eval(
     metadata.layout.at("before_section_skip", default: 1pt),
   )
@@ -201,7 +211,9 @@
   }
 
   v(beforeSectionSkip)
-  {
+  if nonLatin {
+    sectionTitleStyle(title, color: accentColor)
+  } else {
     if highlighted {
       sectionTitleStyle(highlightText, color: accentColor)
       sectionTitleStyle(normalText, color: black)

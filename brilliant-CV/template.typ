@@ -1,5 +1,6 @@
 /* Packages */
 #import "./cv.typ": *
+#import "./utils/lang.typ": *
 
 /* Layout */
 #let cv(
@@ -9,6 +10,16 @@
 ) = {
   // Load metadata
   let metadata = toml(metadata_path)
+
+  // Non Latin Logic
+  let lang = metadata.language
+  let fontList = latinFontList
+  let headerFont = latinHeaderFont
+  if isNonLatin(lang) {
+    let nonLatinFont = metadata.lang.non_latin.font
+    fontList.insert(2, nonLatinFont)
+    headerFont = nonLatinFont
+  }
 
   // Page layout
   set text(font: fontList, weight: "regular", size: 9pt)
