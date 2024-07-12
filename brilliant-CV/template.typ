@@ -1,14 +1,17 @@
 /* Packages */
-#import "../metadata.typ": *
 #import "./utils/injection.typ": inject
-#import "@preview/fontawesome:0.1.0": *
+#import "@preview/fontawesome:0.2.1": *
+
+/* Import metadata */
+#let metadata = toml("../metadata.toml")
 
 /* Language-specific Macros */
+// FIXME: doesn't work in non-latin languages
 #let nonLatinOverwrite = false
 #let nonLatinFont = ""
 #let nonLatinLanguageCode = ("zh", "ja", "ko", "ru")
 #for lang in nonLatinLanguageCode {
-  if varLanguage == lang {
+  if metadata.language == lang {
     nonLatinOverwrite = true
     firstName = nonLatinOverwriteInfo.at("firstName")
     lastName = nonLatinOverwriteInfo.at("lastName")
@@ -22,25 +25,22 @@
 ]
 
 #let autoImport(file) = {
-  if varLanguage == "" {
+  if metadata.language == "" {
     include {
       "../modules/" + file + ".typ"
     }
   } else {
     include {
-      "../modules_" + varLanguage + "/" + file + ".typ"
+      "../modules_" + metadata.language + "/" + file + ".typ"
     }
   }
 }
 
-#let languageSwitch(dict) = {
-  for (k, v) in dict {
-    if k == varLanguage {
-      return v
-      break
-    }
-  }
-  panic("i18n: language value not matching any key in the array")
+#let languageSwitch(
+  key,
+  lang: metadata.language,
+) = {
+  return metadata.lang.at(lang).at(key)
 }
 
 /* Styles */
@@ -68,10 +68,10 @@
 )
 
 #let accentColor = {
-  if type(awesomeColor) == color {
-    awesomeColor
+  if type(metadata.layout.awesome_color) == color {
+    metadata.layout.awesome_color
   } else {
-    awesomeColors.at(awesomeColor)
+    awesomeColors.at(metadata.layout.awesome_color)
   }
 }
 
@@ -224,7 +224,7 @@
       extraInfo: "",
     )
     let n = 1
-    for (k, v) in personalInfo {
+    for (k, v) in metadata.personal.info {
       // A dirty trick to add linebreaks with "linebreak" as key in personalInfo
       if k == "linebreak" {
         n = 0
@@ -266,7 +266,7 @@
         })
       }
       // Adds hBar
-      if n != personalInfo.len() {
+      if n != metadata.personal.info.len() {
         hBar()
       }
       n = n + 1
@@ -278,14 +278,18 @@
     inset: 0pt,
     stroke: none,
     row-gutter: 6mm,
-    [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
+    [#headerFirstNameStyle(metadata.personal.first_name) #h(5pt) #headerLastNameStyle(metadata.personal.last_name)],
     [#headerInfoStyle(makeHeaderInfo())],
-    [#headerQuoteStyle(languageSwitch(headerQuoteInternational))],
+    [#headerQuoteStyle(languageSwitch("header_quote"))],
   )
 
   let makeHeaderPhotoSection() = {
-    if profilePhoto != "" {
-      box(image(profilePhoto, height: 3.6cm), radius: 50%, clip: true)
+    if metadata.layout.display_profile_photo {
+      box(
+        image(metadata.layout.profile_photo_path, height: 3.6cm),
+        radius: 50%,
+        clip: true,
+      )
     } else {
       v(3.6cm)
     }
@@ -358,7 +362,7 @@
     }
   }
   let ifLogo(path, ifTrue, ifFalse) = {
-    return if varDisplayLogo {
+    return if metadata.layout.display_logo {
       if path == "" {
         ifFalse
       } else {
@@ -395,17 +399,41 @@
       row-gutter: 6pt,
       align: auto,
       {
-        entryA1Style(ifSocietyFirst(varEntrySocietyFirst, society, title))
+        entryA1Style(
+          ifSocietyFirst(
+            metadata.layout.display_entry_society_first,
+            society,
+            title,
+          ),
+        )
       },
       {
-        entryA2Style(ifSocietyFirst(varEntrySocietyFirst, location, date))
+        entryA2Style(
+          ifSocietyFirst(
+            metadata.layout.display_entry_society_first,
+            location,
+            date,
+          ),
+        )
       },
 
       {
-        entryB1Style(ifSocietyFirst(varEntrySocietyFirst, title, society))
+        entryB1Style(
+          ifSocietyFirst(
+            metadata.layout.display_entry_society_first,
+            title,
+            society,
+          ),
+        )
       },
       {
-        entryB2Style(ifSocietyFirst(varEntrySocietyFirst, date, location))
+        entryB2Style(
+          ifSocietyFirst(
+            metadata.layout.display_entry_society_first,
+            date,
+            location,
+          ),
+        )
       },
     ),
   )
@@ -471,8 +499,8 @@
       columns: (1fr, auto),
       inset: 0pt,
       stroke: none,
-      footerStyle([#firstName #lastName]),
-      footerStyle(languageSwitch(cvFooterInternational)),
+      footerStyle([#metadata.personal.first_name #metadata.personal.last_name]),
+      footerStyle(languageSwitch("cv_footer")),
     ),
   )
 }
@@ -484,7 +512,7 @@
   date: "Today's Date",
   subject: "Subject: Hey!",
 ) = {
-  letterHeaderNameStyle(firstName + " " + lastName)
+  letterHeaderNameStyle(metadata.personal.first_name + " " + metadata.personal.last_name)
   v(1pt)
   letterHeaderAddressStyle(myAddress)
   v(1pt)
@@ -512,7 +540,7 @@
       inset: 0pt,
       stroke: none,
       footerStyle([#firstName #lastName]),
-      footerStyle(languageSwitch(letterFooterInternational)),
+      footerStyle(languageSwitch("letter_footer")),
     ),
   )
 }

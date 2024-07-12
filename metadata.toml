@@ -1,0 +1,48 @@
+language = "en"
+
+[layout]
+awesome_color = "skyblue"
+display_profile_photo = true
+profile_photo_path = "../src/avatar.png"
+display_entry_society_first = true
+display_logo = true
+
+[inject]
+inject_ai_prompt = false
+inject_keywords = true
+injected_keywords_list = ["Data Analyst", "GCP", "Python", "SQL", "Tableau"]
+
+[personal]
+first_name = "John"
+last_name = "Doe"
+
+[personal.info]
+github = "mintyfrankie"
+phone = "+33 6 12 34 56 78"
+email = "john.doe@me.org"
+linkedin = "johndoe"
+# gitlab = "mintyfrankie"
+# homepage: "jd.me.org"
+# orcid = "0000-0000-0000-0000"
+# researchgate = "John-Doe"
+# extraInfo = "I am a cool kid"
+# custom-1 = (icon: "", text: "example", link: "https://example.com")
+
+[lang.en]
+header_quote = "Experienced Data Analyst looking for a full time job starting from now"
+cv_footer = "Curriculum vitae"
+letter_footer = "Cover letter"
+
+[lang.fr]
+header_quote = "Analyste de données expérimenté à la recherche d'un emploi à temps plein disponible dès maintenant"
+cv_footer = "Résumé"
+letter_footer = "Lettre de motivation"
+
+[lang.zh]
+header_quote = "具有丰富经验的数据分析师，随时可入职"
+cv_footer = "简历"
+letter_footer = "申请信"
+
+[lang.non_latin]
+custom_font = "Heiti SC"
+name = "王道尔"
