@@ -1,19 +1,11 @@
 /* Packages */
 #import "./utils/cvHeader.typ": cvHeader, cvFooter
+#import "./utils/misc.typ": hBar
 
 /* Import metadata */
 #let metadata = toml("../metadata.toml")
 
-/* Utility Functions */
-#let hBar() = [#h(5pt) | #h(5pt)]
-
-#let autoImport(file, lang) = {
-  include {
-    "../modules_" + lang + "/" + file + ".typ"
-  }
-}
-
-/* Styles */
+/* Fonts and Colors */
 #let fontList = (
   "Source Sans Pro",
   "Source Sans 3",
@@ -38,6 +30,7 @@
   darkgray: rgb("#212529"),
 )
 
+// FIXME: functionize this
 #let accentColor = {
   if type(metadata.layout.awesome_color) == color {
     metadata.layout.awesome_color
@@ -46,22 +39,11 @@
   }
 }
 
-#let beforeSectionSkip = eval(
-  metadata.layout.at("before_section_skip", default: 1pt),
-)
-#let beforeEntrySkip = eval(
-  metadata.layout.at("before_entry_skip", default: 1pt),
-)
-#let beforeEntryDescriptionSkip = eval(
-  metadata.layout.at("before_entry_description_skip", default: 1pt),
-)
-
-
-
 /* Functions */
-
-
-#let cvSection(title, highlighted: true, letters: 3) = {
+#let cvSection(title, metadata: metadata, highlighted: true, letters: 3) = {
+  let beforeSectionSkip = eval(
+    metadata.layout.at("before_section_skip", default: 1pt),
+  )
   let highlightText = title.slice(0, letters)
   let normalText = title.slice(letters)
   let sectionTitleStyle(str, color: black) = {
@@ -89,7 +71,15 @@
   description: "Description",
   logo: "",
   tags: (),
+  metadata: metadata,
 ) = {
+  let beforeEntrySkip = eval(
+    metadata.layout.at("before_entry_skip", default: 1pt),
+  )
+  let beforeEntryDescriptionSkip = eval(
+    metadata.layout.at("before_entry_description_skip", default: 1pt),
+  )
+
   let entryA1Style(str) = {
     text(size: 10pt, weight: "bold", str)
   }
@@ -370,10 +360,28 @@
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
   )
 
+  let importModule(file, lang) = {
+    include {
+      "../modules_" + lang + "/" + file + ".typ"
+    }
+  }
+
   cvHeader(metadata, headerFont, regularColors, accentColor)
   for i in include_modules {
-    autoImport(i, metadata.language)
+    importModule(i, metadata.language)
   }
   doc
   cvFooter(metadata)
 }
+
+#let cvModule(
+  metadata_path: "../metadata.toml",
+  doc,
+) = {
+  // Load metadata
+  let metadata = toml(metadata_path)
+
+  let cvSection = cvSection.with(letter: 5)
+  doc
+}
+)
