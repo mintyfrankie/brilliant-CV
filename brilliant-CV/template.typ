@@ -6,16 +6,15 @@
 #let metadata = toml("../metadata.toml")
 
 /* Language-specific Macros */
-// FIXME: doesn't work in non-latin languages
 #let nonLatinOverwrite = false
 #let nonLatinFont = ""
 #let nonLatinLanguageCode = ("zh", "ja", "ko", "ru")
+#let nonLatinName = ""
 #for lang in nonLatinLanguageCode {
   if metadata.language == lang {
     nonLatinOverwrite = true
-    firstName = nonLatinOverwriteInfo.at("firstName")
-    lastName = nonLatinOverwriteInfo.at("lastName")
-    nonLatinFont = nonLatinOverwriteInfo.at("customFont")
+    nonLatinName = metadata.lang.non_latin.name
+    nonLatinFont = metadata.lang.non_latin.custom_font
   }
 }
 
@@ -282,7 +281,9 @@
     inset: 0pt,
     stroke: none,
     row-gutter: 6mm,
-    [#headerFirstNameStyle(metadata.personal.first_name) #h(5pt) #headerLastNameStyle(metadata.personal.last_name)],
+    if nonLatinOverwrite [
+      #headerFirstNameStyle(nonLatinName)
+    ] else [#headerFirstNameStyle(metadata.personal.first_name) #h(5pt) #headerLastNameStyle(metadata.personal.last_name)],
     [#headerInfoStyle(makeHeaderInfo())],
     [#headerQuoteStyle(languageSwitch("header_quote"))],
   )
