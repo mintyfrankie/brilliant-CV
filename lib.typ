@@ -37,13 +37,13 @@
 
 #let letter(
   metadata,
+  doc,
   myAddress: "Your Address Here",
   recipientName: "Company Name Here",
   recipientAddress: "Company Address Here",
   date: datetime.today().display(),
   subject: "Subject: Hey!",
-  signaturePath: "",
-  doc,
+  signature: "",
 ) = {
 
   // Non Latin Logic
@@ -75,8 +75,8 @@
 
   doc
 
-  if signaturePath != "" {
-    letterSignature(signaturePath)
+  if signature != "" {
+    letterSignature(signature)
   }
   letterFooter(metadata)
 }

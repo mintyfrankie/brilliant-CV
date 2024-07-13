@@ -1,16 +1,16 @@
 // Imports
-#import "@preview/brilliant-CV:2.0.0": *
+#import "@preview/brilliant-CV:2.0.0": letter
 #let metadata = toml("./metadata.toml")
 
 
 #show: letter.with(
-  metadata: metadata,
+  metadata,
   myAddress: "Your Address Here",
   recipientName: "Company Name Here",
   recipientAddress: "Company Address Here",
   date: datetime.today().display(),
   subject: "Subject: Hey!",
-  signaturePath: "../src/signature.png",
+  signature: image("src/signature.png"),
 )
 
 Dear Hiring Manager,

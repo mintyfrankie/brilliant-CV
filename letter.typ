@@ -45,9 +45,10 @@
   linebreak()
 }
 
-#let letterSignature(path) = {
+#let letterSignature(img) = {
+  set image(width: 25%)
   linebreak()
-  place(right, dx: -5%, dy: 0%, image(path, width: 25%))
+  place(right, dx: -5%, dy: 0%, img)
 }
 
 #let letterFooter(metadata) = {
