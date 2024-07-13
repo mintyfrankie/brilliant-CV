@@ -1,5 +1,8 @@
+// Imports
 #import "@preview/brilliant-CV:2.0.0": *
 #let metadata = toml("./metadata.toml")
+
+
 #show: letter.with(
   metadata: metadata,
   myAddress: "Your Address Here",
@@ -27,6 +30,3 @@ As a highly motivated and detail-oriented individual, I am confident that I woul
 Thank you for considering my application. I look forward to the opportunity to discuss my qualifications further.
 
 Sincerely,
-
-
-
