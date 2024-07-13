@@ -5,13 +5,10 @@
 
 /* Layout */
 #let cv(
-  metadata_path: "../metadata.toml",
+  metadata,
   include_modules: list(),
   doc,
 ) = {
-  // Load metadata
-  let metadata = toml(metadata_path)
-
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList
@@ -32,7 +29,7 @@
 
   let importModule(file, lang) = {
     include {
-      "../modules_" + lang + "/" + file + ".typ"
+      "/modules_" + lang + "/" + file + ".typ"
     }
   }
 

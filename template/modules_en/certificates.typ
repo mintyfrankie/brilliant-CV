@@ -1,5 +1,6 @@
-#import "../brilliant-CV/template.typ": *
+#import "@preview/brilliant-CV:2.0.0": *
 #let metadata = toml("../metadata.toml")
+
 #let cvSection = cvSection.with(metadata: metadata)
 #let cvHonor = cvHonor.with(metadata: metadata)
 
