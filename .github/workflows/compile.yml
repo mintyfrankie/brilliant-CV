@@ -1,7 +1,11 @@
 name: Check PDF Compilation
 
 on:
-  push: {}
+  push: {
+    branches: [
+      main
+    ]
+  }
   pull_request: {}
 
 jobs:

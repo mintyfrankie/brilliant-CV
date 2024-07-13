@@ -37,7 +37,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: documentation
+          name: github-pages
           path: .
           if-no-files-found: error
 
