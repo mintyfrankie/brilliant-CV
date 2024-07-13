@@ -9,20 +9,31 @@
   <img alt="Typst Version" src="https://img.shields.io/badge/Compatible Typst Version-0.11.0-blue"/>
 </p>
 
-> The Brilliant CV project is still under preview, just like Typst is, so use with caution as future updates might break your current production.
->
-> Read commits and changelog should you find new patches are not working, and feel free to lock to a working release & submit issues or PRs, I am happy to help!
-
 <br>
+
+> If my work helps you drift through tedious job seeking journey, don't hesitate to think about [buying me a Coke Zero](https://github.com/sponsors/mintyfrankie)... or a lot of them! 🥤
+
+
 
 **Brilliant CV** is a [**Typst**](https://github.com/typst/typst) template for making **Résume**, **CV** or **Cover Letter** inspired by the famous LaTeX CV template [**Awesome-CV**](https://github.com/posquit0/Awesome-CV).
 
 ## Features
 
-- **Separation of style and content**: version control your CV entries in the `modules` folder, without touching the styling and typesetting of your CV / Cover Letter _(hey, I am not talking about **Macrohard Word**, you know)_
-- **Quick twitches on the visual**: add company logos, put your shiny company name or your coolest title at the first line globally or per-document needs
-- **Multilingual support**: centrally store your multilingual CVs (English + French + German + Chinese + Japanese if you are superb) and change output language in a blink
-- *(NEW)* **AI Prompt and Keywords Injection**: Fight against the abuse of ATS system or GenAI screening by injecting invisible AI prompt or keyword list automatically.
+**1. Separation of style and content**
+
+> Version control your CV entries in the `modules` folder, without touching the styling and typesetting of your CV / Cover Letter _(hey, I am not talking about **Macrohard Word**, you know)_
+
+**2. Quick twitches on the visual**
+
+> Add company logos, put your shiny company name or your coolest title at the first line globally or per-document needs
+
+**3. Multilingual support**
+
+> Centrally store your multilingual CVs (English + French + German + Chinese + Japanese if you are superb) and change output language in a blink
+
+***(NEW)* 4. AI Prompt and Keywords Injection**
+
+> Fight against the abuse of ATS system or GenAI screening by injecting invisible AI prompt or keyword list automatically.
 
 ## Preview
 
@@ -76,7 +87,7 @@ git submodule update --remote
 
 ```
 |
-|-- modules/          --> sections of your CV
+|-- modules_en/          --> sections of your CV
 |   |- *.typ
 |
 |-- modules_*         --> multilingual sections of your CV
@@ -101,8 +112,7 @@ git submodule update --remote
 
 > As Typst is still a very young (although very promising and robust to my belief) project, some features are only partially supported on certain platforms. It is hence difficult to predict any anomalies, but you are definitely welcomed to bring a PR, an issue or a discussion!
 
-- **Image cropping**: Typst does not have direct support to crop images using native primitives. Bring your own cropped image for profile photo if needed.
-- **Publications Section**: Current version of Typst does not allow full customization on the `#bibliography` function, so the display of publication section might not be optimal. See [this disucssion](https://github.com/mintyfrankie/brilliant-CV/discussions/3).
+- **Publications Section**: Current version of Typst does not allow full customization on the `#bibliography` function, so the display of publication section might not be optimal. See [this disucssion](https://github.com/typst/typst/issues/942).
 
 ## Credit
 
