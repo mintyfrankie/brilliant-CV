@@ -2,11 +2,25 @@ name: Generate Documentation
 
 on:
   push: {}
+  workflow_dispatch:
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: documentation
+  cancel-in-progress: false
 
 jobs:
   build:
     name: build-docs
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.build.outputs.page-url }}
 
     steps:
       - name: Checkout
@@ -24,27 +38,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: documentation
-          path: ./*.pdf
+          path: .
           if-no-files-found: error
 
-  deploy:
-    name: deploy-docs
-    runs-on: ubuntu-latest
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.build.outputs.page-url }}
-
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: documentation
       - name: Deploy to Github pages
         id: deployment
         uses: actions/deploy-pages@v4
