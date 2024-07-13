@@ -5,7 +5,7 @@
 #cvSection("Publications")
 
 #cvPublication(
-  bibPath: "../src/publications.bib",
+  bib: bibliography("../src/publications.bib"),
   keyList: (
     "smith2020",
     "jones2021",

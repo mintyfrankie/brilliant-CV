@@ -314,7 +314,8 @@
   }
   let setLogoContent(path) = {
     return if logo == "" [] else {
-      image(path, width: 100%)
+      set image(width: 100%)
+      logo
     }
   }
 
@@ -444,7 +445,7 @@
 }
 
 #let cvPublication(
-  bibPath: "",
+  bib: "",
   keyList: list(),
   refStyle: "apa",
   refFull: true,
@@ -453,5 +454,6 @@
     text(str)
   }
   show bibliography: it => publicationStyle(it)
-  bibliography(bibPath, title: none, style: refStyle, full: refFull)
+  set bibliography(title: none, style: refStyle, full: refFull)
+  bib
 }

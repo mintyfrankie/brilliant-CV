@@ -1,6 +1,7 @@
-#import "brilliant-CV/template.typ": *
+#import "@preview/brilliant-CV:2.0.0": *
+#let metadata = toml("./metadata.toml")
 #show: letter.with(
-  metadata_path: "../metadata.toml",
+  metadata: metadata,
   myAddress: "Your Address Here",
   recipientName: "Company Name Here",
   recipientAddress: "Company Address Here",

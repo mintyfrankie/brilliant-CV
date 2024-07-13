@@ -9,7 +9,7 @@
 #cvEntry(
   title: [数据科学主管],
   society: [XYZ 公司],
-  logo: "../src/logos/xyz_corp.png",
+  logo: image("../src/logos/xyz_corp.png"),
   date: [2020 - 现在],
   location: [旧金山, CA],
   description: list(
@@ -21,7 +21,7 @@
 #cvEntry(
   title: [数据分析师],
   society: [ABC 公司],
-  logo: "../src/logos/abc_company.png",
+  logo: image("../src/logos/abc_company.png"),
   date: [2017 - 2020],
   location: [纽约, NY],
   description: list(
@@ -33,7 +33,7 @@
 #cvEntry(
   title: [数据分析实习生],
   society: [PQR 公司],
-  logo: "../src/logos/pqr_corp.png",
+  logo: image("../src/logos/pqr_corp.png"),
   date: [2017年夏季],
   location: [芝加哥, IL],
   description: list(
