@@ -21,7 +21,7 @@ jobs:
       - run: typst compile docs.typ
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: documentation
           path: ./*.pdf
@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: documentation
       - name: Deploy to Github pages
