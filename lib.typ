@@ -8,10 +8,7 @@
 #import "./utils/lang.typ": *
 
 /* Layout */
-#let cv(
-  metadata,
-  doc,
-) = {
+#let cv(metadata, doc) = {
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList
@@ -30,9 +27,9 @@
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
   )
 
-  cvHeader(metadata, headerFont, regularColors, awesomeColors)
+  _cvHeader(metadata, headerFont, regularColors, awesomeColors)
   doc
-  cvFooter(metadata)
+  _cvFooter(metadata)
 }
 
 #let letter(
@@ -45,7 +42,6 @@
   subject: "Subject: Hey!",
   signature: "",
 ) = {
-
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList
