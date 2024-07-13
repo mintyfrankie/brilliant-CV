@@ -7,7 +7,14 @@
 #import "./utils/styles.typ": *
 #import "./utils/lang.typ": *
 
-#let cvHeader(metadata, headerFont, regularColors, awesomeColors) = {
+/// Insert the header section of the CV.
+///
+/// - metadata (array): the metadata read from the TOML file.
+/// - headerFont (array): the font of the header.
+/// - regularColors (array): the regular colors of the CV.
+/// - awesomeColors (array): the awesome colors of the CV.
+/// -> content
+#let _cvHeader(metadata, headerFont, regularColors, awesomeColors) = {
   // Parameters
   let hasPhoto = metadata.layout.header.display_profile_photo
   let align = eval(metadata.layout.header.header_align)
@@ -132,11 +139,7 @@
 
   let makeHeaderPhotoSection() = {
     if displayProfilePhoto {
-      box(
-        image(profilePhotoPath, height: 3.6cm),
-        radius: 50%,
-        clip: true,
-      )
+      box(image(profilePhotoPath, height: 3.6cm), radius: 50%, clip: true)
     } else {
       v(3.6cm)
     }
@@ -173,7 +176,11 @@
   }
 }
 
-#let cvFooter(metadata) = {
+/// Insert the footer section of the CV.
+///
+/// - metadata (array): the metadata read from the TOML file.
+/// -> content
+#let _cvFooter(metadata) = {
   // Parameters
   let firstName = metadata.personal.first_name
   let lastName = metadata.personal.last_name
@@ -197,9 +204,14 @@
 
 /// Add the title of a section.
 ///
-/// title (str): The title of the section.
-/// highlighted (bool): Whether the first n letters will be highlighted in accent color.
-/// letters (int): The number of first letters of the title to highlight.
+/// NOTE: If the language is non-Latin, the title highlight will not be sliced.
+///
+/// - title (str): The title of the section.
+/// - highlighted (bool): Whether the first n letters will be highlighted in accent color.
+/// - letters (int): The number of first letters of the title to highlight.
+/// - metadata (array): (optional) the metadata read from the TOML file.
+/// - awesomeColors (array): (optional) the awesome colors of the CV.
+/// -> content
 #let cvSection(
   title,
   highlighted: true,
@@ -236,13 +248,16 @@
 
 /// Add an entry to the CV.
 ///
-/// title (str): The title of the entry.
-/// society (str): The society of the entr (company, university, etc.).
-/// date (str): The date of the entry.
-/// location (str): The location of the entry.
-/// description (str | array): The description of the entry. It can be a string or an array of strings.
-/// logo (image): The logo of the society. If empty, no logo will be displayed.
-/// tags (array): The tags of the entry.
+/// - title (str): The title of the entry.
+/// - society (str): The society of the entr (company, university, etc.).
+/// - date (str): The date of the entry.
+/// - location (str): The location of the entry.
+/// - description (array): The description of the entry. It can be a string or an array of strings.
+/// - logo (image): The logo of the society. If empty, no logo will be displayed.
+/// - tags (array): The tags of the entry.
+/// - metadata (array): (optional) the metadata read from the TOML file.
+/// - awesomeColors (array): (optional) the awesome colors of the CV.
+/// -> content
 #let cvEntry(
   title: "Title",
   society: "Society",
@@ -396,8 +411,9 @@
 
 /// Add a skill to the CV.
 ///
-/// type (str): The type of the skill. It is displayed on the left side.
-/// info (str | content): The information about the skill. It is displayed on the right side. Items can be seperated by `#hbar()`.
+/// - type (str): The type of the skill. It is displayed on the left side.
+/// - info (str | content): The information about the skill. It is displayed on the right side. Items can be seperated by `#hbar()`.
+/// -> content
 #let cvSkill(type: "Type", info: "Info") = {
   let skillTypeStyle(str) = {
     align(right, text(size: 10pt, weight: "bold", str))
@@ -416,6 +432,16 @@
   v(-6pt)
 }
 
+/// Add a Honor to the CV.
+///
+/// - date (str): The date of the honor.
+/// - title (str): The title of the honor.
+/// - issuer (str): The issuer of the honor.
+/// - url (str): The URL of the honor.
+/// - location (str): The location of the honor.
+/// - awesomeColors (array): (optional) The awesome colors of the CV.
+/// - metadata (array): (optional) The metadata read from the TOML file.
+/// -> content
 #let cvHonor(
   date: "1990",
   title: "Title",
@@ -468,16 +494,12 @@
 
 /// Add the publications to the CV by reading a bib file.
 ///
-/// bib (bibliography): The `bibliography` object with the path to the bib file.
-/// keyList (list): The list of keys to include in the publication list.
-/// refStyle (str): The reference style of the publication list.
-/// refFull (bool): Whether to show the full reference or not.
-#let cvPublication(
-  bib: "",
-  keyList: list(),
-  refStyle: "apa",
-  refFull: true,
-) = {
+/// - bib (bibliography): The `bibliography` object with the path to the bib file.
+/// - keyList (list): The list of keys to include in the publication list.
+/// - refStyle (str): The reference style of the publication list.
+/// - refFull (bool): Whether to show the full reference or not.
+/// -> content
+#let cvPublication(bib: "", keyList: list(), refStyle: "apa", refFull: true) = {
   let publicationStyle(str) = {
     text(str)
   }

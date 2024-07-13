@@ -4,5 +4,5 @@
 
 #import "@preview/tidy:0.3.0"
 
-#let docs = tidy.parse-module(read("./cv.typ"))
-#tidy.show-module(docs, style: tidy.styles.default)
+#let docs = tidy.parse-module(read("cv.typ"))
+#tidy.show-module(docs, omit-private-definitions: true)
