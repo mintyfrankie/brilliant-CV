@@ -2,11 +2,10 @@ name: Generate Documentation
 
 on:
   push: {}
-  pull_request: {}
 
 jobs:
   build:
-    name: compile-check
+    name: build-docs
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +26,25 @@ jobs:
           name: documentation
           path: ./*.pdf
           if-no-files-found: error
+
+  deploy:
+    name: deploy-docs
+    runs-on: ubuntu-latest
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.build.outputs.page-url }}
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: documentation
+      - name: Deploy to Github pages
+        id: deployment
+        uses: actions/deploy-pages@v4
