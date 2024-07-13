@@ -1,19 +1,15 @@
+/*
+* Entry point for the package
+*/
+
 /* Packages */
 #import "./cv.typ": *
 #import "./letter.typ": *
 #import "./utils/lang.typ": *
 
-/* Import Modules */
-#let importModule(file, lang: "en") = {
-  include {
-    "modules_" + lang + "/" + file + ".typ"
-  }
-}
-
 /* Layout */
 #let cv(
   metadata,
-  include_modules: list(),
   doc,
 ) = {
   // Non Latin Logic
@@ -78,9 +74,9 @@
   )
 
   doc
+
   if signaturePath != "" {
     letterSignature(signaturePath)
   }
   letterFooter(metadata)
-
 }

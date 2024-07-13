@@ -1,5 +1,8 @@
-#import "./utils/styles.typ": *
+/*
+* Functions for the CV template
+*/
 
+#import "./utils/styles.typ": *
 
 #let letterHeader(
   myAddress: "Your Address Here",
@@ -25,7 +28,9 @@
     text(fill: accentColor, weight: "bold", underline(str))
   }
 
-  letterHeaderNameStyle(metadata.personal.first_name + " " + metadata.personal.last_name)
+  letterHeaderNameStyle(metadata.personal.first_name + " " + metadata
+    .personal
+    .last_name)
   v(1pt)
   letterHeaderAddressStyle(myAddress)
   v(1pt)

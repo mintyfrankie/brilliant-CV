@@ -1,3 +1,7 @@
+/*
+* Functions for the CV template
+*/
+
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
 #import "./utils/styles.typ": *
