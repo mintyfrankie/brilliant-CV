@@ -195,6 +195,11 @@
   )
 }
 
+/// Add the title of a section.
+///
+/// title (str): The title of the section.
+/// highlighted (bool): Whether the first n letters will be highlighted in accent color.
+/// letters (int): The number of first letters of the title to highlight.
 #let cvSection(
   title,
   highlighted: true,
@@ -229,6 +234,15 @@
   box(width: 1fr, line(stroke: 0.9pt, length: 100%))
 }
 
+/// Add an entry to the CV.
+///
+/// title (str): The title of the entry.
+/// society (str): The society of the entr (company, university, etc.).
+/// date (str): The date of the entry.
+/// location (str): The location of the entry.
+/// description (str | array): The description of the entry. It can be a string or an array of strings.
+/// logo (image): The logo of the society. If empty, no logo will be displayed.
+/// tags (array): The tags of the entry.
 #let cvEntry(
   title: "Title",
   society: "Society",
@@ -380,6 +394,10 @@
   entryTagListStyle(tags)
 }
 
+/// Add a skill to the CV.
+///
+/// type (str): The type of the skill. It is displayed on the left side.
+/// info (str | content): The information about the skill. It is displayed on the right side. Items can be seperated by `#hbar()`.
 #let cvSkill(type: "Type", info: "Info") = {
   let skillTypeStyle(str) = {
     align(right, text(size: 10pt, weight: "bold", str))
@@ -448,6 +466,12 @@
   v(-6pt)
 }
 
+/// Add the publications to the CV by reading a bib file.
+///
+/// bib (bibliography): The `bibliography` object with the path to the bib file.
+/// keyList (list): The list of keys to include in the publication list.
+/// refStyle (str): The reference style of the publication list.
+/// refFull (bool): Whether to show the full reference or not.
 #let cvPublication(
   bib: "",
   keyList: list(),
