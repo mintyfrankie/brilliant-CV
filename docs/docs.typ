@@ -18,7 +18,7 @@
 
 #h(10pt)
 
-#let docs = tidy.parse-module(read("cv.typ"))
+#let docs = tidy.parse-module(read("/cv.typ"))
 #tidy.show-module(
   docs,
   show-outline: false,
