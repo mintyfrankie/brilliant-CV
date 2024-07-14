@@ -1,7 +1,7 @@
 name: Generate Documentation
 
 on:
-  push: {}
+  # push: {}
   workflow_dispatch:
 
 
