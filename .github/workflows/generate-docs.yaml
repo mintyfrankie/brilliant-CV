@@ -49,7 +49,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ env.ARTIFACT_NAME }}
-          download_path: ${{ env.DIR }}
 
       - name: Deploy
         id: deployment
