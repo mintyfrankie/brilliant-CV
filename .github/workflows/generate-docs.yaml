@@ -34,6 +34,13 @@ jobs:
     needs: build
     name: deploy-docs
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.build.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -45,8 +52,5 @@ jobs:
           download_path: ${{ env.DIR }}
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.DIR }}
-          force_orphan: true
+        id: deployment
+        uses: actions/deploy-pages@v4
