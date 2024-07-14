@@ -60,7 +60,7 @@ In order to make Typst render correctly, you will have to install the required f
 
 ### 2. Check Documentation
 
-A [documentation](https://github.com/mintyfrankie/brilliant-CV/actions/runs/9926458292/artifacts/1699041366) on CV functions is provided for reference.
+A [documentation](docs/docs.pdf) on CV functions is provided for reference.
 
 ### 3. Bootstrap Template
 
