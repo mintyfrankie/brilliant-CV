@@ -1,7 +1,7 @@
 name: Generate Documentation
 
 on:
-  # push: {}
+  push: {}
   workflow_dispatch:
 
 
@@ -40,7 +40,3 @@ jobs:
           name: github-pages
           path: ./docs.pdf
           if-no-files-found: error
-
-      - name: Deploy to Github pages
-        id: deployment
-        uses: actions/deploy-pages@v4
