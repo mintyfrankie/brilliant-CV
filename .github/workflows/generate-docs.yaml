@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: .
+          path: ./docs.pdf
           if-no-files-found: error
 
       - name: Deploy to Github pages
