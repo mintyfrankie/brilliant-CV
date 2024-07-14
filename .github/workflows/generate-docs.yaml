@@ -1,12 +1,14 @@
 name: Generate Documentation
 
 on:
-  push: {}
+  push:
+    branches:
+      - "preview-v2"
   workflow_dispatch:
 
 env:
-  DIR: "."
-  FILE: "docs"
+  ARTIFACT_NAME: docs
+  DIR: docs
 
 jobs:
   build:
@@ -25,8 +27,8 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.FILE }}.pdf
-          path: ${{ env.DIR }}
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ./docs.pdf
 
   deploy:
     needs: build
@@ -39,7 +41,8 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.FILE }}.pdf
+          name: ${{ env.ARTIFACT_NAME }}
+          download_path: ${{ env.DIR }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
