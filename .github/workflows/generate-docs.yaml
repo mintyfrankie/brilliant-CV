@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  DIR: "./github_artifacts"
+  DIR: "."
   FILE: "docs"
 
 jobs:
