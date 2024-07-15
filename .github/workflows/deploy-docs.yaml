@@ -1,0 +1,18 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - preview-v2-docs
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v3
+      - run: typst compile ./docs/docs.typ --root ./
+      - uses: actions/upload-artifact@v4
+        with:
+          name: docs
