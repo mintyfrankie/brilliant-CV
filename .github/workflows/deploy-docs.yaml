@@ -2,8 +2,6 @@ name: Deploy Documentation
 
 on:
   push:
-    branches:
-      - preview-v2-docs
   workflow_dispatch:
 
 jobs:
