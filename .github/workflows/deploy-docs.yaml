@@ -6,8 +6,6 @@ on:
       - preview-v2-docs
   workflow_dispatch:
 
-permissions: write-all
-
 jobs:
   compile:
     runs-on: ubuntu-latest
@@ -22,6 +20,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: compile
     steps:
       - uses: actions/download-artifact@v4
@@ -31,3 +31,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
+          force_orphan: true
