@@ -87,6 +87,8 @@ It is recommended to:
 
 ## Migration from `v1`
 
+> The version `v1` is now deprecated, due to the compliance to Typst Packages standard. However, if you want to continue to develop on the older version, please refer to the `v1-legacy` branch.
+
 With an existing CV project using the `v1` version of the template, a migration is needed, including replacing some files / some content in certain files.
 
 1. Delete `brilliant-CV` folder, `.gitmodules`. (Future package management will directly be managed by Typst)
