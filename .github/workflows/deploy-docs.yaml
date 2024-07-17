@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: fontist/setup-fontist@v2
+      - run: fontist install "Roboto"
+      - run: fontist install "Source Sans 3"
       - uses: typst-community/setup-typst@v3
       - run: typst compile ./docs/docs.typ --root ./
       - uses: actions/upload-artifact@v4
