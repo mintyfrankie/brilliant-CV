@@ -5,13 +5,13 @@
 </h1>
 
 <p align="center">
-  <img alt="Check Status Badge" src="https://github.com/mintyfrankie/brilliant-CV/actions/workflows/compile.yml/badge.svg"/>
-  <img alt="Typst Version" src="https://img.shields.io/badge/Compatible Typst Version-0.11.0-blue"/>
+  <img alt="Typst Version" src="https://img.shields.io/badge/Minimal Compatible Typst Version-0.11.0-blue"/>
+  <img alt="Read Documentation" src="https://img.shields.io/badge/Read-Documentation-yellow?link=https://mintyfrankie.github.io/brilliant-CV/docs.pdf">
 </p>
 
 <br>
 
-> If my work helps you drift through tedious job seeking journey, don't hesitate to think about [buying me a Coke Zero](https://github.com/sponsors/mintyfrankie)... or a lot of them! 🥤 
+> If my work helps you drift through tedious job seeking journey, don't hesitate to think about [buying me a Coke Zero](https://github.com/sponsors/mintyfrankie)... or a lot of them! 🥤
 
 
 
@@ -52,69 +52,59 @@
 
 ## Usage
 
-### Installation
+> If you are using Typst online editor, you don't have to follow local development steps.
 
-You can either directly create a new repository by using this template, or you might want to add the submodule repository and build up your own Typst project.
+### 1. Install Fonts
 
-**Method 1: Jumpstart by clicking `Use this template` and create your own CV repository**
+In order to make Typst render correctly, you will have to install the required fonts [**Roboto**](https://fonts.google.com/specimen/Roboto) and [**Source Sans Pro**](https://fonts.google.com/specimen/Source+Sans+3) (or **Source Sans 3**) in your local system.
 
-When compiling, use:
+### 2. Check Documentation
 
-```
-typst compile ./cv.typ ./output/CV.pdf --font-path ./src/fonts/
-```
+A [documentation](https://mintyfrankie.github.io/brilliant-CV/docs.pdf) on CV functions is provided for reference.
 
-**Method 2: Add the [submodule repository](https://github.com/mintyfrankie/brilliant-CV-Submodule) to your existing project**
+### 3. Bootstrap Template
 
-```bash
-cd your/CV/project
-git submodule add https://github.com/mintyfrankie/brilliant-CV-Submodule brilliant-CV
-typst compile cv.typ
-```
-
-When you want to get new features from the updated template module:
+In your local system, just working like `git clone`, boostrap the template using this command:
 
 ```bash
-git submodule update --remote
+typst init @preview/brilliant-cv:<version>
 ```
 
-### Tips
+Replace the `<version>` with the latest or any releases (after 2.0.0).
 
-- `metadata.typ` should live in the project root folder, and by changing the variables in it, you can quickly adjust language or display settings of the documents.
-- Make sure when you build a multilingual module (`./modules_fr` for example) you are quoting the right language variable in the `metadata.typ` (`fr` in this case).
+### 4. Compile Files
 
-### Project Structure
+Adapt the `metadata.toml` to suit your needs, then `typst c cv.typ` to get your first CV!
 
-```
-|
-|-- modules_en/          --> sections of your CV
-|   |- *.typ
-|
-|-- modules_*         --> multilingual sections of your CV
-|
-|-- brilliant-CV/
-|   |- template.typ   --> the template file
-|   |- metadata-demo.typ -> the example metadata file
-|
-|-- src/
-|   |- fonts/         --> local font files
-|   |- logos/         --> logos for your cvEntry
-|   |- *.png          --> images used in the documents
-|   |- *.bib          --> BibTeX file for Publications section
-|
-|-- cv.typ          --> CV file
-|-- letter.typ      --> Cover Letter file
-|-- metadata.typ    --> Personal Infos & Settings
-```
+### 5. Beyond
 
+It is recommended to:
 
-## Current Issues
+1. Use `git` to manage your project, as it helps trace your changes and version control your CV.
+2. Use `typstyle` and `pre-commit` to help you format your CV.
+3. Use `typos` to check typos in your CV if your main locale is English.
+4. (Advanced) Use `LTex` in your favorite code editor to check grammars and get language suggestions.
 
-> As Typst is still a very young (although very promising and robust to my belief) project, some features are only partially supported on certain platforms. It is hence difficult to predict any anomalies, but you are definitely welcomed to bring a PR, an issue or a discussion!
+## Migration from `v1`
 
-- **Publications Section**: Current version of Typst does not allow full customization on the `#bibliography` function, so the display of publication section might not be optimal. See [this disucssion](https://github.com/typst/typst/issues/942).
+> The version `v1` is now deprecated, due to the compliance to Typst Packages standard. However, if you want to continue to develop on the older version, please refer to the `v1-legacy` branch.
+
+With an existing CV project using the `v1` version of the template, a migration is needed, including replacing some files / some content in certain files.
+
+1. Delete `brilliant-CV` folder, `.gitmodules`. (Future package management will directly be managed by Typst)
+2. Migrate all the config on `metadata.typ` by creating a new `metadata.toml`. Follow the example toml file in the repo, it is rather straightforward to migrate.
+3. For `cv.typ` and `letter.typ`, copy the new files from the repo, and adapt the modules you have in your project.
+4. For the module files in `/modules_*` folders:
+   1. Delete the old import `#import "../brilliant-CV/template.typ": *`, and replace it by the import statements in the new template files.
+   2. Due to the Typst path handling mecanism, one cannot directly pass the path string to some functions anymore. This concerns, for example, the `logo` argument in `cvEntry`, but also on `cvPublication` as well. Some parameter names were changed, but most importantly, **you should pass a function instead of a string (i.e. `image("logo.png")` instead of `"logo.png"`).** Refer to new template files for reference.
+5. You might need to install `Roboto` and `Source Sans Pro` on your local system now, as new Typst package discourages including these large files.
+6. Run `typst c cv.typ` without passing the `font-path` flag. All should be good now, congrats!
+
+Feel free to raise an issue for more assistance should you encounter a problem that you cannot solve on your own :)
 
 ## Credit
 
 - [**Typst**](https://github.com/typst/typst) is a newborn, open source and simple typesetting engine that offers a better scripting experience than [**LaTeX**](https://www.latex-project.org/).
 - [**Awesome-CV**](https://github.com/posquit0/Awesome-CV) is the original LaTeX CV template from which this project is heavily inspired. Thanks [posquit0](https://github.com/posquit0) for your excellent work!
+- [**Font Awesome**](https://fontawesome.com/) is a comprehensive icon library and toolkit used widely in web projects for its vast array of icons and ease of integration.
+- [**tidy**](https://github.com/Mc-Zen/tidy) is a package that generates documentation directly in Typst for your Typst modules. Keep it tidy!
