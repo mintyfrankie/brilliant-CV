@@ -1,30 +1,44 @@
-language = "en" # INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
+ # INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
+language = "en"
 
 [layout]
-awesome_color = "skyblue" # Optional values: skyblue, red, nephritis, concrete, darknight
+# Optional values: skyblue, red, nephritis, concrete, darknight
+awesome_color = "skyblue"
+
 # Skips are for controlling the spacing between sections and entries
 before_section_skip = "1pt"
 before_entry_skip = "1pt"
 before_entry_description_skip = "1pt"
 
 [layout.header]
-header_align = "left" # Optional values: left, center, right
-display_profile_photo = true # Decide if you want to display profile photo or not
+# Optional values: left, center, right
+header_align = "left"
+
+ # Decide if you want to display profile photo or not
+display_profile_photo = true
 profile_photo_path = "template/src/avatar.png"
 
 [layout.entry]
-display_entry_society_first = true # Decide if you want to put your company in bold or your position in bold
-display_logo = true # Decide if you want to display organisation logo or not
+# Decide if you want to put your company in bold or your position in bold
+display_entry_society_first = true
+
+# Decide if you want to display organisation logo or not
+display_logo = true
 
 [inject]
-inject_ai_prompt = false # Decide if you want to inject AI prompt or not
-inject_keywords = true # Decide if you want to inject keywords or not
+# Decide if you want to inject AI prompt or not
+inject_ai_prompt = false
+
+# Decide if you want to inject keywords or not
+inject_keywords = true
 injected_keywords_list = ["Data Analyst", "GCP", "Python", "SQL", "Tableau"]
 
 [personal]
 first_name = "John"
 last_name = "Doe"
 
+# The order of this section will affect how the entries are displayed
+# The custom value is for any additional information you want to add
 [personal.info]
 github = "mintyfrankie"
 phone = "+33 6 12 34 56 78"
@@ -37,6 +51,9 @@ linkedin = "johndoe"
 # extraInfo = "I am a cool kid"
 # custom-1 = (icon: "", text: "example", link: "https://example.com")
 
+# add a new section if you want to include the language of your choice
+# i.e. [[lang.ru]]
+# each section must contains the following fields
 [lang.en]
 header_quote = "Experienced Data Analyst looking for a full time job starting from now"
 cv_footer = "Curriculum vitae"
@@ -52,6 +69,8 @@ header_quote = "具有丰富经验的数据分析师，随时可入职"
 cv_footer = "简历"
 letter_footer = "申请信"
 
-[lang.non_latin] # For languages that are not written in Latin script
+ # For languages that are not written in Latin script
+ # Currently supported non-latin language codes: ("zh", "ja", "ko", "ru")
+[lang.non_latin]
 name = "王道尔"
 font = "Heiti SC"
