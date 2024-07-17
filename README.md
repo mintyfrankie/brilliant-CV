@@ -5,8 +5,8 @@
 </h1>
 
 <p align="center">
-  <img alt="Check Status Badge" src="https://github.com/mintyfrankie/brilliant-CV/actions/workflows/compile.yml/badge.svg"/>
-  <img alt="Typst Version" src="https://img.shields.io/badge/Compatible Typst Version-0.11.0-blue"/>
+  <img alt="Typst Version" src="https://img.shields.io/badge/Minimal Compatible Typst Version-0.11.0-blue"/>
+  <img alt="Read Documentation" src="https://img.shields.io/badge/Read-Documentation-yellow?link=https://mintyfrankie.github.io/brilliant-CV/docs.pdf">
 </p>
 
 <br>
