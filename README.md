@@ -67,7 +67,7 @@ A [documentation](https://mintyfrankie.github.io/brilliant-CV/docs.pdf) on CV fu
 In your local system, just working like `git clone`, boostrap the template using this command:
 
 ```bash
-typst init @preview/brilliant-CV:<version>
+typst init @preview/brilliant-cv:<version>
 ```
 
 Replace the `<version>` with the latest or any releases (after 2.0.0).
