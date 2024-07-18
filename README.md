@@ -4,11 +4,6 @@
   Brilliant CV
 </h1>
 
-<p align="center">
-  <img alt="Typst Version" src="https://img.shields.io/badge/Minimal Compatible Typst Version-0.11.0-blue"/>
-  <img alt="Read Documentation" src="https://img.shields.io/badge/Read-Documentation-yellow?link=https://mintyfrankie.github.io/brilliant-CV/docs.pdf">
-</p>
-
 <br>
 
 > If my work helps you drift through tedious job seeking journey, don't hesitate to think about [buying me a Coke Zero](https://github.com/sponsors/mintyfrankie)... or a lot of them! 🥤
@@ -56,7 +51,9 @@
 
 ### 1. Install Fonts
 
-In order to make Typst render correctly, you will have to install the required fonts [**Roboto**](https://fonts.google.com/specimen/Roboto) and [**Source Sans Pro**](https://fonts.google.com/specimen/Source+Sans+3) (or **Source Sans 3**) in your local system.
+In order to make Typst render correctly, you will have to install the required fonts [**Roboto**](https://fonts.google.com/specimen/Roboto), [**Source Sans Pro**](https://fonts.google.com/specimen/Source+Sans+3) (or **Source Sans 3**) as well as [Fontawesome 6](https://github.com/typst/webapp-issues/issues/401) in your local system.
+
+*NOTE: For online editor, Roboto and Source Sans Pro are already included; however you will still have to manually upload the `.otf` files of Fontawesome to your project. See [Issue](https://github.com/typst/webapp-issues/issues/401)*
 
 ### 2. Check Documentation
 
