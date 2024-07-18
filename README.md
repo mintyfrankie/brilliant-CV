@@ -4,11 +4,6 @@
   Brilliant CV
 </h1>
 
-<p align="center">
-  <img alt="Typst Version" src="https://img.shields.io/badge/Minimal Compatible Typst Version-0.11.0-blue"/>
-  <img alt="Read Documentation" src="https://img.shields.io/badge/Read-Documentation-yellow?link=https://mintyfrankie.github.io/brilliant-CV/docs.pdf">
-</p>
-
 <br>
 
 > If my work helps you drift through tedious job seeking journey, don't hesitate to think about [buying me a Coke Zero](https://github.com/sponsors/mintyfrankie)... or a lot of them! 🥤
