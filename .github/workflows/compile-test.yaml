@@ -6,16 +6,22 @@ on:
             - feat-github-test-workflow
     workflow_dispatch:
 
+env:
+    PACKAGE_NAME: brilliant-cv
+    PACKAGE_VERSION: 2.0.0
+    TEMPLATE_PATH: template
+    TEMPLATE_ENTRYPOINT: cv.typ
+
 jobs:
     compile:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
               with:
-                path: ./brilliant-cv
+                path: ./${{ env.PACKAGE_NAME }}
             - uses: typst-community/setup-typst@v3
             - run: |
-                mkdir -p $HOME/.local/share/typst/packages/preview/brilliant-cv/2.0.0
-                cp -r -a ./brilliant-cv/. $HOME/.local/share/typst/packages/preview/brilliant-cv/2.0.0
-            - run: typst c ./template/cv.typ
+                mkdir -p $HOME/.local/share/typst/packages/preview/${{ env.PACKAGE_NAME }}/${{ env.PACKAGE_VERSION }}
+                cp -r -a ./${{ env.PACKAGE_NAME }}/. $HOME/.local/share/typst/packages/preview/${{ env.PACKAGE_NAME }}/${{ env.PACKAGE_VERSION }}
+            - run: typst c ./${{ env.PACKAGE_NAME }}/${{ env.TEMPLATE_PATH }}/${{ env.TEMPLATE_ENTRYPOINT }}
 
