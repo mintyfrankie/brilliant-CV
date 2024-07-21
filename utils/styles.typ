@@ -26,7 +26,7 @@
 
 #let setAccentColor(awesomeColors, metadata) = {
   let param = metadata.layout.awesome_color
-  return if type(param) == color {
+  return if type(eval(param)) == color {
     param
   } else {
     awesomeColors.at(param)
