@@ -11,9 +11,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+              with:
+                path: ./brilliant-cv
             - uses: typst-community/setup-typst@v3
             - run: |
                 mkdir -p $HOME/.local/share/typst/packages/preview/brilliant-cv/2.0.0
-                cp -r $WORKSPACE $HOME/.local/share/typst/packages/preview/brilliant-cv/2.0.0/
+                cp -r -a ./brilliant-cv/. $HOME/.local/share/typst/packages/preview/brilliant-cv/2.0.0
             - run: typst c ./template/cv.typ
 
