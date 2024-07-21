@@ -8,7 +8,7 @@
 #import "./utils/lang.typ": *
 
 /* Layout */
-#let _cv(metadata, doc) = {
+#let cv(metadata, doc) = {
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList

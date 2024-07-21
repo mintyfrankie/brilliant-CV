@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - feat-github-test-workflow
+    pull_request:
     workflow_dispatch:
 
 env:
