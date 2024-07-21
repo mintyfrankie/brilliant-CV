@@ -33,7 +33,7 @@ and #link("https://fonts.google.com/specimen/Source+Sans+3")[Source Sans Pro] (o
 
 === Step 2: Check Documentation
 
-You are reading this documentation now, woah! 🎉
+You are reading this documentation now, woah!
 
 === Step 3: Bootstrap Template
 
