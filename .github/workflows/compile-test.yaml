@@ -1,0 +1,11 @@
+name: Compile Test
+
+on:
+    workflow_dispatch:
+
+jobs:
+    compile:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: typst-community/setup-typst@v3
