@@ -84,10 +84,11 @@
         continue
       }
       if k.contains("custom") {
+        let evaluatedV = eval(v)
         // example value (icon: fa-graduation-cap(), text: "PhD", link: "https://www.example.com")
-        let icon = v.at("icon", default: "")
-        let text = v.at("text", default: "")
-        let link_value = v.at("link", default: "")
+        let icon = evaluatedV.at("icon", default: "")
+        let text = evaluatedV.at("text", default: "")
+        let link_value = evaluatedV.at("link", default: "")
         box({
           icon
           h(5pt)

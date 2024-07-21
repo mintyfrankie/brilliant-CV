@@ -49,7 +49,7 @@ linkedin = "johndoe"
 # orcid = "0000-0000-0000-0000"
 # researchgate = "John-Doe"
 # extraInfo = "I am a cool kid"
-# custom-1 = (icon: "", text: "example", link: "https://example.com")
+custom-1 = "(icon: \"\", text: \"PhD\", link: \"https://www.example.com\")"
 
 # add a new section if you want to include the language of your choice
 # i.e. [[lang.ru]]
