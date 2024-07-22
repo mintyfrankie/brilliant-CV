@@ -1,15 +1,17 @@
- # INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
+#:schema ../metadata.toml.schema.json
+ 
+# INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
 language = "en"
 
 [layout]
-# Optional values: skyblue, red, nephritis, concrete, darknight
-# You can also use a custom color by hex code i.e. "#1E90FF"
-awesome_color = "skyblue"
+    # Optional values: skyblue, red, nephritis, concrete, darknight
+    # You can also use a custom color by hex code i.e. "#1E90FF"
+    awesome_color = "skyblue"
 
-# Skips are for controlling the spacing between sections and entries
-before_section_skip = "1pt"
-before_entry_skip = "1pt"
-before_entry_description_skip = "1pt"
+    # Skips are for controlling the spacing between sections and entries
+    before_section_skip = "1pt"
+    before_entry_skip = "1pt"
+    before_entry_description_skip = "1pt"
 
 [layout.header]
     # Optional values: left, center, right
