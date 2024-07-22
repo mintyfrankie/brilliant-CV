@@ -1,0 +1,25 @@
+name: Add Documentation upon Release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: fontist/setup-fontist@v2
+      - run: fontist install "Roboto"
+      - run: fontist install "Source Sans 3"
+      - uses: typst-community/setup-typst@v3
+      - run: typst compile ./docs/docs.typ --root ./ --font-path /home/runner/.fontist/fonts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: ./docs/docs.pdf
+      - uses: softprops/action-gh-release@v2
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        with: 
+          files: ./docs/docs.pdf
