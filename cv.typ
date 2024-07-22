@@ -84,10 +84,16 @@
         continue
       }
       if k.contains("custom") {
-        // example value (icon: fa-graduation-cap(), text: "PhD", link: "https://www.example.com")
-        let icon = v.at("icon", default: "")
+        let img = v.at("image", default: "")
+        let awesomeIcon = v.at("awesomeIcon", default: "")
         let text = v.at("text", default: "")
         let link_value = v.at("link", default: "")
+        let icon = ""
+        if img != "" {
+          icon = img.with(width: 10pt)
+        } else {
+          icon = fa-icon(awesomeIcon)
+        }
         box({
           icon
           h(5pt)
@@ -96,7 +102,8 @@
       } else if v != "" {
         box({
           // Adds icons
-          personalInfoIcons.at(k) + h(5pt)
+          personalInfoIcons.at(k)
+          h(5pt)
           // Adds hyperlinks
           if k == "email" {
             link("mailto:" + v)[#v]
