@@ -1,0 +1,48 @@
+name: Compile Test
+
+on:
+    push:
+    pull_request:
+    workflow_dispatch:
+
+env:
+  CHECKOUT_PATH: ./project
+
+jobs:
+    compile:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                path: ${{ env.CHECKOUT_PATH }}
+
+            - uses: SebRollen/toml-action@v1.2.0
+              id: get-package-name
+              with:
+                file: ./${{ env.CHECKOUT_PATH }}/typst.toml
+                field: package.name
+
+            - uses: SebRollen/toml-action@v1.2.0
+              id: get-package-version
+              with:
+                file: ./${{ env.CHECKOUT_PATH }}/typst.toml
+                field: package.version
+
+            - uses: SebRollen/toml-action@v1.2.0
+              id: get-template-path
+              with:
+                file: ./${{ env.CHECKOUT_PATH }}/typst.toml
+                field: template.path
+
+            - uses: SebRollen/toml-action@v1.2.0
+              id: get-template-entrypoint
+              with:
+                file: ./${{ env.CHECKOUT_PATH }}/typst.toml
+                field: template.entrypoint
+
+            - uses: typst-community/setup-typst@v3
+            - run: |
+                mkdir -p $HOME/.local/share/typst/packages/preview/${{ steps.get-package-name.outputs.value }}/${{ steps.get-package-version.outputs.value }}
+                cp -r -a ${{ env.CHECKOUT_PATH }}/. $HOME/.local/share/typst/packages/preview/${{ steps.get-package-name.outputs.value }}/${{ steps.get-package-version.outputs.value }}
+            - run: typst c ${{ env.CHECKOUT_PATH }}/${{ steps.get-template-path.outputs.value }}/${{ steps.get-template-entrypoint.outputs.value }}
+
