@@ -1,5 +1,6 @@
-#:schema ../metadata.toml.schema.json
- 
+#:schema https://raw.githubusercontent.com/mintyfrankie/brilliant-CV/feat-toml-schema/metadata.toml.schema.json
+
+# Set the output language
 # INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
 language = "en"
 
@@ -13,20 +14,20 @@ language = "en"
     before_entry_skip = "1pt"
     before_entry_description_skip = "1pt"
 
-[layout.header]
-    # Optional values: left, center, right
-    header_align = "left"
+    [layout.header]
+        # Optional values: left, center, right
+        header_align = "left"
 
-    # Decide if you want to display profile photo or not
-    display_profile_photo = true
-    profile_photo_path = "template/src/avatar.png"
+        # Decide if you want to display profile photo or not
+        display_profile_photo = true
+        profile_photo_path = "template/src/avatar.png"
 
-[layout.entry]
-    # Decide if you want to put your company in bold or your position in bold
-    display_entry_society_first = true
+    [layout.entry]
+        # Decide if you want to put your company in bold or your position in bold
+        display_entry_society_first = true
 
-    # Decide if you want to display organisation logo or not
-    display_logo = true
+        # Decide if you want to display organisation logo or not
+        display_logo = true
 
 [inject]
     # Decide if you want to inject AI prompt or not
@@ -40,24 +41,23 @@ language = "en"
     first_name = "John"
     last_name = "Doe"
 
-# The order of this section will affect how the entries are displayed
-# The custom value is for any additional information you want to add, name it as custom-1, custom-2, etc.
-[personal.info]
-    github = "mintyfrankie"
-    phone = "+33 6 12 34 56 78"
-    email = "john.doe@me.org"
-    linkedin = "johndoe"
-    # gitlab = "mintyfrankie"
-    # homepage = "jd.me.org"
-    # orcid = "0000-0000-0000-0000"
-    # researchgate = "John-Doe"
-    # extraInfo = "I am a cool kid"
-    [personal.info.custom-1]
-        # image = "" # Example: image("./path/to/image.png")
-        awesomeIcon = "graduation-cap" # Example: "graduation-cap" see https://typst.app/universe/package/fontawesome/
-        text = "PhD"
-        link = "https://www.example.com"
-
+    # The order of this section will affect how the entries are displayed
+    # The custom value is for any additional information you want to add, name it as custom-1, custom-2, etc.
+    [personal.info]
+        github = "mintyfrankie"
+        phone = "+33 6 12 34 56 78"
+        email = "john.doe@me.org"
+        linkedin = "johndoe"
+        # gitlab = "mintyfrankie"
+        # homepage = "jd.me.org"
+        # orcid = "0000-0000-0000-0000"
+        # researchgate = "John-Doe"
+        # extraInfo = "I am a cool kid"
+        [personal.info.custom-1]
+            # image = "" # Example: image("./path/to/image.png")
+            awesomeIcon = "graduation-cap" # Example: "graduation-cap" see https://typst.app/universe/package/fontawesome/
+            text = "PhD"
+            link = "https://www.example.com"
 
 # add a new section if you want to include the language of your choice
 # i.e. [[lang.ru]]

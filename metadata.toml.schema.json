@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "brilliant-cv metadata schema",
+    "title": "brilliant-cv Metadata Schema",
     "type": "object",
     "properties": {
       "language": {
@@ -112,7 +112,24 @@
               "linkedin": {
                 "type": "string"
               },
-              "custom-1": {
+              "gitlab": {
+                "type": "string"
+              },
+              "homepage": {
+                "type": "string"
+              },
+              "orcid": {
+                "type": "string"
+              },
+              "researchgate": {
+                "type": "string"
+              },
+              "extraInfo": {
+                "type": "string"
+              }
+            },
+            "patternProperties": {
+              "^custom-[0-9]+$": {
                 "type": "object",
                 "properties": {
                   "awesomeIcon": {
@@ -128,7 +145,7 @@
                 "required": ["awesomeIcon", "text", "link"]
               }
             },
-            "required": ["github", "phone", "email", "linkedin", "custom-1"]
+            "additionalProperties": false
           }
         },
         "required": ["first_name", "last_name", "info"]
@@ -151,7 +168,7 @@
             },
             "required": ["header_quote", "cv_footer", "letter_footer"]
           },
-          "non_latin": {
+          "^non_latin$": {
             "type": "object",
             "properties": {
               "name": {
