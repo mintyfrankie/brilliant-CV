@@ -503,7 +503,7 @@
 /// Add the publications to the CV by reading a bib file.
 ///
 /// - bib (bibliography): The `bibliography` object with the path to the bib file.
-/// - keyList (list): The list of keys to include in the publication list.
+/// - keyList (array): The list of keys to include in the publication list.
 /// - refStyle (str): The reference style of the publication list.
 /// - refFull (bool): Whether to show the full reference or not.
 /// -> content
