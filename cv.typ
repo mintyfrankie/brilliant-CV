@@ -417,10 +417,12 @@
   entryTagListStyle(tags)
 }
 
-/// Add a skill to the CV.
+/// Add a line of skill to the CV.
+/// 
+/// A skill is composed of a type (bold at left) and a description (right). 
 ///
 /// - type (str): The type of the skill. It is displayed on the left side.
-/// - info (str | content): The information about the skill. It is displayed on the right side. Items can be seperated by `#hbar()`.
+/// - info (content): The information about the skill. It is displayed on the right side. Items can be seperated by `#hbar()`.
 /// -> content
 #let cvSkill(type: "Type", info: "Info") = {
   let skillTypeStyle(str) = {
