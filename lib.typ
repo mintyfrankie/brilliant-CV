@@ -62,20 +62,20 @@
   )
   set text(size: 12pt)
 
-  letterHeader(
+  _letterHeader(
     myAddress: myAddress,
     recipientName: recipientName,
     recipientAddress: recipientAddress,
     date: date,
     subject: subject,
     metadata: metadata,
-    awesomeColors: awesomeColors,
+    _awesomeColors: awesomeColors,
   )
 
   doc
 
   if signature != "" {
-    letterSignature(signature)
+    _letterSignature(signature)
   }
-  letterFooter(metadata)
+  _letterFooter(metadata)
 }

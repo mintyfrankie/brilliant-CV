@@ -4,16 +4,19 @@
 
 #import "./utils/styles.typ": *
 
-#let letterHeader(
+/// Insert the header section of the letter.
+#let _letterHeader(
   myAddress: "Your Address Here",
   recipientName: "Company Name Here",
   recipientAddress: "Company Address Here",
-  date: "Today's Date",
+  date: datetime.today().display(),
   subject: "Subject: Hey!",
   metadata: metadata,
-  awesomeColors: awesomeColors,
+  _awesomeColors: awesomeColors,
 ) = {
-  let accentColor = setAccentColor(awesomeColors, metadata)
+  let accentColor = setAccentColor(_awesomeColors, metadata)
+  let firstName = metadata.personal.first_name
+  let lastName = metadata.personal.last_name
 
   let letterHeaderNameStyle(str) = {
     text(fill: accentColor, weight: "bold", str)
@@ -28,9 +31,7 @@
     text(fill: accentColor, weight: "bold", underline(str))
   }
 
-  letterHeaderNameStyle(metadata.personal.first_name + " " + metadata
-    .personal
-    .last_name)
+  letterHeaderNameStyle(firstName + " " + lastName)
   v(1pt)
   letterHeaderAddressStyle(myAddress)
   v(1pt)
@@ -45,13 +46,13 @@
   linebreak()
 }
 
-#let letterSignature(img) = {
+#let _letterSignature(img) = {
   set image(width: 25%)
   linebreak()
   place(right, dx: -5%, dy: 0%, img)
 }
 
-#let letterFooter(metadata) = {
+#let _letterFooter(metadata) = {
   // Parameters
   let firstName = metadata.personal.first_name
   let lastName = metadata.personal.last_name
