@@ -243,7 +243,6 @@
   box(width: 1fr, line(stroke: 0.9pt, length: 100%))
 }
 
-// TODO: To refactor
 /// Add an entry to the CV.
 ///
 /// - title (str): The title of the entry.
@@ -254,7 +253,7 @@
 /// - logo (image): The logo of the society. If empty, no logo will be displayed.
 /// - tags (array): The tags of the entry.
 /// - metadata (array): (optional) the metadata read from the TOML file.
-/// - awesomeColors (array): (optional) the awesome colors of the CV.
+/// - _awesomeColors (array): (optional) the awesome colors of the CV.
 /// -> content
 #let cvEntry(
   title: "Title",
@@ -265,15 +264,16 @@
   logo: "",
   tags: (),
   metadata: metadata,
-  awesomeColors: awesomeColors,
+  _awesomeColors: awesomeColors,
 ) = {
-  let accentColor = setAccentColor(awesomeColors, metadata)
+  let accentColor = setAccentColor(_awesomeColors, metadata)
   let beforeEntrySkip = eval(
     metadata.layout.at("before_entry_skip", default: 1pt),
   )
   let beforeEntryDescriptionSkip = eval(
     metadata.layout.at("before_entry_description_skip", default: 1pt),
   )
+  let displayEntrySocietyFirst = metadata.layout.entry.display_entry_society_first
 
   let entryA1Style(str) = {
     text(size: 10pt, weight: "bold", str)
@@ -336,13 +336,6 @@
       ifFalse
     }
   }
-  let setLogoLength(path) = {
-    return if path == "" {
-      0%
-    } else {
-      4%
-    }
-  }
   let setLogoContent(path) = {
     return if logo == "" [] else {
       set image(width: 100%)
@@ -364,44 +357,35 @@
       stroke: none,
       row-gutter: 6pt,
       align: auto,
-      {
-        entryA1Style(
+      entryA1Style(
           ifSocietyFirst(
-            metadata.layout.entry.display_entry_society_first,
+            displayEntrySocietyFirst,
             society,
             title,
           ),
-        )
-      },
-      {
-        entryA2Style(
+        ),
+      entryA2Style(
           ifSocietyFirst(
-            metadata.layout.entry.display_entry_society_first,
+            displayEntrySocietyFirst,
             location,
             date,
           ),
-        )
-      },
-
-      {
-        entryB1Style(
+        ),
+      entryB1Style(
           ifSocietyFirst(
-            metadata.layout.entry.display_entry_society_first,
+            displayEntrySocietyFirst,
             title,
             society,
           ),
-        )
-      },
-      {
-        entryB2Style(
+      ),
+      entryB2Style(
           ifSocietyFirst(
-            metadata.layout.entry.display_entry_society_first,
+            displayEntrySocietyFirst,
             date,
             location,
-          ),
-        )
-      },
-    ),
+          )
+      )
+    )
   )
   entryDescriptionStyle(description)
   entryTagListStyle(tags)
@@ -432,7 +416,6 @@
   v(-6pt)
 }
 
-// TODO: To refactor
 /// Add a Honor to the CV.
 ///
 /// - date (str): The date of the honor.
