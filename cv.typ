@@ -250,12 +250,13 @@
 }
 
 /// Add an entry to the CV.
+/// 
 ///
 /// - title (str): The title of the entry.
 /// - society (str): The society of the entr (company, university, etc.).
 /// - date (str): The date of the entry.
 /// - location (str): The location of the entry.
-/// - description (array): The description of the entry. It can be a string or an array of strings.
+/// - description (str, array, content): The description of the entry. It can be a string or an array of strings.
 /// - logo (image): The logo of the society. If empty, no logo will be displayed.
 /// - tags (array): The tags of the entry.
 /// - metadata (array): (optional) the metadata read from the TOML file.
@@ -268,7 +269,7 @@
   location: "Location",
   description: "Description",
   logo: "",
-  tags: (),
+  tags: ("Tag1", "Tag2"),
   metadata: metadata,
   _awesomeColors: awesomeColors,
 ) = {
