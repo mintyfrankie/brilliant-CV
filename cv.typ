@@ -440,8 +440,8 @@
 /// - issuer (str): The issuer of the honor.
 /// - url (str): The URL of the honor.
 /// - location (str): The location of the honor.
-/// - awesomeColors (array): (optional) The awesome colors of the CV.
 /// - metadata (array): (optional) The metadata read from the TOML file.
+/// - _awesomeColors (array): (optional) The awesome colors of the CV.
 /// -> content
 #let cvHonor(
   date: "1990",
@@ -449,10 +449,10 @@
   issuer: "",
   url: "",
   location: "",
-  awesomeColors: awesomeColors,
   metadata: metadata,
+  _awesomeColors: awesomeColors,
 ) = {
-  let accentColor = setAccentColor(awesomeColors, metadata)
+  let accentColor = setAccentColor(_awesomeColors, metadata)
 
   let honorDateStyle(str) = {
     align(right, text(str))
@@ -479,15 +479,11 @@
     honorDateStyle(date),
     if issuer == "" {
       honorTitleStyle(title)
-    } else if url != "" {
-      [
+    } else if url != "" [
         #honorTitleStyle(link(url)[#title]), #honorIssuerStyle(issuer)
-      ]
-    } else {
-      [
+    ] else [
         #honorTitleStyle(title), #honorIssuerStyle(issuer)
-      ]
-    },
+    ],
     honorLocationStyle(location),
   )
   v(-6pt)
