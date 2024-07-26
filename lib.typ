@@ -8,7 +8,10 @@
 #import "./utils/lang.typ": *
 
 /* Layout */
-#let cv(metadata, doc) = {
+#let cv(
+  metadata, 
+  profilePhoto: image("./template/src/avatar.png"),
+  doc) = {
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList
@@ -27,7 +30,7 @@
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
   )
 
-  _cvHeader(metadata, headerFont, regularColors, awesomeColors)
+  _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors)
   doc
   _cvFooter(metadata)
 }

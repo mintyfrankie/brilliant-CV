@@ -20,7 +20,6 @@ language = "en"
 
         # Decide if you want to display profile photo or not
         display_profile_photo = true
-        profile_photo_path = "template/src/avatar.png"
 
     [layout.entry]
         # Decide if you want to put your company in bold or your position in bold

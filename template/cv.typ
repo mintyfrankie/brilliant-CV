@@ -10,7 +10,10 @@
 }
 
 
-#show: cv.with(metadata)
+#show: cv.with(
+  metadata, 
+  profilePhoto: image("./src/avatar.png")
+)
 #importModules((
   "education",
   "professional",

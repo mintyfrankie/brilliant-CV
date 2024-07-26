@@ -14,7 +14,7 @@
 /// - regularColors (array): the regular colors of the CV.
 /// - awesomeColors (array): the awesome colors of the CV.
 /// -> content
-#let _cvHeader(metadata, headerFont, regularColors, awesomeColors) = {
+#let _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors) = {
   // Parameters
   let hasPhoto = metadata.layout.header.display_profile_photo
   let align = eval(metadata.layout.header.header_align)
@@ -26,7 +26,7 @@
   let lastName = metadata.personal.last_name
   let headerQuote = metadata.lang.at(metadata.language).header_quote
   let displayProfilePhoto = metadata.layout.header.display_profile_photo
-  let profilePhotoPath = metadata.layout.header.profile_photo_path
+  // let profilePhoto = metadata.layout.header.profile_photo_path
   let accentColor = setAccentColor(awesomeColors, metadata)
   let nonLatinName = ""
   let nonLatin = isNonLatin(metadata.language)
@@ -145,8 +145,9 @@
   )
 
   let makeHeaderPhotoSection() = {
+    set image(height: 3.6cm)
     if displayProfilePhoto {
-      box(image(profilePhotoPath, height: 3.6cm), radius: 50%, clip: true)
+      box(profilePhoto, radius: 50%, clip: true)
     } else {
       v(3.6cm)
     }
