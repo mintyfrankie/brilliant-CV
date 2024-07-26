@@ -4,30 +4,47 @@
 
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
-#import "./utils/styles.typ": *
-#import "./utils/lang.typ": *
+#import "./utils/styles.typ": hBar, latinFontList, latinHeaderFont, awesomeColors, regularColors, setAccentColor
+#import "./utils/lang.typ": isNonLatin
 
 /// Insert the header section of the CV.
-/// 
-/// Private function. Users should not call this function directly.
 ///
 /// - metadata (array): the metadata read from the TOML file.
 /// - headerFont (array): the font of the header.
 /// - regularColors (array): the regular colors of the CV.
 /// - awesomeColors (array): the awesome colors of the CV.
 /// -> content
-#let _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors) = {
+#let _cvHeader(
+  metadata,
+  profilePhoto,
+  headerFont,
+  regularColors,
+  awesomeColors,
+) = {
   // Parameters
-  let hasPhoto = metadata.layout.header.at("display_profile_photo", default: true)
-  let align = eval(metadata.layout.header.at("header_align", default: "left"))
-  let if_inject_ai_prompt = metadata.inject.at("inject_ai_prompt", default: false)
-  let if_inject_keywords = metadata.inject.at("inject_keywords", default: false)
-  let keywords_list = metadata.inject.at("injected_keywords_list", default: ())
+  let showProfilePhoto = metadata.layout.header.at(
+    "display_profile_photo",
+    default: true,
+  )
+  let headerAlign = eval(
+    metadata.layout.header.at("header_align", default: "left"),
+  )
+  let isInjectAIPromptEnabled = metadata.inject.at(
+    "inject_ai_prompt",
+    default: false,
+  )
+  let isInjectKeywordsEnabled = metadata.inject.at(
+    "inject_keywords",
+    default: false,
+  )
+  let injectedKeywordsList = metadata.inject.at(
+    "injected_keywords_list",
+    default: (),
+  )
   let personalInfo = metadata.personal.info
   let firstName = metadata.personal.first_name
   let lastName = metadata.personal.last_name
   let headerQuote = metadata.lang.at(metadata.language).header_quote
-  let displayProfilePhoto = metadata.layout.header.at("display_profile_photo", default: false)
   let accentColor = setAccentColor(awesomeColors, metadata)
 
   // Non Latin Logic
@@ -37,60 +54,35 @@
     nonLatinName = metadata.lang.non_latin.name
   }
 
-  // Injection
-  inject(
-    if_inject_ai_prompt: if_inject_ai_prompt,
-    if_inject_keywords: if_inject_keywords,
-    keywords_list: keywords_list,
-  )
-
-  // Styles
-  let headerFirstNameStyle(str) = {
-    text(
-      font: headerFont,
-      size: 32pt,
-      weight: "light",
-      fill: regularColors.darkgray,
-      str,
-    )
-  }
-  let headerLastNameStyle(str) = {
-    text(font: headerFont, size: 32pt, weight: "bold", str)
-  }
-  let headerInfoStyle(str) = {
-    text(size: 10pt, fill: accentColor, str)
-  }
-  let headerQuoteStyle(str) = {
-    text(size: 10pt, weight: "medium", style: "italic", fill: accentColor, str)
-  }
-
   // Components
-  let makeHeaderInfo() = {
-    let personalInfoIcons = (
-      phone: fa-phone(),
-      email: fa-envelope(),
-      linkedin: fa-linkedin(),
-      homepage: fa-pager(),
-      github: fa-square-github(),
-      gitlab: fa-gitlab(),
-      orcid: fa-orcid(),
-      researchgate: fa-researchgate(),
-      location: fa-location-dot(),
-      extraInfo: "",
+  let drawPersonalInfoSection(personalInfo: personalInfo) = {
+    let infoSections = (
+      phone: (icon: fa-phone(), linkPrefix: "tel:"),
+      email: (icon: fa-envelope(), linkPrefix: "mailto:"),
+      linkedin: (
+        icon: fa-linkedin(),
+        linkPrefix: "https://www.linkedin.com/in/",
+      ),
+      homepage: (icon: fa-pager(), linkPrefix: "https://"),
+      github: (icon: fa-square-github(), linkPrefix: "https://github.com/"),
+      gitlab: (icon: fa-gitlab(), linkPrefix: "https://gitlab.com/"),
+      orcid: (icon: fa-orcid(), linkPrefix: "https://orcid.org/"),
+      researchgate: (
+        icon: fa-researchgate(),
+        linkPrefix: "https://www.researchgate.net/profile/",
+      ),
+      location: (icon: fa-location-dot(), linkPrefix: ""),
+      extraInfo: (icon: "", linkPrefix: ""),
     )
+    // Loop through personalInfo to draw each info section
     let n = 1
     for (k, v) in personalInfo {
-      // A dirty trick to add linebreaks with "linebreak" as key in personalInfo
-      if k == "linebreak" {
-        n = 0
-        linebreak()
-        continue
-      }
+      // If the key contains "custom", it means it is a custom section
       if k.contains("custom") {
         let img = v.at("image", default: "")
         let awesomeIcon = v.at("awesomeIcon", default: "")
         let text = v.at("text", default: "")
-        let link_value = v.at("link", default: "")
+        let linkValue = v.at("link", default: "")
         let icon = ""
         if img != "" {
           icon = img.with(width: 10pt)
@@ -100,78 +92,92 @@
         box({
           icon
           h(5pt)
-          link(link_value)[#text]
+          link(linkValue)[#text]
         })
       } else {
         box({
-          // Adds icons
-          personalInfoIcons.at(k)
+          infoSections.at(k).icon
           h(5pt)
-          // Adds hyperlinks
-          if k == "email" {
-            link("mailto:" + v)[#v]
-          } else if k == "linkedin" {
-            link("https://www.linkedin.com/in/" + v)[#v]
-          } else if k == "github" {
-            link("https://github.com/" + v)[#v]
-          } else if k == "gitlab" {
-            link("https://gitlab.com/" + v)[#v]
-          } else if k == "homepage" {
-            link("https://" + v)[#v]
-          } else if k == "orcid" {
-            link("https://orcid.org/" + v)[#v]
-          } else if k == "researchgate" {
-            link("https://www.researchgate.net/profile/" + v)[#v]
+          if infoSections.at(k).linkPrefix != "" {
+            link(infoSections.at(k).linkPrefix + v)[#v]
           } else {
             v
           }
         })
       }
-      // Adds hBar
+      // Adds hBar if it is not the last element
       if n != personalInfo.len() {
         hBar()
       }
       n = n + 1
     }
   }
-  let makeHeaderNameSection() = table(
-    columns: 1fr,
-    inset: 0pt,
-    stroke: none,
-    row-gutter: 6mm,
-    if nonLatin {
-      headerFirstNameStyle(nonLatinName)
-     } else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
-    headerInfoStyle(makeHeaderInfo()),
-    headerQuoteStyle(headerQuote),
-  )
-  let makeHeaderPhotoSection() = {
+  let drawHeaderTextSection() = {
+    let headerFirstNameStyle(str) = text(
+      font: headerFont,
+      size: 32pt,
+      weight: "light",
+      fill: regularColors.darkgray,
+      str,
+    )
+    let headerLastNameStyle(str) = text(
+      font: headerFont,
+      size: 32pt,
+      weight: "bold",
+      str,
+    )
+    let headerInfoStyle(str) = text(size: 10pt, fill: accentColor, str)
+    let headerQuoteStyle(str) = text(
+      size: 10pt,
+      weight: "medium",
+      style: "italic",
+      fill: accentColor,
+      str,
+    )
+
+    table(
+      columns: 1fr,
+      inset: 0pt,
+      stroke: none,
+      row-gutter: 6mm,
+      if nonLatin {
+        headerFirstNameStyle(nonLatinName)
+      } else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
+      headerInfoStyle(drawPersonalInfoSection()),
+      headerQuoteStyle(headerQuote),
+    )
+  }
+  let drawHeaderPhotoSection() = {
     set image(height: 3.6cm)
-    if displayProfilePhoto {
+    if showProfilePhoto {
       box(profilePhoto, radius: 50%, clip: true)
     } else {
       v(3.6cm)
     }
   }
-  let makeHeader(leftComp, rightComp, columns, align) = table(
-    columns: columns,
-    inset: 0pt,
-    stroke: none,
-    column-gutter: 15pt,
-    align: align + horizon, 
-    leftComp,
-    rightComp
-  )
-  let main(hasPhoto: hasPhoto) = {
-    let photoSectionWidth = if hasPhoto {20%} else {0%}
-    makeHeader(
-      makeHeaderNameSection(),
-      makeHeaderPhotoSection(),
-      (auto, photoSectionWidth),
-      align,
+  let main(hasPhoto: showProfilePhoto) = {
+    let photoSectionWidth = if hasPhoto {
+      20%
+    } else {
+      0%
+    }
+
+    // Injection
+    inject(
+      isInjectAIPromptEnabled: isInjectAIPromptEnabled,
+      isInjectKeywordsEnabled: isInjectKeywordsEnabled,
+      injectedKeywordsList: injectedKeywordsList,
+    )
+    // Draw the container
+    table(
+      columns: (auto, photoSectionWidth),
+      inset: 0pt,
+      stroke: none,
+      column-gutter: 15pt,
+      align: headerAlign + horizon,
+      drawHeaderTextSection(), drawHeaderPhotoSection(),
     )
   }
-  
   main()
 }
 
@@ -273,7 +279,10 @@
   let beforeEntryDescriptionSkip = eval(
     metadata.layout.at("before_entry_description_skip", default: 1pt),
   )
-  let displayEntrySocietyFirst = metadata.layout.entry.display_entry_society_first
+  let displayEntrySocietyFirst = metadata
+    .layout
+    .entry
+    .display_entry_society_first
 
   let entryA1Style(str) = {
     text(size: 10pt, weight: "bold", str)
@@ -358,42 +367,43 @@
       row-gutter: 6pt,
       align: auto,
       entryA1Style(
-          ifSocietyFirst(
-            displayEntrySocietyFirst,
-            society,
-            title,
-          ),
+        ifSocietyFirst(
+          displayEntrySocietyFirst,
+          society,
+          title,
         ),
+      ),
       entryA2Style(
-          ifSocietyFirst(
-            displayEntrySocietyFirst,
-            location,
-            date,
-          ),
+        ifSocietyFirst(
+          displayEntrySocietyFirst,
+          location,
+          date,
         ),
+      ),
+
       entryB1Style(
-          ifSocietyFirst(
-            displayEntrySocietyFirst,
-            title,
-            society,
-          ),
+        ifSocietyFirst(
+          displayEntrySocietyFirst,
+          title,
+          society,
+        ),
       ),
       entryB2Style(
-          ifSocietyFirst(
-            displayEntrySocietyFirst,
-            date,
-            location,
-          )
-      )
-    )
+        ifSocietyFirst(
+          displayEntrySocietyFirst,
+          date,
+          location,
+        ),
+      ),
+    ),
   )
   entryDescriptionStyle(description)
   entryTagListStyle(tags)
 }
 
 /// Add a line of skill to the CV.
-/// 
-/// A skill is composed of a type (bold at left) and a description (right). 
+///
+/// A skill is composed of a type (bold at left) and a description (right).
 ///
 /// - type (str): The type of the skill. It is displayed on the left side.
 /// - info (content): The information about the skill. It is displayed on the right side. Items can be seperated by `#hbar()`.
@@ -463,9 +473,9 @@
     if issuer == "" {
       honorTitleStyle(title)
     } else if url != "" [
-        #honorTitleStyle(link(url)[#title]), #honorIssuerStyle(issuer)
+      #honorTitleStyle(link(url)[#title]), #honorIssuerStyle(issuer)
     ] else [
-        #honorTitleStyle(title), #honorIssuerStyle(issuer)
+      #honorTitleStyle(title), #honorIssuerStyle(issuer)
     ],
     honorLocationStyle(location),
   )
