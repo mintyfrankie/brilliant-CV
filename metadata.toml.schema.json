@@ -49,7 +49,7 @@
                 "description": "Path to the profile photo"
               }
             },
-            "required": ["header_align", "display_profile_photo", "profile_photo_path"]
+            "required": ["header_align", "display_profile_photo"]
           },
           "entry": {
             "type": "object",
