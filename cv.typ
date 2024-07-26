@@ -8,6 +8,8 @@
 #import "./utils/lang.typ": *
 
 /// Insert the header section of the CV.
+/// 
+/// Private function. Users should not call this function directly.
 ///
 /// - metadata (array): the metadata read from the TOML file.
 /// - headerFont (array): the font of the header.
@@ -16,18 +18,19 @@
 /// -> content
 #let _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors) = {
   // Parameters
-  let hasPhoto = metadata.layout.header.display_profile_photo
-  let align = eval(metadata.layout.header.header_align)
-  let if_inject_ai_prompt = metadata.inject.inject_ai_prompt
-  let if_inject_keywords = metadata.inject.inject_keywords
-  let keywords_list = metadata.inject.injected_keywords_list
+  let hasPhoto = metadata.layout.header.at("display_profile_photo", default: true)
+  let align = eval(metadata.layout.header.at("header_align", default: "left"))
+  let if_inject_ai_prompt = metadata.inject.at("inject_ai_prompt", default: false)
+  let if_inject_keywords = metadata.inject.at("inject_keywords", default: false)
+  let keywords_list = metadata.inject.at("injected_keywords_list", default: ())
   let personalInfo = metadata.personal.info
   let firstName = metadata.personal.first_name
   let lastName = metadata.personal.last_name
   let headerQuote = metadata.lang.at(metadata.language).header_quote
-  let displayProfilePhoto = metadata.layout.header.display_profile_photo
-  // let profilePhoto = metadata.layout.header.profile_photo_path
+  let displayProfilePhoto = metadata.layout.header.at("display_profile_photo", default: false)
   let accentColor = setAccentColor(awesomeColors, metadata)
+
+  // Non Latin Logic
   let nonLatinName = ""
   let nonLatin = isNonLatin(metadata.language)
   if nonLatin {
@@ -99,7 +102,7 @@
           h(5pt)
           link(link_value)[#text]
         })
-      } else if v != "" {
+      } else {
         box({
           // Adds icons
           personalInfoIcons.at(k)
@@ -131,19 +134,17 @@
       n = n + 1
     }
   }
-
   let makeHeaderNameSection() = table(
     columns: 1fr,
     inset: 0pt,
     stroke: none,
     row-gutter: 6mm,
-    if nonLatin [
-      #headerFirstNameStyle(nonLatinName),
-    ] else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
-    [#headerInfoStyle(makeHeaderInfo())],
-    [#headerQuoteStyle(headerQuote)],
+    if nonLatin {
+      headerFirstNameStyle(nonLatinName)
+     } else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
+    headerInfoStyle(makeHeaderInfo()),
+    headerQuoteStyle(headerQuote),
   )
-
   let makeHeaderPhotoSection() = {
     set image(height: 3.6cm)
     if displayProfilePhoto {
@@ -152,36 +153,26 @@
       v(3.6cm)
     }
   }
-
   let makeHeader(leftComp, rightComp, columns, align) = table(
     columns: columns,
     inset: 0pt,
     stroke: none,
     column-gutter: 15pt,
-    align: align + horizon,
-    {
-      leftComp
-    },
-    {
-      rightComp
-    },
+    align: align + horizon, 
+    leftComp,
+    rightComp
   )
-
-  if hasPhoto {
+  let main(hasPhoto: hasPhoto) = {
+    let photoSectionWidth = if hasPhoto {20%} else {0%}
     makeHeader(
       makeHeaderNameSection(),
       makeHeaderPhotoSection(),
-      (auto, 20%),
-      align,
-    )
-  } else {
-    makeHeader(
-      makeHeaderNameSection(),
-      makeHeaderPhotoSection(),
-      (auto, 0%),
+      (auto, photoSectionWidth),
       align,
     )
   }
+  
+  main()
 }
 
 /// Insert the footer section of the CV.
@@ -252,6 +243,7 @@
   box(width: 1fr, line(stroke: 0.9pt, length: 100%))
 }
 
+// TODO: To refactor
 /// Add an entry to the CV.
 ///
 /// - title (str): The title of the entry.
@@ -440,6 +432,7 @@
   v(-6pt)
 }
 
+// TODO: To refactor
 /// Add a Honor to the CV.
 ///
 /// - date (str): The date of the honor.
