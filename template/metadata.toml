@@ -21,6 +21,12 @@ language = "en"
         # Decide if you want to display profile photo or not
         display_profile_photo = true
 
+    # TODO: add schema
+    [layout.section]
+        # If the section title's first N characters should be highlighted by accent color
+        highlighted = true
+        highlighted_length = 3
+
     [layout.entry]
         # Decide if you want to put your company in bold or your position in bold
         display_entry_society_first = true

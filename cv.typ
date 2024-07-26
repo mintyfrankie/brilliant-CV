@@ -215,24 +215,22 @@
 /// NOTE: If the language is non-Latin, the title highlight will not be sliced.
 ///
 /// - title (str): The title of the section.
-/// - highlighted (bool): Whether the first n letters will be highlighted in accent color.
-/// - letters (int): The number of first letters of the title to highlight.
-/// - metadata (array): (optional) the metadata read from the TOML file.
-/// - awesomeColors (array): (optional) the awesome colors of the CV.
+/// - metadata (array): the metadata read from the TOML file.
+/// - _awesomeColors (array): (optional) the awesome colors of the CV.
 /// -> content
 #let cvSection(
   title,
-  highlighted: true,
-  letters: 3,
   metadata: metadata,
-  awesomeColors: awesomeColors,
+  _awesomeColors: awesomeColors,
 ) = {
   let lang = metadata.language
   let nonLatin = isNonLatin(lang)
   let beforeSectionSkip = eval(
     metadata.layout.at("before_section_skip", default: 1pt),
   )
-  let accentColor = setAccentColor(awesomeColors, metadata)
+  let highlighted = metadata.layout.section.at("highlighted", default: true)
+  let letters = metadata.layout.section.at("highlighted_length", default: 3)
+  let accentColor = setAccentColor(_awesomeColors, metadata)
   let highlightText = title.slice(0, letters)
   let normalText = title.slice(letters)
   let sectionTitleStyle(str, color: black) = {
