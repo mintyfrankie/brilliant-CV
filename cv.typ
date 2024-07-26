@@ -279,6 +279,7 @@
   let beforeEntryDescriptionSkip = eval(
     metadata.layout.at("before_entry_description_skip", default: 1pt),
   )
+  let isDisplayingLogo = metadata.layout.entry.display_logo
   let displayEntrySocietyFirst = metadata
     .layout
     .entry
@@ -327,16 +328,16 @@
     }
   }
 
-  let ifSocietyFirst(condition, field1, field2) = {
-    return if condition {
+  let ifSocietyFirst(displayEntrySocietyFirst: displayEntrySocietyFirst, field1, field2) = {
+    return if displayEntrySocietyFirst {
       field1
     } else {
       field2
     }
   }
-  let ifLogo(path, ifTrue, ifFalse) = {
-    return if metadata.layout.entry.display_logo {
-      if path == "" {
+  let ifLogo(img, ifTrue, ifFalse, isDisplayingLogo: isDisplayingLogo) = {
+    return if isDisplayingLogo {
+      if img == "" {
         ifFalse
       } else {
         ifTrue
@@ -345,7 +346,7 @@
       ifFalse
     }
   }
-  let setLogoContent(path) = {
+  let setLogoContent(logo: logo) = {
     return if logo == "" [] else {
       set image(width: 100%)
       logo
@@ -359,7 +360,7 @@
     stroke: none,
     align: horizon,
     column-gutter: ifLogo(logo, 4pt, 0pt),
-    setLogoContent(logo),
+    setLogoContent(),
     table(
       columns: (1fr, auto),
       inset: 0pt,
@@ -368,14 +369,12 @@
       align: auto,
       entryA1Style(
         ifSocietyFirst(
-          displayEntrySocietyFirst,
           society,
           title,
         ),
       ),
       entryA2Style(
         ifSocietyFirst(
-          displayEntrySocietyFirst,
           location,
           date,
         ),
@@ -383,14 +382,12 @@
 
       entryB1Style(
         ifSocietyFirst(
-          displayEntrySocietyFirst,
           title,
           society,
         ),
       ),
       entryB2Style(
         ifSocietyFirst(
-          displayEntrySocietyFirst,
           date,
           location,
         ),
