@@ -1,3 +1,7 @@
+/*
+A module containing functions for styling.
+*/
+
 #let hBar() = [#h(5pt) | #h(5pt)]
 
 #let latinFontList = (
