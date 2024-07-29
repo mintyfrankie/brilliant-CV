@@ -14,16 +14,16 @@
   doc) = {
   // Non Latin Logic
   let lang = metadata.language
-  let fontList = latinFontList
+  let font-list = latin-font-list
   let header-font = latinheader-font
-  if isNonLatin(lang) {
-    let non-latinFont = metadata.lang.non_latin.font
-    fontList.insert(2, non-latinFont)
-    header-font = non-latinFont
+  if is-non-latin(lang) {
+    let non-latin-font = metadata.lang.non_latin.font
+    font-list.insert(2, non-latin-font)
+    header-font = non-latin-font
   }
 
   // Page layout
-  set text(font: fontList, weight: "regular", size: 9pt)
+  set text(font: font-list, weight: "regular", size: 9pt)
   set align(left)
   set page(
     paper: "a4",
@@ -47,14 +47,14 @@
 ) = {
   // Non Latin Logic
   let lang = metadata.language
-  let fontList = latinFontList
-  if isNonLatin(lang) {
-    let non-latinFont = metadata.lang.non_latin.font
-    fontList.insert(2, non-latinFont)
+  let font-list = latin-font-list
+  if is-non-latin(lang) {
+    let non-latin-font = metadata.lang.non_latin.font
+    font-list.insert(2, non-latin-font)
   }
 
   // Page layout
-  set text(font: fontList, weight: "regular", size: 9pt)
+  set text(font: font-list, weight: "regular", size: 9pt)
   set align(left)
   set page(
     paper: "a4",

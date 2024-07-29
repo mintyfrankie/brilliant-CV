@@ -4,8 +4,8 @@
 
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
-#import "./utils/styles.typ": hBar, latinFontList, latinheader-font, awesome-colors, regular-colors, set-accent-color
-#import "./utils/lang.typ": isNonLatin
+#import "./utils/styles.typ": hBar, latin-font-list, latinheader-font, awesome-colors, regular-colors, set-accent-color
+#import "./utils/lang.typ": is-non-latin
 
 /// Insert the header section of the CV.
 ///
@@ -49,7 +49,7 @@
 
   // Non Latin Logic
   let non-latin-name = ""
-  let non-latin = isNonLatin(metadata.language)
+  let non-latin = is-non-latin(metadata.language)
   if non-latin {
     non-latin-name = metadata.lang.non_latin.name
   }
@@ -221,7 +221,7 @@
   awesome-colors: awesome-colors,
 ) = {
   let lang = metadata.language
-  let non-latin = isNonLatin(lang)
+  let non-latin = is-non-latin(lang)
   let before-section-skip = eval(
     metadata.layout.at("before_section_skip", default: 1pt),
   )

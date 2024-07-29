@@ -4,7 +4,7 @@ A module containing functions for styling.
 
 #let hBar() = [#h(5pt) | #h(5pt)]
 
-#let latinFontList = (
+#let latin-font-list = (
   "Source Sans Pro",
   "Source Sans 3",
   "Linux Libertine",
