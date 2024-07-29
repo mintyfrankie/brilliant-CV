@@ -4,7 +4,7 @@
 
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
-#import "./utils/styles.typ": hBar, latin-font-list, latinheader-font, awesome-colors, regular-colors, set-accent-color
+#import "./utils/styles.typ": h-bar, latin-font-list, latin-header-font, awesome-colors, regular-colors, set-accent-color
 #import "./utils/lang.typ": is-non-latin
 
 /// Insert the header section of the CV.
@@ -105,9 +105,9 @@
           }
         })
       }
-      // Adds hBar if it is not the last element
+      // Adds h-bar if it is not the last element
       if n != personal-info.len() {
-        hBar()
+        h-bar()
       }
       n = n + 1
     }

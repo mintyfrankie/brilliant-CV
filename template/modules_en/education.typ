@@ -1,5 +1,5 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.1": cv-section, cv-entry, hBar
+#import "@preview/brilliant-cv:2.0.1": cv-section, cv-entry, h-bar
 #let metadata = toml("../metadata.toml")
 #let cv-section = cv-section.with(metadata: metadata)
 #let cv-entry = cv-entry.with(metadata: metadata)
@@ -15,7 +15,7 @@
   logo: image("../src/logos/ucla.png"),
   description: list(
     [Thesis: Predicting Customer Churn in Telecommunications Industry using Machine Learning Algorithms and Network Analysis],
-    [Course: Big Data Systems and Technologies #hBar() Data Mining and Exploration #hBar() Natural Language Processing],
+    [Course: Big Data Systems and Technologies #h-bar() Data Mining and Exploration #h-bar() Natural Language Processing],
   ),
 )
 
@@ -27,6 +27,6 @@
   logo: image("../src/logos/ucla.png"),
   description: list(
     [Thesis: Exploring the Use of Machine Learning Algorithms for Predicting Stock Prices: A Comparative Study of Regression and Time-Series Models],
-    [Course: Database Systems #hBar() Computer Networks #hBar() Software Engineering #hBar() Artificial Intelligence],
+    [Course: Database Systems #h-bar() Computer Networks #h-bar() Software Engineering #h-bar() Artificial Intelligence],
   ),
 )

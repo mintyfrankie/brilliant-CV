@@ -15,7 +15,7 @@
   // Non Latin Logic
   let lang = metadata.language
   let font-list = latin-font-list
-  let header-font = latinheader-font
+  let header-font = latin-header-font
   if is-non-latin(lang) {
     let non-latin-font = metadata.lang.non_latin.font
     font-list.insert(2, non-latin-font)

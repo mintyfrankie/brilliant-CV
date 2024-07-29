@@ -1,5 +1,5 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.1": cv-section, cv-skill, hBar
+#import "@preview/brilliant-cv:2.0.1": cv-section, cv-skill, h-bar
 #let metadata = toml("../metadata.toml")
 #let cv-section = cv-section.with(metadata: metadata)
 
@@ -8,15 +8,15 @@
 
 #cv-skill(
   type: [Languages],
-  info: [English #hBar() French #hBar() Chinese],
+  info: [English #h-bar() French #h-bar() Chinese],
 )
 
 #cv-skill(
   type: [Tech Stack],
-  info: [Tableau #hBar() Python (Pandas/Numpy) #hBar() PostgreSQL],
+  info: [Tableau #h-bar() Python (Pandas/Numpy) #h-bar() PostgreSQL],
 )
 
 #cv-skill(
   type: [Personal Interests],
-  info: [Swimming #hBar() Cooking #hBar() Reading],
+  info: [Swimming #h-bar() Cooking #h-bar() Reading],
 )

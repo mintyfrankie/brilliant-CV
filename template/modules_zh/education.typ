@@ -1,5 +1,5 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.1": cv-section, cv-entry, hBar
+#import "@preview/brilliant-cv:2.0.1": cv-section, cv-entry, h-bar
 #let metadata = toml("../metadata.toml")
 #let cv-section = cv-section.with(metadata: metadata)
 #let cv-entry = cv-entry.with(metadata: metadata)
@@ -15,7 +15,7 @@
   logo: image("../src/logos/ucla.png"),
   description: list(
     [论文: 使用机器学习算法和网络分析预测电信行业的客户流失],
-    [课程: 大数据系统与技术 #hBar() 数据挖掘与探索 #hBar() 自然语言处理],
+    [课程: 大数据系统与技术 #h-bar() 数据挖掘与探索 #h-bar() 自然语言处理],
   ),
 )
 
@@ -27,6 +27,6 @@
   logo: image("../src/logos/ucla.png"),
   description: list(
     [论文: 探索使用机器学习算法预测股票价格: 回归与时间序列模型的比较研究],
-    [课程: 数据库系统 #hBar() 计算机网络 #hBar() 软件工程 #hBar() 人工智能],
+    [课程: 数据库系统 #h-bar() 计算机网络 #h-bar() 软件工程 #h-bar() 人工智能],
   ),
 )

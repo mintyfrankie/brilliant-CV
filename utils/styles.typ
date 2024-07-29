@@ -2,7 +2,7 @@
 A module containing functions for styling.
 */
 
-#let hBar() = [#h(5pt) | #h(5pt)]
+#let h-bar() = [#h(5pt) | #h(5pt)]
 
 #let latin-font-list = (
   "Source Sans Pro",
@@ -12,7 +12,7 @@ A module containing functions for styling.
   "Font Awesome 6 Free",
 )
 
-#let latinheader-font = ("Roboto")
+#let latin-header-font = ("Roboto")
 
 #let awesome-colors = (
   skyblue: rgb("#0395DE"),
