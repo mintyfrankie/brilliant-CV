@@ -484,14 +484,14 @@
 ///
 /// - bib (bibliography): The `bibliography` object with the path to the bib file.
 /// - keyList (array): The list of keys to include in the publication list.
-/// - refStyle (str): The reference style of the publication list.
-/// - refFull (bool): Whether to show the full reference or not.
+/// - ref-style (str): The reference style of the publication list.
+/// - ref-full (bool): Whether to show the full reference or not.
 /// -> content
-#let cv-publication(bib: "", keyList: list(), refStyle: "apa", refFull: true) = {
+#let cv-publication(bib: "", keyList: list(), ref-style: "apa", ref-full: true) = {
   let publication-style(str) = {
     text(str)
   }
   show bibliography: it => publication-style(it)
-  set bibliography(title: none, style: refStyle, full: refFull)
+  set bibliography(title: none, style: ref-style, full: ref-full)
   bib
 }

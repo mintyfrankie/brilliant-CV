@@ -13,5 +13,5 @@
     "jones2021",
     "wilson2022",
   ),
-  refStyle: "apa",
+  ref-style: "apa",
 )
