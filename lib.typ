@@ -10,16 +10,16 @@
 /* Layout */
 #let cv(
   metadata, 
-  profilePhoto: image("./template/src/avatar.png"),
+  profile-photo: image("./template/src/avatar.png"),
   doc) = {
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList
-  let headerFont = latinHeaderFont
+  let header-font = latinheader-font
   if isNonLatin(lang) {
-    let nonLatinFont = metadata.lang.non_latin.font
-    fontList.insert(2, nonLatinFont)
-    headerFont = nonLatinFont
+    let non-latinFont = metadata.lang.non_latin.font
+    fontList.insert(2, non-latinFont)
+    header-font = non-latinFont
   }
 
   // Page layout
@@ -30,9 +30,9 @@
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
   )
 
-  _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors)
+  cv-header(metadata, profile-photo, header-font, regular-colors, awesome-colors)
   doc
-  _cvFooter(metadata)
+  cv-footer(metadata)
 }
 
 #let letter(
@@ -49,8 +49,8 @@
   let lang = metadata.language
   let fontList = latinFontList
   if isNonLatin(lang) {
-    let nonLatinFont = metadata.lang.non_latin.font
-    fontList.insert(2, nonLatinFont)
+    let non-latinFont = metadata.lang.non_latin.font
+    fontList.insert(2, non-latinFont)
   }
 
   // Page layout
@@ -69,7 +69,7 @@
     date: date,
     subject: subject,
     metadata: metadata,
-    _awesomeColors: awesomeColors,
+    awesome-colors: awesome-colors,
   )
 
   doc

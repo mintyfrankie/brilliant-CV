@@ -4,134 +4,134 @@
 
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
-#import "./utils/styles.typ": hBar, latinFontList, latinHeaderFont, awesomeColors, regularColors, setAccentColor
+#import "./utils/styles.typ": hBar, latinFontList, latinheader-font, awesome-colors, regular-colors, set-accent-color
 #import "./utils/lang.typ": isNonLatin
 
 /// Insert the header section of the CV.
 ///
 /// - metadata (array): the metadata read from the TOML file.
-/// - headerFont (array): the font of the header.
-/// - regularColors (array): the regular colors of the CV.
-/// - awesomeColors (array): the awesome colors of the CV.
+/// - header-font (array): the font of the header.
+/// - regular-colors (array): the regular colors of the CV.
+/// - awesome-colors (array): the awesome colors of the CV.
 /// -> content
-#let _cvHeader(
+#let cv-header(
   metadata,
-  profilePhoto,
-  headerFont,
-  regularColors,
-  awesomeColors,
+  profile-photo,
+  header-font,
+  regular-colors,
+  awesome-colors,
 ) = {
   // Parameters
-  let showProfilePhoto = metadata.layout.header.at(
+  let show-profile-photo = metadata.layout.header.at(
     "display_profile_photo",
     default: true,
   )
-  let headerAlign = eval(
+  let header-align = eval(
     metadata.layout.header.at("header_align", default: "left"),
   )
-  let isInjectAIPromptEnabled = metadata.inject.at(
+  let is-inject-ai-prompt-enabled = metadata.inject.at(
     "inject_ai_prompt",
     default: false,
   )
-  let isInjectKeywordsEnabled = metadata.inject.at(
+  let is-inject-keywords-enabled = metadata.inject.at(
     "inject_keywords",
     default: false,
   )
-  let injectedKeywordsList = metadata.inject.at(
+  let injected-keywords-list = metadata.inject.at(
     "injected_keywords_list",
     default: (),
   )
-  let personalInfo = metadata.personal.info
-  let firstName = metadata.personal.first_name
-  let lastName = metadata.personal.last_name
-  let headerQuote = metadata.lang.at(metadata.language).header_quote
-  let accentColor = setAccentColor(awesomeColors, metadata)
+  let personal-info = metadata.personal.info
+  let first-name = metadata.personal.first_name
+  let last-name = metadata.personal.last_name
+  let header-quote = metadata.lang.at(metadata.language).header_quote
+  let accent-color = set-accent-color(awesome-colors, metadata)
 
   // Non Latin Logic
-  let nonLatinName = ""
-  let nonLatin = isNonLatin(metadata.language)
-  if nonLatin {
-    nonLatinName = metadata.lang.non_latin.name
+  let non-latin-name = ""
+  let non-latin = isNonLatin(metadata.language)
+  if non-latin {
+    non-latin-name = metadata.lang.non_latin.name
   }
 
   // Components
-  let drawPersonalInfoSection(personalInfo: personalInfo) = {
-    let infoSections = (
-      phone: (icon: fa-phone(), linkPrefix: "tel:"),
-      email: (icon: fa-envelope(), linkPrefix: "mailto:"),
+  let draw-personal-info-section(personal-info: personal-info) = {
+    let info-sections = (
+      phone: (icon: fa-phone(), link-refix: "tel:"),
+      email: (icon: fa-envelope(), link-refix: "mailto:"),
       linkedin: (
         icon: fa-linkedin(),
-        linkPrefix: "https://www.linkedin.com/in/",
+        link-refix: "https://www.linkedin.com/in/",
       ),
-      homepage: (icon: fa-pager(), linkPrefix: "https://"),
-      github: (icon: fa-square-github(), linkPrefix: "https://github.com/"),
-      gitlab: (icon: fa-gitlab(), linkPrefix: "https://gitlab.com/"),
-      orcid: (icon: fa-orcid(), linkPrefix: "https://orcid.org/"),
+      homepage: (icon: fa-pager(), link-refix: "https://"),
+      github: (icon: fa-square-github(), link-refix: "https://github.com/"),
+      gitlab: (icon: fa-gitlab(), link-refix: "https://gitlab.com/"),
+      orcid: (icon: fa-orcid(), link-refix: "https://orcid.org/"),
       researchgate: (
         icon: fa-researchgate(),
-        linkPrefix: "https://www.researchgate.net/profile/",
+        link-refix: "https://www.researchgate.net/profile/",
       ),
-      location: (icon: fa-location-dot(), linkPrefix: ""),
-      extraInfo: (icon: "", linkPrefix: ""),
+      location: (icon: fa-location-dot(), link-refix: ""),
+      extra-info: (icon: "", link-refix: ""),
     )
-    // Loop through personalInfo to draw each info section
+    // Loop through personal-info to draw each info section
     let n = 1
-    for (k, v) in personalInfo {
+    for (k, v) in personal-info {
       // If the key contains "custom", it means it is a custom section
       if k.contains("custom") {
         let img = v.at("image", default: "")
-        let awesomeIcon = v.at("awesomeIcon", default: "")
+        let awesome-icon = v.at("awesome-icon", default: "")
         let text = v.at("text", default: "")
-        let linkValue = v.at("link", default: "")
+        let link-value = v.at("link", default: "")
         let icon = ""
         if img != "" {
           icon = img.with(width: 10pt)
         } else {
-          icon = fa-icon(awesomeIcon)
+          icon = fa-icon(awesome-icon)
         }
         box({
           icon
           h(5pt)
-          link(linkValue)[#text]
+          link(link-value)[#text]
         })
       } else {
         box({
-          infoSections.at(k).icon
+          info-sections.at(k).icon
           h(5pt)
-          if infoSections.at(k).linkPrefix != "" {
-            link(infoSections.at(k).linkPrefix + v)[#v]
+          if info-sections.at(k).link-refix != "" {
+            link(info-sections.at(k).link-refix + v)[#v]
           } else {
             v
           }
         })
       }
       // Adds hBar if it is not the last element
-      if n != personalInfo.len() {
+      if n != personal-info.len() {
         hBar()
       }
       n = n + 1
     }
   }
-  let drawHeaderTextSection() = {
-    let headerFirstNameStyle(str) = text(
-      font: headerFont,
+  let draw-header-text-section() = {
+    let header-first-name-style(str) = text(
+      font: header-font,
       size: 32pt,
       weight: "light",
-      fill: regularColors.darkgray,
+      fill: regular-colors.darkgray,
       str,
     )
-    let headerLastNameStyle(str) = text(
-      font: headerFont,
+    let header-last-name-style(str) = text(
+      font: header-font,
       size: 32pt,
       weight: "bold",
       str,
     )
-    let headerInfoStyle(str) = text(size: 10pt, fill: accentColor, str)
-    let headerQuoteStyle(str) = text(
+    let header-info-style(str) = text(size: 10pt, fill: accent-color, str)
+    let header-quote-style(str) = text(
       size: 10pt,
       weight: "medium",
       style: "italic",
-      fill: accentColor,
+      fill: accent-color,
       str,
     )
 
@@ -140,22 +140,22 @@
       inset: 0pt,
       stroke: none,
       row-gutter: 6mm,
-      if nonLatin {
-        headerFirstNameStyle(nonLatinName)
-      } else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
-      headerInfoStyle(drawPersonalInfoSection()),
-      headerQuoteStyle(headerQuote),
+      if non-latin {
+        header-first-name-style(non-latin-name)
+      } else [#header-first-name-style(first-name) #h(5pt) #header-last-name-style(last-name)],
+      header-info-style(draw-personal-info-section()),
+      header-quote-style(header-quote),
     )
   }
-  let drawHeaderPhotoSection() = {
+  let draw-header-photo-section() = {
     set image(height: 3.6cm)
-    if showProfilePhoto {
-      box(profilePhoto, radius: 50%, clip: true)
+    if show-profile-photo {
+      box(profile-photo, radius: 50%, clip: true)
     } else {
       v(3.6cm)
     }
   }
-  let main(hasPhoto: showProfilePhoto) = {
+  let main(hasPhoto: show-profile-photo) = {
     let photoSectionWidth = if hasPhoto {
       20%
     } else {
@@ -164,9 +164,9 @@
 
     // Injection
     inject(
-      isInjectAIPromptEnabled: isInjectAIPromptEnabled,
-      isInjectKeywordsEnabled: isInjectKeywordsEnabled,
-      injectedKeywordsList: injectedKeywordsList,
+      is-inject-ai-prompt-enabled: is-inject-ai-prompt-enabled,
+      is-inject-keywords-enabled: is-inject-keywords-enabled,
+      injected-keywords-list: injected-keywords-list,
     )
     // Draw the container
     table(
@@ -174,8 +174,8 @@
       inset: 0pt,
       stroke: none,
       column-gutter: 15pt,
-      align: headerAlign + horizon,
-      drawHeaderTextSection(), drawHeaderPhotoSection(),
+      align: header-align + horizon,
+      draw-header-text-section(), draw-header-photo-section(),
     )
   }
   main()
@@ -185,14 +185,14 @@
 ///
 /// - metadata (array): the metadata read from the TOML file.
 /// -> content
-#let _cvFooter(metadata) = {
+#let cv-footer(metadata) = {
   // Parameters
-  let firstName = metadata.personal.first_name
-  let lastName = metadata.personal.last_name
-  let footerText = metadata.lang.at(metadata.language).cv_footer
+  let first-name = metadata.personal.first_name
+  let last-name = metadata.personal.last_name
+  let footer-text = metadata.lang.at(metadata.language).cv_footer
 
   // Styles
-  let footerStyle(str) = {
+  let footer-style(str) = {
     text(size: 8pt, fill: rgb("#999999"), smallcaps(str))
   }
 
@@ -202,7 +202,7 @@
       columns: (1fr, auto),
       inset: 0pt,
       stroke: none,
-      footerStyle([#firstName #lastName]), footerStyle(footerText),
+      footer-style([#first-name #last-name]), footer-style(footer-text),
     ),
   )
 }
@@ -213,36 +213,36 @@
 ///
 /// - title (str): The title of the section.
 /// - metadata (array): the metadata read from the TOML file.
-/// - _awesomeColors (array): (optional) the awesome colors of the CV.
+/// - awesome-colors (array): (optional) the awesome colors of the CV.
 /// -> content
-#let cvSection(
+#let cv-section(
   title,
   metadata: metadata,
-  _awesomeColors: awesomeColors,
+  awesome-colors: awesome-colors,
 ) = {
   let lang = metadata.language
-  let nonLatin = isNonLatin(lang)
-  let beforeSectionSkip = eval(
+  let non-latin = isNonLatin(lang)
+  let before-section-skip = eval(
     metadata.layout.at("before_section_skip", default: 1pt),
   )
   let highlighted = metadata.layout.section.at("highlighted", default: true)
   let letters = metadata.layout.section.at("highlighted_length", default: 3)
-  let accentColor = setAccentColor(_awesomeColors, metadata)
-  let highlightText = title.slice(0, letters)
+  let accent-color = set-accent-color(awesome-colors, metadata)
+  let highligh-text = title.slice(0, letters)
   let normalText = title.slice(letters)
-  let sectionTitleStyle(str, color: black) = {
+  let section-title-style(str, color: black) = {
     text(size: 16pt, weight: "bold", fill: color, str)
   }
 
-  v(beforeSectionSkip)
-  if nonLatin {
-    sectionTitleStyle(title, color: accentColor)
+  v(before-section-skip)
+  if non-latin {
+    section-title-style(title, color: accent-color)
   } else {
     if highlighted {
-      sectionTitleStyle(highlightText, color: accentColor)
-      sectionTitleStyle(normalText, color: black)
+      section-title-style(highligh-text, color: accent-color)
+      section-title-style(normalText, color: black)
     } else {
-      sectionTitleStyle(title, color: black)
+      section-title-style(title, color: black)
     }
   }
   h(2pt)
@@ -260,9 +260,9 @@
 /// - logo (image): The logo of the society. If empty, no logo will be displayed.
 /// - tags (array): The tags of the entry.
 /// - metadata (array): (optional) the metadata read from the TOML file.
-/// - _awesomeColors (array): (optional) the awesome colors of the CV.
+/// - awesome-colors (array): (optional) the awesome colors of the CV.
 /// -> content
-#let cvEntry(
+#let cv-entry(
   title: "Title",
   society: "Society",
   date: "Date",
@@ -271,132 +271,132 @@
   logo: "",
   tags: ("Tag1", "Tag2"),
   metadata: metadata,
-  _awesomeColors: awesomeColors,
+  awesome-colors: awesome-colors,
 ) = {
-  let accentColor = setAccentColor(_awesomeColors, metadata)
-  let beforeEntrySkip = eval(
+  let accent-color = set-accent-color(awesome-colors, metadata)
+  let before-entry-skip = eval(
     metadata.layout.at("before_entry_skip", default: 1pt),
   )
-  let beforeEntryDescriptionSkip = eval(
+  let before-entry-description-skip = eval(
     metadata.layout.at("before_entry_description_skip", default: 1pt),
   )
-  let isDisplayingLogo = metadata.layout.entry.display_logo
-  let displayEntrySocietyFirst = metadata
+  let is-displaying-logo = metadata.layout.entry.display_logo
+  let display-entry-society-first = metadata
     .layout
     .entry
     .display_entry_society_first
 
-  let entryA1Style(str) = {
+  let entry-a1-style(str) = {
     text(size: 10pt, weight: "bold", str)
   }
-  let entryA2Style(str) = {
+  let entry-a2-style(str) = {
     align(
       right,
-      text(weight: "medium", fill: accentColor, style: "oblique", str),
+      text(weight: "medium", fill: accent-color, style: "oblique", str),
     )
   }
-  let entryB1Style(str) = {
-    text(size: 8pt, fill: accentColor, weight: "medium", smallcaps(str))
+  let entry-b1-style(str) = {
+    text(size: 8pt, fill: accent-color, weight: "medium", smallcaps(str))
   }
-  let entryB2Style(str) = {
+  let entry-b2-style(str) = {
     align(
       right,
       text(size: 8pt, weight: "medium", fill: gray, style: "oblique", str),
     )
   }
-  let entryDescriptionStyle(str) = {
+  let entry-description-style(str) = {
     text(
-      fill: regularColors.lightgray,
+      fill: regular-colors.lightgray,
       {
-        v(beforeEntryDescriptionSkip)
+        v(before-entry-description-skip)
         str
       },
     )
   }
-  let entryTagStyle(str) = {
+  let entry-tag-style(str) = {
     align(center, text(size: 8pt, weight: "regular", str))
   }
-  let entryTagListStyle(tags) = {
+  let entry-tag-list-style(tags) = {
     for tag in tags {
       box(
         inset: (x: 0.25em),
         outset: (y: 0.25em),
-        fill: regularColors.subtlegray,
+        fill: regular-colors.subtlegray,
         radius: 3pt,
-        entryTagStyle(tag),
+        entry-tag-style(tag),
       )
       h(5pt)
     }
   }
 
-  let ifSocietyFirst(displayEntrySocietyFirst: displayEntrySocietyFirst, field1, field2) = {
-    return if displayEntrySocietyFirst {
+  let if-society-first(display-entry-society-first: display-entry-society-first, field1, field2) = {
+    return if display-entry-society-first {
       field1
     } else {
       field2
     }
   }
-  let ifLogo(img, ifTrue, ifFalse, isDisplayingLogo: isDisplayingLogo) = {
-    return if isDisplayingLogo {
+  let if-logo(img, if-true, if-false, is-displaying-logo: is-displaying-logo) = {
+    return if is-displaying-logo {
       if img == "" {
-        ifFalse
+        if-false
       } else {
-        ifTrue
+        if-true
       }
     } else {
-      ifFalse
+      if-false
     }
   }
-  let setLogoContent(logo: logo) = {
+  let set-logo-content(logo: logo) = {
     return if logo == "" [] else {
       set image(width: 100%)
       logo
     }
   }
 
-  v(beforeEntrySkip)
+  v(before-entry-skip)
   table(
-    columns: (ifLogo(logo, 4%, 0%), 1fr),
+    columns: (if-logo(logo, 4%, 0%), 1fr),
     inset: 0pt,
     stroke: none,
     align: horizon,
-    column-gutter: ifLogo(logo, 4pt, 0pt),
-    setLogoContent(),
+    column-gutter: if-logo(logo, 4pt, 0pt),
+    set-logo-content(),
     table(
       columns: (1fr, auto),
       inset: 0pt,
       stroke: none,
       row-gutter: 6pt,
       align: auto,
-      entryA1Style(
-        ifSocietyFirst(
+      entry-a1-style(
+        if-society-first(
           society,
           title,
         ),
       ),
-      entryA2Style(
-        ifSocietyFirst(
+      entry-a2-style(
+        if-society-first(
           location,
           date,
         ),
       ),
 
-      entryB1Style(
-        ifSocietyFirst(
+      entry-b1-style(
+        if-society-first(
           title,
           society,
         ),
       ),
-      entryB2Style(
-        ifSocietyFirst(
+      entry-b2-style(
+        if-society-first(
           date,
           location,
         ),
       ),
     ),
   )
-  entryDescriptionStyle(description)
-  entryTagListStyle(tags)
+  entry-description-style(description)
+  entry-tag-list-style(tags)
 }
 
 /// Add a line of skill to the CV.
@@ -406,11 +406,11 @@
 /// - type (str): The type of the skill. It is displayed on the left side.
 /// - info (content): The information about the skill. It is displayed on the right side. Items can be seperated by `#hbar()`.
 /// -> content
-#let cvSkill(type: "Type", info: "Info") = {
-  let skillTypeStyle(str) = {
+#let cv-skill(type: "Type", info: "Info") = {
+  let skill-type-style(str) = {
     align(right, text(size: 10pt, weight: "bold", str))
   }
-  let skillInfoStyle(str) = {
+  let skill-info-style(str) = {
     text(str)
   }
 
@@ -419,7 +419,7 @@
     inset: 0pt,
     column-gutter: 10pt,
     stroke: none,
-    skillTypeStyle(type), skillInfoStyle(info),
+    skill-type-style(type), skill-info-style(info),
   )
   v(-6pt)
 }
@@ -432,32 +432,32 @@
 /// - url (str): The URL of the honor.
 /// - location (str): The location of the honor.
 /// - metadata (array): (optional) The metadata read from the TOML file.
-/// - _awesomeColors (array): (optional) The awesome colors of the CV.
+/// - awesome-colors (array): (optional) The awesome colors of the CV.
 /// -> content
-#let cvHonor(
+#let cv-honor(
   date: "1990",
   title: "Title",
   issuer: "",
   url: "",
   location: "",
   metadata: metadata,
-  _awesomeColors: awesomeColors,
+  awesome-colors: awesome-colors,
 ) = {
-  let accentColor = setAccentColor(_awesomeColors, metadata)
+  let accent-color = set-accent-color(awesome-colors, metadata)
 
-  let honorDateStyle(str) = {
+  let honor-date-style(str) = {
     align(right, text(str))
   }
-  let honorTitleStyle(str) = {
+  let honor-title-style(str) = {
     text(weight: "bold", str)
   }
-  let honorIssuerStyle(str) = {
+  let honor-issuer-style(str) = {
     text(str)
   }
-  let honorLocationStyle(str) = {
+  let honor-location-style(str) = {
     align(
       right,
-      text(weight: "medium", fill: accentColor, style: "oblique", str),
+      text(weight: "medium", fill: accent-color, style: "oblique", str),
     )
   }
 
@@ -467,15 +467,15 @@
     column-gutter: 10pt,
     align: horizon,
     stroke: none,
-    honorDateStyle(date),
+    honor-date-style(date),
     if issuer == "" {
-      honorTitleStyle(title)
+      honor-title-style(title)
     } else if url != "" [
-      #honorTitleStyle(link(url)[#title]), #honorIssuerStyle(issuer)
+      #honor-title-style(link(url)[#title]), #honor-issuer-style(issuer)
     ] else [
-      #honorTitleStyle(title), #honorIssuerStyle(issuer)
+      #honor-title-style(title), #honor-issuer-style(issuer)
     ],
-    honorLocationStyle(location),
+    honor-location-style(location),
   )
   v(-6pt)
 }
@@ -487,11 +487,11 @@
 /// - refStyle (str): The reference style of the publication list.
 /// - refFull (bool): Whether to show the full reference or not.
 /// -> content
-#let cvPublication(bib: "", keyList: list(), refStyle: "apa", refFull: true) = {
-  let publicationStyle(str) = {
+#let cv-publication(bib: "", keyList: list(), refStyle: "apa", refFull: true) = {
+  let publication-style(str) = {
     text(str)
   }
-  show bibliography: it => publicationStyle(it)
+  show bibliography: it => publication-style(it)
   set bibliography(title: none, style: refStyle, full: refFull)
   bib
 }

@@ -1,13 +1,13 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.1": cvSection, cvEntry, hBar
+#import "@preview/brilliant-cv:2.0.1": cv-section, cv-entry, hBar
 #let metadata = toml("../metadata.toml")
-#let cvSection = cvSection.with(metadata: metadata)
-#let cvEntry = cvEntry.with(metadata: metadata)
+#let cv-section = cv-section.with(metadata: metadata)
+#let cv-entry = cv-entry.with(metadata: metadata)
 
 
-#cvSection("教育经历")
+#cv-section("教育经历")
 
-#cvEntry(
+#cv-entry(
   title: [数据科学硕士],
   society: [加利福尼亚大学洛杉矶分校],
   date: [2018 - 2020],
@@ -19,7 +19,7 @@
   ),
 )
 
-#cvEntry(
+#cv-entry(
   title: [计算机科学学士],
   society: [加利福尼亚大学洛杉矶分校],
   date: [2014 - 2018],
