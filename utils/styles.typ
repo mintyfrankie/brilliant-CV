@@ -2,9 +2,9 @@
 A module containing functions for styling.
 */
 
-#let hBar() = [#h(5pt) | #h(5pt)]
+#let h-bar() = [#h(5pt) | #h(5pt)]
 
-#let latinFontList = (
+#let latin-font-list = (
   "Source Sans Pro",
   "Source Sans 3",
   "Linux Libertine",
@@ -12,9 +12,9 @@ A module containing functions for styling.
   "Font Awesome 6 Free",
 )
 
-#let latinHeaderFont = ("Roboto")
+#let latin-header-font = ("Roboto")
 
-#let awesomeColors = (
+#let awesome-colors = (
   skyblue: rgb("#0395DE"),
   red: rgb("#DC3522"),
   nephritis: rgb("#27AE60"),
@@ -22,16 +22,16 @@ A module containing functions for styling.
   darknight: rgb("#131A28"),
 )
 
-#let regularColors = (
+#let regular-colors = (
   subtlegray: rgb("#ededee"),
   lightgray: rgb("#343a40"),
   darkgray: rgb("#212529"),
 )
 
-#let setAccentColor(awesomeColors, metadata) = {
+#let set-accent-color(awesome-colors, metadata) = {
   let param = metadata.layout.awesome_color
-  return if param in awesomeColors {
-    awesomeColors.at(param)
+  return if param in awesome-colors {
+    awesome-colors.at(param)
   } else {
     rgb(param)
   }

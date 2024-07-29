@@ -1,12 +1,12 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.1": cvSection, cvPublication
+#import "@preview/brilliant-cv:2.0.1": cv-section, cv-publication
 #let metadata = toml("../metadata.toml")
-#let cvSection = cvSection.with(metadata: metadata)
+#let cv-section = cv-section.with(metadata: metadata)
 
-#cvSection("Publications")
+#cv-section("Publications")
 
-#cvPublication(
+#cv-publication(
   bib: bibliography("../src/publications.bib"),
   keyList: ("smith2020", "jones2021", "wilson2022"),
-  refStyle: "apa",
+  ref-style: "apa",
 )

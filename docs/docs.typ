@@ -75,7 +75,7 @@ it is rather straightforward to migrate.
   a. Delete the old import `#import "../brilliant-CV/template.typ": *`, and replace it by the import statements in the new template files.
 
   b. Due to the Typst path handling mecanism, one cannot directly pass the path string to some functions anymore.
-  This concerns, for example, the logo argument in cvEntry, but also on `cvPublication` as well. Some parameter names were changed,
+  This concerns, for example, the logo argument in cv-entry, but also on `cv-publication` as well. Some parameter names were changed,
   but most importantly, you should pass a function instead of a string (i.e. `image("logo.png")` instead of `"logo.png"`).
   Refer to new template files for reference.
 

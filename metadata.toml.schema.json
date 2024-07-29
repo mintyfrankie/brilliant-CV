@@ -124,7 +124,7 @@
               "researchgate": {
                 "type": "string"
               },
-              "extraInfo": {
+              "extra-info": {
                 "type": "string"
               }
             },
@@ -132,7 +132,7 @@
               "^custom-[0-9]+$": {
                 "type": "object",
                 "properties": {
-                  "awesomeIcon": {
+                  "awesome-icon": {
                     "type": "string"
                   },
                   "text": {
@@ -142,7 +142,7 @@
                     "type": "string"
                   }
                 },
-                "required": ["awesomeIcon", "text", "link"]
+                "required": ["awesome-icon", "text", "link"]
               }
             },
             "additionalProperties": false
