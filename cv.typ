@@ -137,9 +137,9 @@
     inset: 0pt,
     stroke: none,
     row-gutter: 6mm,
-    if nonLatin [
-      #headerFirstNameStyle(nonLatinName),
-    ] else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
+    if nonLatin {
+      headerFirstNameStyle(nonLatinName)
+    } else [#headerFirstNameStyle(firstName) #h(5pt) #headerLastNameStyle(lastName)],
     [#headerInfoStyle(makeHeaderInfo())],
     [#headerQuoteStyle(headerQuote)],
   )
