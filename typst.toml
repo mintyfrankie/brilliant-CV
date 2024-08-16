@@ -15,3 +15,6 @@ exclude = ["docs", ".pre-commit-config.yaml", ".gitignore"]
 path = "template"
 entrypoint = "cv.typ"
 thumbnail = "thumbnail.png"
+
+[tool.utpm]
+namespace = "preview"
