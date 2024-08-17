@@ -57,10 +57,10 @@ linkedin = "johndoe"
 # homepage = "jd.me.org"
 # orcid = "0000-0000-0000-0000"
 # researchgate = "John-Doe"
-# extraInfo = "I am a cool kid"
+# extra-info = "I am a cool kid"
 # [personal.info.custom-1]
 #     # image = "" # Example: image("./path/to/image.png")
-#     awesomeIcon = "graduation-cap" # Example: "graduation-cap" see https://typst.app/universe/package/fontawesome/
+#     awesome-icon = "graduation-cap" # Example: "graduation-cap" see https://typst.app/universe/package/fontawesome/
 #     text = "PhD"
 #     link = "https://www.example.com"
 

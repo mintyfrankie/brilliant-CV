@@ -1,12 +1,12 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.1": cvSection, cvEntry, hBar
+#import "@preview/brilliant-cv:2.0.1": cv-section, cv-entry, h-bar
 #let metadata = toml("../metadata.toml")
-#let cvSection = cvSection.with(metadata: metadata)
-#let cvEntry = cvEntry.with(metadata: metadata)
+#let cv-section = cv-section.with(metadata: metadata)
+#let cv-entry = cv-entry.with(metadata: metadata)
 
-#cvSection("Formation")
+#cv-section("Formation")
 
-#cvEntry(
+#cv-entry(
   title: [Master en Science des Données],
   society: [Université de Californie à Los Angeles],
   date: [2018 - 2020],
@@ -16,12 +16,12 @@
     [Thèse : Prédiction du taux de désabonnement des clients dans l'industrie des
       télécommunications en utilisant des algorithmes d'apprentissage automatique et
       l'analyse de réseau],
-    [Cours : Systèmes et technologies Big Data #hBar() Exploration et exploitation de
-      données #hBar() Traitement du langage naturel],
+    [Cours : Systèmes et technologies Big Data #h-bar() Exploration et exploitation de
+      données #h-bar() Traitement du langage naturel],
   ),
 )
 
-#cvEntry(
+#cv-entry(
   title: [Bachelors en Informatique],
   society: [Université de Californie à Los Angeles],
   date: [2014 - 2018],
@@ -31,7 +31,7 @@
     [Thèse : Exploration de l'utilisation des algorithmes d'apprentissage automatique
       pour la prédiction des prix des actions : une étude comparative des modèles de
       régression et de séries chronologiques],
-    [Cours : Systèmes de base de données #hBar() Réseaux informatiques #hBar() Génie
-      logiciel #hBar() Intelligence artificielle],
+    [Cours : Systèmes de base de données #h-bar() Réseaux informatiques #h-bar() Génie
+      logiciel #h-bar() Intelligence artificielle],
   ),
 )

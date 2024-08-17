@@ -10,51 +10,51 @@
 /* Layout */
 #let cv(
   metadata, 
-  profilePhoto: image("./template/src/avatar.png"),
+  profile-photo: image("./template/src/avatar.png"),
   doc) = {
   // Non Latin Logic
   let lang = metadata.language
-  let fontList = latinFontList
-  let headerFont = latinHeaderFont
-  if isNonLatin(lang) {
-    let nonLatinFont = metadata.lang.non_latin.font
-    fontList.insert(2, nonLatinFont)
-    headerFont = nonLatinFont
+  let font-list = latin-font-list
+  let header-font = latin-header-font
+  if is-non-latin(lang) {
+    let non-latin-font = metadata.lang.non_latin.font
+    font-list.insert(2, non-latin-font)
+    header-font = non-latin-font
   }
 
   // Page layout
-  set text(font: fontList, weight: "regular", size: 9pt)
+  set text(font: font-list, weight: "regular", size: 9pt)
   set align(left)
   set page(
     paper: "a4",
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
   )
 
-  _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors)
+  cv-header(metadata, profile-photo, header-font, regular-colors, awesome-colors)
   doc
-  _cvFooter(metadata)
+  cv-footer(metadata)
 }
 
 #let letter(
   metadata,
   doc,
-  myAddress: "Your Address Here",
-  recipientName: "Company Name Here",
-  recipientAddress: "Company Address Here",
+  my-address: "Your Address Here",
+  recipient-name: "Company Name Here",
+  recipient-address: "Company Address Here",
   date: datetime.today().display(),
   subject: "Subject: Hey!",
   signature: "",
 ) = {
   // Non Latin Logic
   let lang = metadata.language
-  let fontList = latinFontList
-  if isNonLatin(lang) {
-    let nonLatinFont = metadata.lang.non_latin.font
-    fontList.insert(2, nonLatinFont)
+  let font-list = latin-font-list
+  if is-non-latin(lang) {
+    let non-latin-font = metadata.lang.non_latin.font
+    font-list.insert(2, non-latin-font)
   }
 
   // Page layout
-  set text(font: fontList, weight: "regular", size: 9pt)
+  set text(font: font-list, weight: "regular", size: 9pt)
   set align(left)
   set page(
     paper: "a4",
@@ -62,20 +62,20 @@
   )
   set text(size: 12pt)
 
-  _letterHeader(
-    myAddress: myAddress,
-    recipientName: recipientName,
-    recipientAddress: recipientAddress,
+  letter-header(
+    my-address: my-address,
+    recipient-name: recipient-name,
+    recipient-address: recipient-address,
     date: date,
     subject: subject,
     metadata: metadata,
-    _awesomeColors: awesomeColors,
+    awesome-colors: awesome-colors,
   )
 
   doc
 
   if signature != "" {
-    _letterSignature(signature)
+    letter-signature(signature)
   }
-  _letterFooter(metadata)
+  letter-footer(metadata)
 }
