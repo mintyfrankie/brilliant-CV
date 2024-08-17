@@ -82,6 +82,16 @@ It is recommended to:
 3. Use `typos` to check typos in your CV if your main locale is English.
 4. (Advanced) Use `LTex` in your favorite code editor to check grammars and get language suggestions.
 
+## How to upgrade version
+
+For the time being, upgrade can be achieved by manually "find and replace" the import statements in batch in your favorite IDE. For example:
+
+```typst
+#import "@preview/brilliant-cv:2.0.0" -> #import "@preview/brilliant-cv:2.0.1"
+```
+
+**Make sure you read the release notes to notice any breaking changes. We estimate that there would still be some as Typst has not reached to a stable release neither.**
+
 ## Migration from `v1`
 
 > The version `v1` is now deprecated, due to the compliance to Typst Packages standard. However, if you want to continue to develop on the older version, please refer to the `v1-legacy` branch.
