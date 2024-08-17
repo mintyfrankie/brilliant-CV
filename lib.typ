@@ -30,9 +30,9 @@
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
   )
 
-  cv-header(metadata, profile-photo, header-font, regular-colors, awesome-colors)
+  _cv-header(metadata, profile-photo, header-font, regular-colors, awesome-colors)
   doc
-  cv-footer(metadata)
+  _cv-footer(metadata)
 }
 
 #let letter(
@@ -62,7 +62,7 @@
   )
   set text(size: 12pt)
 
-  letter-header(
+  _letter-header(
     my-address: my-address,
     recipient-name: recipient-name,
     recipient-address: recipient-address,
@@ -75,7 +75,7 @@
   doc
 
   if signature != "" {
-    letter-signature(signature)
+    _letter-signature(signature)
   }
-  letter-footer(metadata)
+  _letter-footer(metadata)
 }

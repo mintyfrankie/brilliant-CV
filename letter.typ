@@ -5,16 +5,16 @@
 #import "./utils/styles.typ": *
 
 /// Insert the header section of the letter.
-#let letter-header(
+#let _letter-header(
   my-address: "Your Address Here",
   recipient-name: "Company Name Here",
   recipient-address: "Company Address Here",
   date: datetime.today().display(),
   subject: "Subject: Hey!",
   metadata: metadata,
-  awesome-colors: awesome-colors,
+  _awesome-colors: awesome-colors,
 ) = {
-  let accent-color = set-accent-color(awesome-colors, metadata)
+  let accent-color = set-accent-color(_awesome-colors, metadata)
   let first-name = metadata.personal.first_name
   let last-name = metadata.personal.last_name
 
@@ -46,13 +46,13 @@
   linebreak()
 }
 
-#let letter-signature(img) = {
+#let _letter-signature(img) = {
   set image(width: 25%)
   linebreak()
   place(right, dx: -5%, dy: 0%, img)
 }
 
-#let letter-footer(metadata) = {
+#let _letter-footer(metadata) = {
   // Parameters
   let first-name = metadata.personal.first_name
   let last-name = metadata.personal.last_name

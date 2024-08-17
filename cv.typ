@@ -14,7 +14,7 @@
 /// - regular-colors (array): the regular colors of the CV.
 /// - awesome-colors (array): the awesome colors of the CV.
 /// -> content
-#let cv-header(
+#let _cv-header(
   metadata,
   profile-photo,
   header-font,
@@ -185,7 +185,7 @@
 ///
 /// - metadata (array): the metadata read from the TOML file.
 /// -> content
-#let cv-footer(metadata) = {
+#let _cv-footer(metadata) = {
   // Parameters
   let first-name = metadata.personal.first_name
   let last-name = metadata.personal.last_name
@@ -213,12 +213,12 @@
 ///
 /// - title (str): The title of the section.
 /// - metadata (array): the metadata read from the TOML file.
-/// - awesome-colors (array): (optional) the awesome colors of the CV.
+/// - _awesome-colors (array): (optional) the awesome colors of the CV.
 /// -> content
 #let cv-section(
   title,
   metadata: metadata,
-  awesome-colors: awesome-colors,
+  _awesome-colors: awesome-colors,
 ) = {
   let lang = metadata.language
   let non-latin = is-non-latin(lang)
@@ -227,7 +227,7 @@
   )
   let highlighted = metadata.layout.section.at("highlighted", default: true)
   let letters = metadata.layout.section.at("highlighted_length", default: 3)
-  let accent-color = set-accent-color(awesome-colors, metadata)
+  let accent-color = set-accent-color(_awesome-colors, metadata)
   let highligh-text = title.slice(0, letters)
   let normalText = title.slice(letters)
   let section-title-style(str, color: black) = {
@@ -260,7 +260,7 @@
 /// - logo (image): The logo of the society. If empty, no logo will be displayed.
 /// - tags (array): The tags of the entry.
 /// - metadata (array): (optional) the metadata read from the TOML file.
-/// - awesome-colors (array): (optional) the awesome colors of the CV.
+/// - _awesome-colors (array): (optional) the awesome colors of the CV.
 /// -> content
 #let cv-entry(
   title: "Title",
@@ -271,9 +271,9 @@
   logo: "",
   tags: ("Tag1", "Tag2"),
   metadata: metadata,
-  awesome-colors: awesome-colors,
+  _awesome-colors: awesome-colors,
 ) = {
-  let accent-color = set-accent-color(awesome-colors, metadata)
+  let accent-color = set-accent-color(_awesome-colors, metadata)
   let before-entry-skip = eval(
     metadata.layout.at("before_entry_skip", default: 1pt),
   )
@@ -432,7 +432,7 @@
 /// - url (str): The URL of the honor.
 /// - location (str): The location of the honor.
 /// - metadata (array): (optional) The metadata read from the TOML file.
-/// - awesome-colors (array): (optional) The awesome colors of the CV.
+/// - _awesome-colors (array): (optional) The awesome colors of the CV.
 /// -> content
 #let cv-honor(
   date: "1990",
@@ -441,9 +441,9 @@
   url: "",
   location: "",
   metadata: metadata,
-  awesome-colors: awesome-colors,
+  _awesome-colors: awesome-colors,
 ) = {
-  let accent-color = set-accent-color(awesome-colors, metadata)
+  let accent-color = set-accent-color(_awesome-colors, metadata)
 
   let honor-date-style(str) = {
     align(right, text(str))
