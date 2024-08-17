@@ -24,6 +24,7 @@
   darkgray: rgb("#212529"),
 )
 
+/// Set the accent color for the document
 #let setAccentColor(awesomeColors, metadata) = {
   let param = metadata.layout.awesome_color
   return if param in awesomeColors {
@@ -31,4 +32,21 @@
   } else {
     rgb(param)
   }
+}
+
+/// Overwrite the default fonts if the metadata has custom font values
+/// 
+/// - metadata (array): the metadata object
+/// - latinFontList (array): the default list of latin fonts
+/// - latinHeaderFont (string): the default header font
+/// -> array
+#let overwriteFonts(metadata, latinFontList, latinHeaderFont) = {
+  let metadataFonts = metadata.layout.at("fonts", default: [])
+  let regularFonts = latinFontList
+  let headerFont = latinHeaderFont
+  if metadataFonts.len() > 0 {
+    regularFonts = metadataFonts.at("regular_fonts")
+    headerFont = metadataFonts.at("header_font")
+  }
+  return (regularFonts: regularFonts, headerFont: headerFont)
 }
