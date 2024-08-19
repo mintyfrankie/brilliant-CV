@@ -4,8 +4,8 @@
 
 #import "@preview/fontawesome:0.2.1": *
 #import "./utils/injection.typ": inject
-#import "./utils/styles.typ": *
-#import "./utils/lang.typ": *
+#import "./utils/styles.typ": latinFontList, latinHeaderFont, awesomeColors, regularColors, setAccentColor, hBar
+#import "./utils/lang.typ": isNonLatin
 
 /// Insert the header section of the CV.
 ///

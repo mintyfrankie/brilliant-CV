@@ -5,7 +5,8 @@
 /* Packages */
 #import "./cv.typ": *
 #import "./letter.typ": *
-#import "./utils/lang.typ": *
+#import "./utils/lang.typ": isNonLatin
+#import "./utils/styles.typ": overwriteFonts
 
 /* Layout */
 #let cv(
@@ -16,6 +17,8 @@
   let lang = metadata.language
   let fontList = latinFontList
   let headerFont = latinHeaderFont
+  fontList = overwriteFonts(metadata, latinFontList, latinHeaderFont).regularFonts
+  headerFont = overwriteFonts(metadata, latinFontList, latinHeaderFont).headerFont
   if isNonLatin(lang) {
     let nonLatinFont = metadata.lang.non_latin.font
     fontList.insert(2, nonLatinFont)
@@ -48,6 +51,7 @@
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList
+  fontList = overwriteFonts(metadata, latinFontList, latinHeaderFont).regularFonts
   if isNonLatin(lang) {
     let nonLatinFont = metadata.lang.non_latin.font
     fontList.insert(2, nonLatinFont)

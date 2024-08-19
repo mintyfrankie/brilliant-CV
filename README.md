@@ -61,6 +61,10 @@ A [documentation](https://mintyfrankie.github.io/brilliant-CV/docs.pdf) on CV fu
 
 ### 3. Bootstrap Template
 
+You have two ways to bootstrap the template, according to your need and tech-savvy level.
+
+#### 3.1 With Typst CLI
+
 In your local system, just working like `git clone`, boostrap the template using this command:
 
 ```bash
@@ -68,6 +72,14 @@ typst init @preview/brilliant-cv:<version>
 ```
 
 Replace the `<version>` with the latest or any releases (after 2.0.0).
+
+#### 3.2 With `utpm` pakcage manager
+
+[utpm](https://github.com/Thumuss/utpm) is a WIP packager manager for Typst. Install it with official instructions.
+
+Git clone then this repository on your local system, and within the workspace, run `utpm workspace link --force`.
+
+You will have to take care of templating by yourself, though.
 
 ### 4. Compile Files
 
@@ -87,7 +99,7 @@ It is recommended to:
 For the time being, upgrade can be achieved by manually "find and replace" the import statements in batch in your favorite IDE. For example:
 
 ```typst
-#import "@preview/brilliant-cv:2.0.0" -> #import "@preview/brilliant-cv:2.0.1"
+#import "@preview/brilliant-cv:2.0.0" -> #import "@preview/brilliant-cv:2.0.2"
 ```
 
 **Make sure you read the release notes to notice any breaking changes. We estimate that there would still be some as Typst has not reached to a stable release neither.**
