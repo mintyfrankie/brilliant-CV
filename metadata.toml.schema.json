@@ -14,8 +14,7 @@
         "awesome_color": {
           "type": "string",
           "description": "Optional values: skyblue, red, nephritis, concrete, darknight. You can also use a custom color by hex code i.e. '#1E90FF'",
-          "enum": ["skyblue", "red", "nephritis", "concrete", "darknight"],
-          "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+          "pattern": "^(skyblue|red|nephritis|concrete|darknight|#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))$"
         },
         "before_section_skip": {
           "type": "string",
@@ -159,7 +158,7 @@
               "additionalProperties": false
             }
           },
-          "required": ["github", "phone", "email", "linkedin", "custom"]
+          "required": ["github", "phone", "email", "linkedin"]
         }
       },
       "required": ["first_name", "last_name", "info"]
