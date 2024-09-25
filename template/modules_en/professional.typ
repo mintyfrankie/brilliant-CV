@@ -27,8 +27,8 @@
   date: [2017 - 2020],
   location: [New York, NY],
   description: list(
-    [Analyze large datasets using SQL and Python, collaborate with cross-functional teams to identify business insights],
-    [Create data visualizations and dashboards using Tableau, develop and maintain data pipelines using AWS],
+    [Analyze large datasets with SQL and Python, collaborate with teams to uncover business insights],
+    [Create data visualizations and dashboards in Tableau, develop and maintain data pipelines with AWS],
   ),
 )
 
@@ -38,5 +38,7 @@
   logo: image("../src/logos/pqr_corp.png"),
   date: [Summer 2017],
   location: [Chicago, IL],
-  description: list([Assisted with data cleaning, processing, and analysis using Python and Excel, participated in team meetings and contributed to project planning and execution]),
+  description: list(
+    [Assisted with data cleaning, processing, and analysis using Python and Excel, participated in team meetings and contributed to project planning and execution],
+  ),
 )

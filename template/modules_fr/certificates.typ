@@ -18,3 +18,9 @@
   title: [Applied Data Science with Python],
   issuer: [Coursera],
 )
+
+#cvHonor(
+  date: [],
+  title: [Bases de données et requêtes SQL],
+  issuer: [OpenClassrooms]
+)

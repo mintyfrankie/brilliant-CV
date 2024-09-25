@@ -4,6 +4,7 @@
 #let cvSection = cvSection.with(metadata: metadata)
 #let cvEntry = cvEntry.with(metadata: metadata)
 
+
 #cvSection("Expérience Professionnelle")
 
 #cvEntry(
@@ -13,14 +14,10 @@
   logo: image("../src/logos/xyz_corp.png"),
   location: [San Francisco, CA],
   description: list(
-    [Diriger une équipe de scientifiques et d'analystes de données pour développer et
-      mettre en œuvre des stratégies axées sur les données, développer des modèles
-      prédictifs et des algorithmes pour soutenir la prise de décisions dans toute
-      l'organisation],
-    [Collaborer avec la direction pour identifier les opportunités d'affaires et
-      stimuler la croissance, mettre en œuvre les meilleures pratiques en matière de
-      gouvernance, de qualité et de sécurité des données],
+    [Diriger une équipe de scientifiques et d'analystes de données pour développer et mettre en œuvre des stratégies axées sur les données, développer des modèles prédictifs et des algorithmes pour soutenir la prise de décisions dans toute l'organisation],
+    [Collaborer avec la direction pour identifier les opportunités d'affaires et stimuler la croissance, mettre en œuvre les meilleures pratiques en matière de gouvernance, de qualité et de sécurité des données],
   ),
+  tags : ("Exemple de tags ici", "Dataiku", "Snowflake", "SparkSQL")
 )
 
 #cvEntry(
@@ -30,10 +27,8 @@
   location: [New York, NY],
   logo: image("../src/logos/abc_company.png"),
   description: list(
-    [Analyser de grands ensembles de données à l'aide de SQL et Python, collaborer
-      avec des équipes interfonctionnelles pour identifier des insights métier],
-    [Créer des visualisations de données et des tableaux de bord à l'aide de Tableau,
-      développer et maintenir des pipelines de données à l'aide d'AWS],
+    [Analyser de grands ensembles de données avec SQL et Python, collaborer avec les équipes pour découvrir des insights commerciaux],
+    [Créer des visualisations de données et des tableaux de bord dans Tableau, développer et maintenir des pipelines de données avec AWS],
   ),
 )
 
@@ -43,7 +38,7 @@
   date: [été 2017],
   location: [Chicago, IL],
   logo: image("../src/logos/pqr_corp.png"),
-  description: list([Aider à la préparation, au traitement et à l'analyse de données à l'aide de
-    Python et Excel, participer aux réunions d'équipe et contribuer à la
-    planification et à l'exécution de projets]),
+  description: list(
+    [Aider à la préparation, au traitement et à l'analyse de données à l'aide de Python et Excel, participer aux réunions d'équipe et contribuer à la planification et à l'exécution de projets],
+  ),
 )
