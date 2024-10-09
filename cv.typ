@@ -14,7 +14,13 @@
 /// - regularColors (array): the regular colors of the CV.
 /// - awesomeColors (array): the awesome colors of the CV.
 /// -> content
-#let _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors) = {
+#let _cvHeader(
+  metadata,
+  profilePhoto,
+  headerFont,
+  regularColors,
+  awesomeColors,
+) = {
   // Parameters
   let hasPhoto = metadata.layout.header.display_profile_photo
   let align = eval(metadata.layout.header.header_align)
@@ -199,15 +205,13 @@
     text(size: 8pt, fill: rgb("#999999"), smallcaps(str))
   }
 
-  place(
-    bottom,
-    table(
-      columns: (1fr, auto),
-      inset: 0pt,
-      stroke: none,
-      footerStyle([#firstName #lastName]), footerStyle(footerText),
-    ),
+  return table(
+    columns: (1fr, auto),
+    inset: -5pt,
+    stroke: none,
+    footerStyle([#firstName #lastName]), footerStyle(footerText),
   )
+
 }
 
 /// Add the title of a section.

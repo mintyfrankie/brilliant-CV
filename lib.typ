@@ -10,9 +10,10 @@
 
 /* Layout */
 #let cv(
-  metadata, 
+  metadata,
   profilePhoto: image("./template/src/avatar.png"),
-  doc) = {
+  doc,
+) = {
   // Non Latin Logic
   let lang = metadata.language
   let fontList = latinFontList
@@ -31,11 +32,11 @@
   set page(
     paper: "a4",
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
+    footer: _cvFooter(metadata),
   )
 
   _cvHeader(metadata, profilePhoto, headerFont, regularColors, awesomeColors)
   doc
-  _cvFooter(metadata)
 }
 
 #let letter(
@@ -63,23 +64,21 @@
   set page(
     paper: "a4",
     margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
+    footer: letterHeader(
+      myAddress: myAddress,
+      recipientName: recipientName,
+      recipientAddress: recipientAddress,
+      date: date,
+      subject: subject,
+      metadata: metadata,
+      awesomeColors: awesomeColors,
+    ),
   )
   set text(size: 12pt)
-
-  letterHeader(
-    myAddress: myAddress,
-    recipientName: recipientName,
-    recipientAddress: recipientAddress,
-    date: date,
-    subject: subject,
-    metadata: metadata,
-    awesomeColors: awesomeColors,
-  )
 
   doc
 
   if signature != "" {
     letterSignature(signature)
   }
-  letterFooter(metadata)
 }

@@ -1,5 +1,5 @@
 // Imports
-#import "@preview/brilliant-cv:2.0.2": cvSection, cvPublication
+#import "@preview/brilliant-cv:2.0.3": cvSection, cvPublication
 #let metadata = toml("../metadata.toml")
 #let cvSection = cvSection.with(metadata: metadata)
 
@@ -11,7 +11,7 @@
   keyList: (
     "smith2020",
     "jones2021",
-    "wilson2022"
+    "wilson2022",
   ),
   refStyle: "apa",
 )
