@@ -62,14 +62,11 @@
     text(size: 8pt, fill: rgb("#999999"), smallcaps(str))
   }
 
-  place(
-    bottom,
-    table(
-      columns: (1fr, auto),
-      inset: 0pt,
-      stroke: none,
-      footerStyle([#firstName #lastName]),
-      footerStyle(metadata.lang.at(metadata.language).letter_footer),
-    ),
+  return table(
+    columns: (1fr, auto),
+    inset: 0pt,
+    stroke: none,
+    footerStyle([#firstName #lastName]),
+    footerStyle(metadata.lang.at(metadata.language).letter_footer),
   )
 }
