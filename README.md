@@ -121,6 +121,12 @@ With an existing CV project using the `v1` version of the template, a migration 
 
 Feel free to raise an issue for more assistance should you encounter a problem that you cannot solve on your own :)
 
+## Alternatives
+
+If you are not a fan of my approach, you will also have to take a look at:
+
+- [**typst-cv**](https://github.com/munzirtaha/typst-cv): A more minimalistic approach to typesetting this template, thanks [munzirtaha](https://github.com/munzirtaha) for your work!
+
 ## Credit
 
 - [**Typst**](https://github.com/typst/typst) is a newborn, open source and simple typesetting engine that offers a better scripting experience than [**LaTeX**](https://www.latex-project.org/).
