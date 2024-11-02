@@ -64,7 +64,11 @@
   set page(
     paper: "a4",
     margin: (left: 1.4cm, right: 1.4cm, top: 1cm, bottom: 1cm),
-    footer: letterHeader(
+    footer: _letterFooter(metadata),
+  )
+  set text(size: 12pt)
+
+  _letterHeader(
       myAddress: myAddress,
       recipientName: recipientName,
       recipientAddress: recipientAddress,
@@ -72,13 +76,10 @@
       subject: subject,
       metadata: metadata,
       awesomeColors: awesomeColors,
-    ),
-  )
-  set text(size: 12pt)
-
+    )
   doc
 
   if signature != "" {
-    letterSignature(signature)
+    _letterSignature(signature)
   }
 }

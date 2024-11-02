@@ -4,7 +4,7 @@
 
 #import "./utils/styles.typ": *
 
-#let letterHeader(
+#let _letterHeader(
   myAddress: "Your Address Here",
   recipientName: "Company Name Here",
   recipientAddress: "Company Address Here",
@@ -45,13 +45,13 @@
   linebreak()
 }
 
-#let letterSignature(img) = {
+#let _letterSignature(img) = {
   set image(width: 25%)
   linebreak()
   place(right, dx: -5%, dy: 0%, img)
 }
 
-#let letterFooter(metadata) = {
+#let _letterFooter(metadata) = {
   // Parameters
   let firstName = metadata.personal.first_name
   let lastName = metadata.personal.last_name
