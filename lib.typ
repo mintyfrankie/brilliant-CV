@@ -31,7 +31,7 @@
   set align(left)
   set page(
     paper: "a4",
-    margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
+    margin: (left: 1.4cm, right: 1.4cm, top: 1cm, bottom: 1cm),
     footer: _cvFooter(metadata),
   )
 
@@ -63,7 +63,7 @@
   set align(left)
   set page(
     paper: "a4",
-    margin: (left: 1.4cm, right: 1.4cm, top: .8cm, bottom: .4cm),
+    margin: (left: 1.4cm, right: 1.4cm, top: 1cm, bottom: 1cm),
     footer: letterHeader(
       myAddress: myAddress,
       recipientName: recipientName,
